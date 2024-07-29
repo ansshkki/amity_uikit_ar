@@ -51,13 +51,13 @@ class _CommunityPageState extends State<CommunityPage> {
               .appColors
               .baseBackground,
 
-          leading: IconButton(
-            icon: Icon(
-              Icons.close,
-              color: Provider.of<AmityUIConfiguration>(context).appColors.base,
-            ),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
+          // leading: IconButton(
+          //   icon: Icon(
+          //     Icons.close,
+          //     color: Provider.of<AmityUIConfiguration>(context).appColors.base,
+          //   ),
+          //   onPressed: () => Navigator.of(context).pop(),
+          // ),
           // centerTitle: false,
           automaticallyImplyLeading: false,
           title: Text(
