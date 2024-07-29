@@ -1216,7 +1216,7 @@ class _TextPostState extends State<TextPost> {
                                     children: <TextSpan>[
                                       TextSpan(text: text.substring(0, 180)),
                                       TextSpan(
-                                        text: " ... Load more",
+                                        text: "... تحميل المزيد", //... Load more
                                         style: linkStyle,
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {

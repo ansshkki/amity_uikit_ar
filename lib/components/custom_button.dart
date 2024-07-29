@@ -68,14 +68,14 @@ class CustomButton extends StatelessWidget {
                             color: Colors.white,
                           ))
                       : Text(
-                          label ?? "Next",
+                          label ?? "التالي", //Next
                           textAlign: TextAlign.center,
                           style: theme.textTheme.labelLarge!.copyWith(
                               color: textColor ?? theme.scaffoldBackgroundColor,
                               fontSize: textSize ?? 16),
                         ))
                   : Text(
-                      label ?? "Next",
+                      label ?? "التالي", //Next
                       textAlign: TextAlign.center,
                       style: theme.textTheme.labelLarge!.copyWith(
                           color: textColor ?? theme.scaffoldBackgroundColor,

@@ -31,27 +31,27 @@ class _NotificationAllTabScreenState extends State<NotificationAllTabScreen> {
   }
 
   String followRequestStringBuilder(List<AmityFollowRelationship> pendingList) {
-    var emptyDisplayname = "Empty Name";
-    var suffix = " request to follow you";
+    var emptyDisplayname = "اسم فارغ"; // Empty Name
+    var suffix = "طلب لمتابعتك"; //request to follow you
     var prefixString = "";
     if (pendingList.length == 1) {
       prefixString = pendingList[0].sourceUser?.displayName ?? emptyDisplayname;
     } else if (pendingList.length == 2) {
       prefixString = pendingList[0].sourceUser?.displayName ?? emptyDisplayname;
       prefixString +=
-          " and ${prefixString = pendingList[1].sourceUser?.displayName ?? emptyDisplayname}";
+          " و ${prefixString = pendingList[1].sourceUser?.displayName ?? emptyDisplayname}"; // And
     } else if (pendingList.length == 3) {
       prefixString = pendingList[0].sourceUser?.displayName ?? emptyDisplayname;
       prefixString +=
           ", ${prefixString = pendingList[1].sourceUser?.displayName ?? emptyDisplayname}";
       prefixString +=
-          ", and ${prefixString = pendingList[2].sourceUser?.displayName ?? emptyDisplayname}";
+          ", و ${prefixString = pendingList[2].sourceUser?.displayName ?? emptyDisplayname}"; // and
     } else if (pendingList.length > 3) {
       prefixString = pendingList[0].sourceUser?.displayName ?? emptyDisplayname;
       prefixString +=
           ", ${prefixString = pendingList[0].sourceUser?.displayName ?? emptyDisplayname}";
       prefixString = pendingList[0].sourceUser?.displayName ?? emptyDisplayname;
-      prefixString += ", and ${pendingList.length - 2} others";
+      prefixString += ", و ${pendingList.length - 2} آخرين "; // and //others
     } else {
       prefixString = "${pendingList.length}";
     }
@@ -66,7 +66,7 @@ class _NotificationAllTabScreenState extends State<NotificationAllTabScreen> {
     );
 
     if (result == "0 seconds ago") {
-      return "just now";
+      return "الآن"; //just now
     } else {
       return result;
     }
@@ -141,7 +141,7 @@ class _NotificationAllTabScreenState extends State<NotificationAllTabScreen> {
                                             ),
                                             children: [
                                               TextSpan(
-                                                  text: "Follow Request",
+                                                  text: "طلب متابعة", //Follow Request
                                                   style: theme
                                                       .textTheme.titleSmall!
                                                       .copyWith(fontSize: 12)),
@@ -169,12 +169,12 @@ class _NotificationAllTabScreenState extends State<NotificationAllTabScreen> {
                                 child: Text(
                                   vm.notificationsObject?.data?.isEmpty ?? false
                                       ? ""
-                                      : "This month",
+                                      : "هذا الشهر", //This month
                                   style: theme.textTheme.titleLarge,
                                 )),
                             vm.notificationsObject?.data?.isEmpty ?? false
                                 ? const Center(
-                                    child: Text("Notification box is empty!"))
+                                    child: Text("صندوق الإشعارات فارغ!")) //Notification box is empty!
                                 : ListView.builder(
                                     physics:
                                         const NeverScrollableScrollPhysics(),

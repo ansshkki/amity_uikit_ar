@@ -62,12 +62,12 @@ class _FollowScreenState extends State<FollowScreen> {
               tabs: const [
                 Tab(
                   child: Text(
-                    "Following",
+                    "متابعة", //Following
                   ),
                 ),
                 Tab(
                   child: Text(
-                    "Followers",
+                    "متابعين", //Followers
                   ),
                 ),
               ],

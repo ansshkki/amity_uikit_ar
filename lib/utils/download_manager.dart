@@ -47,6 +47,6 @@ Future<void> launchURL(String url) async {
     log("launching...: $url");
     await launchURL(url);
   } else {
-    throw 'Could not launch $url';
+    throw ' لم يتمكن من تشغيل$url'; // Could not launch
   }
 }

@@ -23,7 +23,7 @@ class NotificationPage extends StatelessWidget {
               Provider.of<AmityUIConfiguration>(context).primaryColor,
           indicatorSize: TabBarIndicatorSize.label,
           tabs: const [
-            Tab(text: "all"),
+            Tab(text: "الكل"),// all
             // Tab(text: S.of(context).likes),
             // Tab(text: S.of(context).comments),
             // Tab(text: S.of(context).repost),

@@ -70,7 +70,7 @@ class _LocalVideoPlayerState extends State<LocalVideoPlayer> {
                   children: [
                     CircularProgressIndicator(),
                     SizedBox(height: 20),
-                    Text('Loading',
+                    Text('جاري التحميل', //Loading
                         style: TextStyle(fontWeight: FontWeight.w500)),
                     SizedBox(height: 20),
                   ],

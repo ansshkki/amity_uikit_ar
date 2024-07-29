@@ -21,7 +21,7 @@ class ChatsPage extends StatelessWidget {
           unselectedLabelColor: Colors.black,
           indicatorSize: TabBarIndicatorSize.label,
           tabs: const [
-            Tab(text: "Group")
+            Tab(text: "مجموعة") // Group
             // Tab(text: S.of(context).groups),)
           ],
         ),

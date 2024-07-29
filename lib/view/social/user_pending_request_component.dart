@@ -36,7 +36,7 @@ class _AmityPendingScreenState extends State<AmityPendingScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           title: Text(
-            "Follow Request",
+            "طلب للمتابعة", //Follow Request
             style:
                 Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 24),
           ),
@@ -74,12 +74,12 @@ class _AmityPendingScreenState extends State<AmityPendingScreen> {
                                   children: [
                                     Text(
                                       snapshot.data?.sourceUser!.displayName ??
-                                          "displayname not found",
+                                          "لا يمكن ايجاد اسم للعرض", //display name not found
                                       style: theme.textTheme.bodyMedium,
                                     ),
                                     Text(
                                       snapshot.data?.sourceUser!.userId ??
-                                          "displayname not found",
+                                          "لا يمكن ايجاد اسم للعرض", //displayname not found
                                       style: theme.textTheme.bodySmall,
                                     ),
                                   ],
@@ -97,7 +97,7 @@ class _AmityPendingScreenState extends State<AmityPendingScreen> {
                                 vm.acceptFollowRequest(
                                     snapshot.data!.sourceUser!.userId!, index);
                               },
-                              child: const Text("accept"),
+                              child: const Text("قبول"), //accept
                             ),
                             const SizedBox(
                               width: 5,
@@ -111,7 +111,7 @@ class _AmityPendingScreenState extends State<AmityPendingScreen> {
                                 vm.declineFollowRequest(
                                     snapshot.data!.sourceUser!.userId!, index);
                               },
-                              child: const Text("reject"),
+                              child: const Text("رفض"), //reject
                             ),
                           ],
                         ),

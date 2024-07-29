@@ -108,7 +108,7 @@ class CommunityScreenState extends State<CommunityScreen> {
               children: [
                 Text("${Provider.of<CommuFeedVM>(context).postCount}",
                     style: const TextStyle(fontSize: 16)),
-                const Text('posts',
+                const Text('منشورات', //posts
                     style: TextStyle(fontSize: 16, color: Color(0xff898E9E)))
               ],
             ),
@@ -127,7 +127,7 @@ class CommunityScreenState extends State<CommunityScreen> {
                     community.membersCount.toString(),
                     style: const TextStyle(fontSize: 16),
                   ),
-                  Text(community.membersCount == 1 ? 'member' : 'members',
+                  Text(community.membersCount == 1 ? 'عضو' : 'أعضاء', //member //members
                       style: const TextStyle(
                           fontSize: 16, color: Color(0xff898E9E)))
                 ],
@@ -355,8 +355,8 @@ class CommunityScreenState extends State<CommunityScreen> {
                                             fontFamily: 'SF Pro Text',
                                           ),
                                           tabs: const [
-                                            Tab(text: "Timeline"),
-                                            Tab(text: "Gallery"),
+                                            Tab(text: "الجدول الزمني"), //Timeline
+                                            Tab(text: "المعرض"), //Gallery
                                           ],
                                         ),
                                       ),
@@ -466,7 +466,7 @@ class _EditProfileButtonState extends State<EditProfileButton> {
                       ),
                       SizedBox(width: 8.0), // Space between icon and text
                       Text(
-                        "Join",
+                        "انضم", //Join
                         style: TextStyle(
                           color: Colors.white, // Text color
                         ),
@@ -506,7 +506,7 @@ class _EditProfileButtonState extends State<EditProfileButton> {
                       ),
                   const SizedBox(width: 8.0), // Space between icon and text
                   Text(
-                    "Edit Profile",
+                    "تعديل الملف الشخصي", //Edit Profile
                     style: TextStyle(
                       color: Provider.of<AmityUIConfiguration>(context)
                           .appColors
@@ -563,7 +563,7 @@ class PedindingButton extends StatelessWidget {
                 ),
                 const SizedBox(width: 8.0), // Space between icon and text
                 Text(
-                  "Pending posts",
+                  "المنشورات معلقة", //Pending posts
                   style: TextStyle(
                     color: Provider.of<AmityUIConfiguration>(context)
                         .appColors
@@ -580,8 +580,8 @@ class PedindingButton extends StatelessWidget {
                 Text(
                   !community
                           .hasPermission(AmityPermission.REVIEW_COMMUNITY_POST)
-                      ? "Your posts are pending for review"
-                      : "${Provider.of<CommuFeedVM>(context).reviewingPostCount} posts need approval",
+                      ? "منشوراتك معلقة للمراجعة" //Your posts are pending for review
+                      : "${Provider.of<CommuFeedVM>(context).reviewingPostCount}المشاركات تحتاج إلى موافقة ", //posts need approval
                   style: TextStyle(
                     fontSize: 13,
                     color: Provider.of<AmityUIConfiguration>(context)
@@ -659,7 +659,7 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
                           .appColors
                           .base,
                     )),
-                const Text('posts',
+                const Text('المنشورات',//posts
                     style: TextStyle(fontSize: 16, color: Color(0xff898E9E)))
               ],
             ),
@@ -688,7 +688,7 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
                           .base,
                     ),
                   ),
-                  Text(community.membersCount == 1 ? 'member' : 'members',
+                  Text(community.membersCount == 1 ? 'عضو' : 'أعضاء', //member //members
                       style: const TextStyle(
                           fontSize: 16, color: Color(0xff898E9E)))
                 ],
@@ -772,7 +772,7 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
                       Text(
                           widget.community.displayName != null
                               ? widget.community.displayName!
-                              : "Community",
+                              : "مجتمع", //Community
                           style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w800,
@@ -792,7 +792,7 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
                       : Text(
                           widget.community.displayName != null
                               ? widget.community.categories!.isEmpty
-                                  ? "no category"
+                                  ? "لا يوجد تصنيف" //no category
                                   : widget.community.categories![0]?.name ?? ""
                               : "",
                           style: const TextStyle(

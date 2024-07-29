@@ -98,7 +98,7 @@ class UserListState extends State<UserList> {
       return Scaffold(
         appBar: AppBar(
           title:
-              const Text("Select Users", style: TextStyle(color: Colors.black)),
+              const Text("إختر المستخدمين", style: TextStyle(color: Colors.black)), //Select Users
           leading: GestureDetector(
             onTap: () {
               Navigator.of(context).pop();
@@ -114,8 +114,8 @@ class UserListState extends State<UserList> {
                     },
                     child: const Text(true
                         // getSelectedLength() > 1
-                        ? "Next"
-                        : "Create"))
+                        ? "التالي" // Next
+                        : "إنشاء")) // Create
                 : Container()
           ],
         ),

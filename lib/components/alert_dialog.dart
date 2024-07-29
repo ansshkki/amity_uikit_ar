@@ -14,7 +14,7 @@ class AmityDialog {
     required String message,
   }) async {
     bool isBarrierDismissible() {
-      return title.toLowerCase().contains("error");
+      return title.toLowerCase().contains("خطأ"); //error
     }
 
     if (isShowDialog) {
@@ -32,7 +32,7 @@ class AmityDialog {
                 content: Text(message),
                 actions: <Widget>[
                   CupertinoDialogAction(
-                    child: const Text('OK'),
+                    child: const Text('حسنا'), // ok
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -52,7 +52,7 @@ class AmityDialog {
                 content: Text(message),
                 actions: <Widget>[
                   TextButton(
-                    child: const Text('OK'),
+                    child: const Text('حسنا'), // ok
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -103,7 +103,7 @@ class AmityLoadingDialog {
                     ),
                     SizedBox(height: 16),
                     Text(
-                      "Loading",
+                      "جاري التحميل", // loading
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
@@ -167,8 +167,8 @@ class ConfirmationDialog {
     required BuildContext context,
     required String title,
     required String detailText,
-    String leftButtonText = 'Cancel',
-    String rightButtonText = 'Confirm',
+    String leftButtonText = 'إلغاء', //Cancel
+    String rightButtonText = 'تأكيد', //Confirm
     required Function onConfirm,
   }) async {
     // Check the platform

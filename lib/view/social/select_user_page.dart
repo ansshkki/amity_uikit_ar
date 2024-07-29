@@ -50,7 +50,7 @@ class _UserListPageState extends State<UserListPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          'Select member',
+          'تحديد العضو', //Select member
           style: Provider.of<AmityUIConfiguration>(context)
               .titleTextStyle
               .copyWith(
@@ -74,7 +74,7 @@ class _UserListPageState extends State<UserListPage> {
                 }
                 Navigator.of(context).pop();
               },
-              child: Text('Done',
+              child: Text('تم', //Done
                   style: TextStyle(
                       color: Provider.of<AmityUIConfiguration>(context,
                               listen: false)
@@ -97,7 +97,7 @@ class _UserListPageState extends State<UserListPage> {
                       Icons.search,
                       color: Colors.grey,
                     ),
-                    hintText: 'Search',
+                    hintText: 'بحث', //Search
                     filled: true,
                     contentPadding: const EdgeInsets.symmetric(vertical: 0),
                     fillColor: Colors.grey[3],
@@ -255,7 +255,7 @@ class _UserListPageState extends State<UserListPage> {
                                 ),
 
                                 title: Text(
-                                  user.displayName ?? 'No name',
+                                  user.displayName ?? 'لا يوجد اسم', //No name
                                   style: TextStyle(
                                       color: Provider.of<AmityUIConfiguration>(
                                               context)
