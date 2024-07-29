@@ -84,7 +84,7 @@ class PendingFeddScreenState extends State<PendingFeddScreen> {
               children: [
                 Text(community.postsCount.toString(),
                     style: const TextStyle(fontSize: 16)),
-                const Text('posts',
+                const Text('المنشورات', //posts
                     style: TextStyle(fontSize: 16, color: Color(0xff898E9E)))
               ],
             ),
@@ -101,7 +101,7 @@ class PendingFeddScreenState extends State<PendingFeddScreen> {
                   community.membersCount.toString(),
                   style: const TextStyle(fontSize: 16),
                 ),
-                const Text('members',
+                const Text('الأعضاء', //members
                     style: TextStyle(fontSize: 16, color: Color(0xff898E9E)))
               ],
             ),
@@ -182,7 +182,7 @@ class PendingFeddScreenState extends State<PendingFeddScreen> {
                 appBar: AppBar(
                   elevation: 0.0,
                   title: Text(
-                      "Pending posts (${vm.getCommunityPendingPosts().length})",
+                      "المنشورات المعلقة${vm.getCommunityPendingPosts().length})", //Pending posts
                       style: Provider.of<AmityUIConfiguration>(context)
                           .titleTextStyle),
                   backgroundColor: Colors.transparent,

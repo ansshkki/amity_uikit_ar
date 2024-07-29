@@ -121,7 +121,7 @@ class _AmityFollowerScreenState extends State<AmityFollowerScreen> {
                                                       .getFollowerList[index]
                                                       .sourceUser!
                                                       .displayName ??
-                                                  "displayname not found",
+                                                  "لا يمكن ايجاد اسم للعرض", //display name not found
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.w600),
                                             ),

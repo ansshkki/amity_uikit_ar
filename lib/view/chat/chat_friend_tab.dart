@@ -50,8 +50,8 @@ class AmitySLEChannelScreenState extends State<AmitySLEChannelScreen> {
       convertedTimestamp,
     );
 
-    if (result == "0 seconds ago") {
-      return "just now";
+    if (result == "0 seconds ago") { //0 seconds ago
+      return "الآن"; //just now
     } else {
       return result;
     }
@@ -156,7 +156,7 @@ class AmitySLEChannelScreenState extends State<AmitySLEChannelScreen> {
                             ),
                             title: Text(
                               vm.getChannelList()[index].displayName ??
-                                  "Display name",
+                                  "عرض الاسم", //Display name
                               style: TextStyle(
                                 color: rand
                                     ? Provider.of<AmityUIConfiguration>(context)

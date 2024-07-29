@@ -43,7 +43,7 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
     final mediaQuery = MediaQuery.of(context);
     final myAppBar = AppBar(
       title: Text(
-        "Edit Community",
+        "تعديل المجتمع", //Edit Community
         style: theme.textTheme.titleLarge,
       ),
       backgroundColor: Colors.white,
@@ -68,7 +68,7 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                     communityType == CommunityType.public ? true : false);
           },
           child: Text(
-            "Save",
+            "حفظ", //Save
             style: theme.textTheme.labelLarge!.copyWith(
                 color: Provider.of<AmityUIConfiguration>(context).primaryColor,
                 fontWeight: FontWeight.bold),
@@ -136,7 +136,7 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                         color: Colors.grey[200],
                         width: double.infinity,
                         child: Text(
-                          "Community Info",
+                          "معلومات المجتمع", //Community Info
                           style: theme.textTheme.titleLarge!.copyWith(
                             color: Colors.grey,
                             fontSize: 16,
@@ -163,7 +163,7 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                         child: TextField(
                           controller: _displayNameController,
                           decoration: const InputDecoration(
-                            labelText: "Name",
+                            labelText: "الاسم", //Name
                             alignLabelWithHint: false,
                             border: InputBorder.none,
                             labelStyle: TextStyle(height: 1),
@@ -179,7 +179,7 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                         child: TextField(
                           controller: _descriptionController,
                           decoration: const InputDecoration(
-                            labelText: "Description",
+                            labelText: "الوصف", //Description
                             alignLabelWithHint: false,
                             border: InputBorder.none,
                             labelStyle: TextStyle(height: 1),
@@ -203,7 +203,7 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                                         _categoryController)));
                           },
                           decoration: const InputDecoration(
-                            labelText: "Category",
+                            labelText: "التصنيف", //Category
                             alignLabelWithHint: false,
                             border: InputBorder.none,
                             labelStyle: TextStyle(height: 1),
@@ -225,9 +225,9 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                                   shape: BoxShape.circle),
                               child: const Icon(Icons.public),
                             ),
-                            title: const Text('Public'),
+                            title: const Text('عام'), //Public
                             subtitle: const Text(
-                                'Anyone can join, view and search this community'),
+                                'يمكن لأي شخص الانضمام إلى هذا المجتمع وزيارته والبحث فيه'), //Anyone can join, view and search this community
                             trailing: Radio(
                               value: CommunityType.public,
                               activeColor:
@@ -253,9 +253,9 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                                   shape: BoxShape.circle),
                               child: const Icon(Icons.lock),
                             ),
-                            title: const Text('Private'),
+                            title: const Text('خاص'), //Private
                             subtitle: const Text(
-                                'Only members invited by the moderators can join, view and search this community'),
+                                'يمكن فقط للأعضاء المدعوين من قبل المشرفين الانضمام إلى هذا المجتمع وزيارته والبحث فيه'), //Only members invited by the moderators can join, view and search this community
                             trailing: Radio(
                               value: CommunityType.private,
                               activeColor:

@@ -144,7 +144,7 @@ class CommentScreenState extends State<CommentScreen> {
                                           package: 'amity_uikit_beta_service',
                                         ),
                                         const Text(
-                                          "Like",
+                                          "إعجاب", //Like
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Color(0xff898E9E),
@@ -169,7 +169,7 @@ class CommentScreenState extends State<CommentScreen> {
                                           size: 16,
                                         ),
                                         Text(
-                                          "Like",
+                                          "إعجاب", //Like
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Provider.of<
@@ -198,7 +198,7 @@ class CommentScreenState extends State<CommentScreen> {
                             Icon(Icons.chat_bubble_outline, color: Colors.grey),
                             SizedBox(width: 4),
                             Text(
-                              "Comment",
+                              "تعليق", //Comment
                               // snapshot.data!.commentCount.toString(),
                               style: TextStyle(color: Colors.grey),
                             ),
@@ -319,7 +319,7 @@ class CommentScreenState extends State<CommentScreen> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          "Replying to ${Provider.of<ReplyVM>(context).replyToObject?.replyingToUser.displayName}",
+                                          "الرد على ${Provider.of<ReplyVM>(context).replyToObject?.replyingToUser.displayName}",// Replying to
                                           style: const TextStyle(
                                               fontWeight: FontWeight.w400,
                                               color: Color(0xff636878)),
@@ -447,7 +447,7 @@ class CommentTextField extends StatelessWidget {
                         ),
                         onPressed: navigateToFullCommentPage,
                       ),
-                      hintText: 'Say something nice...',
+                      hintText: 'قل شياً ...', //Say something nice...
                       fillColor:
                           Colors.grey[300], // Set the background color to grey
                       filled: true, // Enable the fill color
@@ -478,7 +478,7 @@ class CommentTextField extends StatelessWidget {
                       .createComment(postId, commentTextEditController.text);
                 } else {
                   ///Create Comment with Reply
-                  print("reply comment");
+                  print("الرد على التعليق"); //reply comment
                   var replyingComment =
                       Provider.of<ReplyVM>(context, listen: false)
                           .replyToObject
@@ -496,7 +496,7 @@ class CommentTextField extends StatelessWidget {
                 commentTextEditController.clear();
               },
               child: Text(
-                "Post",
+                "نشر", //Post
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Provider.of<AmityUIConfiguration>(context)
@@ -567,10 +567,10 @@ class FullCommentPage extends StatelessWidget {
             if (true) {
               ConfirmationDialog().show(
                 context: context,
-                title: 'Discard Post?',
-                detailText: 'Do you want to discard your post?',
-                leftButtonText: 'Cancel',
-                rightButtonText: 'Discard',
+                title: 'تجاهل المنشور؟', //Discard Post?
+                detailText: 'هل تريد تجاهل منشورك؟', //Do you want to discard your post?
+                leftButtonText: 'إلغاء', //Cancel
+                rightButtonText: 'تجاهل', //Discard
                 onConfirm: () {
                   Navigator.of(context).pop();
                 },
@@ -581,7 +581,7 @@ class FullCommentPage extends StatelessWidget {
           },
         ),
         title: Text(
-          "Add Comment",
+          "ترك تعليق", //Add Comment
           style: Provider.of<AmityUIConfiguration>(context).titleTextStyle,
         ),
         actions: <Widget>[
@@ -590,7 +590,7 @@ class FullCommentPage extends StatelessWidget {
               postCallback();
             },
             child: Text(
-              'Post',
+              'نشر', //Post
               style: TextStyle(
                   color:
                       Provider.of<AmityUIConfiguration>(context).primaryColor),
@@ -605,7 +605,7 @@ class FullCommentPage extends StatelessWidget {
           keyboardType: TextInputType.multiline,
           maxLines: null, // Allows for any number of lines
           decoration: const InputDecoration(
-              hintText: 'Type message', border: InputBorder.none),
+              hintText: 'إكتب الرسالة', border: InputBorder.none), //Type message
         ),
       ),
     );
@@ -657,7 +657,7 @@ class _EditCommentPageState extends State<EditCommentPage> {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          "Edit Comment",
+          "تعديل التعليق", //Edit Comment
           style: Provider.of<AmityUIConfiguration>(context).titleTextStyle,
         ),
         actions: <Widget>[
@@ -671,7 +671,7 @@ class _EditCommentPageState extends State<EditCommentPage> {
               widget.postCallback();
             },
             child: Text(
-              'Save',
+              'حفظ', //Save
               style: TextStyle(
                   color:
                       Provider.of<AmityUIConfiguration>(context).primaryColor),
@@ -771,7 +771,7 @@ class _CommentComponentState extends State<CommentComponent> {
                                             width: 14,
                                           ),
                                           Text(
-                                            "This comment  has been deleted",
+                                            "هذا التعليق تم حذفه", //This comment  has been deleted
                                             style: TextStyle(
                                                 color: Color(0xff636878),
                                                 fontSize: 13),
@@ -905,7 +905,7 @@ class _CommentComponentState extends State<CommentComponent> {
                                                                 ),
                                                               )
                                                             : const Text(
-                                                                " Like",
+                                                                "إعجاب", //Like
                                                                 style:
                                                                     TextStyle(
                                                                   fontWeight:
@@ -937,7 +937,7 @@ class _CommentComponentState extends State<CommentComponent> {
                                                     width: 5,
                                                   ),
                                                   const Text(
-                                                    "Reply",
+                                                    "رد", //Reply
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w600,
@@ -968,8 +968,8 @@ class _CommentComponentState extends State<CommentComponent> {
                                                           : ListTile(
                                                               title: Text(
                                                                 comments.isFlaggedByMe
-                                                                    ? 'Undo Report'
-                                                                    : 'Report',
+                                                                    ? 'التراجع عن التقرير' //Undo Report
+                                                                    : 'تقرير', //Report
                                                                 style: const TextStyle(
                                                                     fontWeight:
                                                                         FontWeight
@@ -999,7 +999,7 @@ class _CommentComponentState extends State<CommentComponent> {
                                                           ? const SizedBox()
                                                           : ListTile(
                                                               title: const Text(
-                                                                'Edit Comment',
+                                                                'تعديل التعليق', //Edit Comment
                                                                 style: TextStyle(
                                                                     fontWeight:
                                                                         FontWeight
@@ -1027,7 +1027,7 @@ class _CommentComponentState extends State<CommentComponent> {
                                                           ? const SizedBox()
                                                           : ListTile(
                                                               title: const Text(
-                                                                'Delete Comment',
+                                                                'حذف التعليق', //Delete Comment
                                                                 style: TextStyle(
                                                                     fontWeight:
                                                                         FontWeight
@@ -1039,9 +1039,9 @@ class _CommentComponentState extends State<CommentComponent> {
                                                                         context:
                                                                             context,
                                                                         title:
-                                                                            "Delete this comment",
+                                                                            "حذف هذا التعليق", //Delete this comment
                                                                         detailText:
-                                                                            " This comment will be permanently deleted. You'll no longer to see and find this comment",
+                                                                            "سيتم حذف هذا التعليق بشكل دائم. لن تتمكن بعد الآن من رؤية هذا التعليق أو العثور عليه", // This comment will be permanently deleted. You'll no longer to see and find this comment
                                                                         onConfirm:
                                                                             () {
                                                                           vm.deleteComment(
@@ -1150,7 +1150,7 @@ class _CommentComponentState extends State<CommentComponent> {
                                                             width: 14,
                                                           ),
                                                           Text(
-                                                            "View more replies",
+                                                            "مساهدة الردود", //View more replies
                                                             style: TextStyle(
                                                                 color: Color(
                                                                     0xff636878),
@@ -1352,7 +1352,7 @@ class ReplyCommentComponent extends StatelessWidget {
                                 width: 14,
                               ),
                               Text(
-                                "This reply has been deleted",
+                                "هذا الرد تم حذفه", //This reply has been deleted
                                 style: TextStyle(
                                     color: Color(0xff636878), fontSize: 13),
                               ),
@@ -1454,7 +1454,7 @@ class ReplyCommentComponent extends StatelessWidget {
                                                   ),
                                                 )
                                               : const Text(
-                                                  " Like",
+                                                  "إعجاب", //Like
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     color: Color(0xff898E9E),
@@ -1494,7 +1494,7 @@ class ReplyCommentComponent extends StatelessWidget {
                                         ? const SizedBox()
                                         : ListTile(
                                             title: const Text(
-                                              'Report',
+                                              'تقرير', //Report
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w500),
                                             ),
@@ -1510,7 +1510,7 @@ class ReplyCommentComponent extends StatelessWidget {
                                         ? const SizedBox()
                                         : ListTile(
                                             title: const Text(
-                                              'Edit Comment',
+                                              'تعديل التعليق', //Edit Comment
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w500),
                                             ),
@@ -1537,21 +1537,21 @@ class ReplyCommentComponent extends StatelessWidget {
                                         ? const SizedBox()
                                         : ListTile(
                                             title: const Text(
-                                              'Delete Comment',
+                                              'حذف التعليق', //Delete Comment
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w500),
                                             ),
                                             onTap: () async {
                                               ConfirmationDialog().show(
                                                   context: context,
-                                                  title: "Delete this comment",
+                                                  title: "حذف هذا التعليق", //Delete this comment
                                                   detailText:
-                                                      " This comment will be permanently deleted. You'll no longer to see and find this comment",
+                                                      "سيتم حذف هذا التعليق بشكل دائم. لن تتمكن بعد الآن من رؤية هذا التعليق أو العثور عليه",// This comment will be permanently deleted. You'll no longer to see and find this comment
                                                   onConfirm: () {
                                                     vm.deleteComment(comment);
                                                     AmitySuccessDialog
                                                         .showTimedDialog(
-                                                            "Success",
+                                                            "تم بنجاح", //Success
                                                             context: context);
                                                     Navigator.pop(context);
                                                   });

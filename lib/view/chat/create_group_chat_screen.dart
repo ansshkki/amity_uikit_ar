@@ -72,7 +72,7 @@ class CreateChatGroupState extends State<CreateChatGroup> {
     return Consumer<UserVM>(builder: (context, vm, _) {
       return Scaffold(
           appBar: AppBar(
-            title: const Text("Setup group",
+            title: const Text("إعداد المجموعة", //Setup group
                 style: TextStyle(color: Colors.black)),
             leading: GestureDetector(
               onTap: () {
@@ -87,7 +87,7 @@ class CreateChatGroupState extends State<CreateChatGroup> {
                       onPressed: () {
                         onCreateTap();
                       },
-                      child: const Text("Create"),
+                      child: const Text("إنشاء"), // Create
                     )
                   : Container()
             ],
@@ -150,7 +150,7 @@ class CreateChatGroupState extends State<CreateChatGroup> {
                     });
                   },
                   decoration: const InputDecoration(
-                    labelText: "Group name",
+                    labelText: "اسم المجموعة",
                     alignLabelWithHint: false,
                     border: InputBorder.none,
                     labelStyle: TextStyle(height: 1),

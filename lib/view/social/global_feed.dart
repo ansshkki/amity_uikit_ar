@@ -245,10 +245,10 @@ class _PostWidgetState
             if (widget.feedType == FeedType.global) {
               ConfirmationDialog().show(
                 context: context,
-                title: 'Delete Post?',
-                detailText: 'Do you want to Delete your post?',
-                leftButtonText: 'Cancel',
-                rightButtonText: 'Delete',
+                title: 'حذف المنشور ؟',
+                detailText: 'هل تود حذق المنشور ؟', //Do you want to Delete your post?
+                leftButtonText: 'إلغاء', //Cancel
+                rightButtonText: 'حذف', //Delete
                 onConfirm: () {
                   Provider.of<FeedVM>(context, listen: false).deletePost(
                       widget.post, widget.postIndex, (isSuccess, error) {
@@ -263,10 +263,10 @@ class _PostWidgetState
             } else if (widget.feedType == FeedType.community) {
               ConfirmationDialog().show(
                 context: context,
-                title: 'Delete Post?',
-                detailText: 'Do you want to Delete your post?',
-                leftButtonText: 'Cancel',
-                rightButtonText: 'Delete',
+                title: 'حذف المنشور ؟', //Delete Post?
+                detailText: 'هل تود حذف منشورك ؟', //Do you want to Delete your post?
+                leftButtonText: 'إلغاء', //Cancel
+                rightButtonText: 'حذف', //Delete
                 onConfirm: () {
                   Provider.of<CommuFeedVM>(context, listen: false).deletePost(
                       widget.post, widget.postIndex, (isSuccess, error) {
@@ -281,10 +281,10 @@ class _PostWidgetState
             } else if (widget.feedType == FeedType.user) {
               ConfirmationDialog().show(
                 context: context,
-                title: 'Delete Post?',
-                detailText: 'Do you want to Delete your post?',
-                leftButtonText: 'Cancel',
-                rightButtonText: 'Delete',
+                title: 'حذف المنشور ؟', //Delete Post?
+                detailText: 'هل تود حذف منشورك ؟', //Do you want to Delete your post?
+                leftButtonText: 'إلغاء', //Cancel
+                rightButtonText: 'حذف', //Delete
                 onConfirm: () {
                   Provider.of<UserFeedVM>(context, listen: false)
                       .deletePost(widget.post, (isSuccess, error) {
@@ -299,10 +299,10 @@ class _PostWidgetState
             } else if (widget.feedType == FeedType.pending) {
               ConfirmationDialog().show(
                 context: context,
-                title: 'Delete Post?',
-                detailText: 'Do you want to Delete your post?',
-                leftButtonText: 'Cancel',
-                rightButtonText: 'Delete',
+                title: 'حذف المنشور ؟', //Delete Post?
+                detailText: 'هل تود حذف منشورك ؟', //Do you want to Delete your post?
+                leftButtonText: 'إلغاء', //Cancel
+                rightButtonText: 'حذف', //Delete
                 onConfirm: () {
                   Provider.of<CommuFeedVM>(context, listen: false)
                       .deletePendingPost(widget.post, widget.postIndex);
@@ -463,7 +463,7 @@ class _PostWidgetState
                                 widget.post.postedUser!.userId !=
                                         AmityCoreClient.getCurrentUser().userId
                                     ? widget.post.postedUser?.displayName ??
-                                        "Display name"
+                                        "عرض الاسم" //Display name
                                     : Provider.of<AmityVM>(context)
                                             .currentamityUser!
                                             .displayName ??
@@ -511,7 +511,7 @@ class _PostWidgetState
                                       (widget.post.target as CommunityTarget)
                                               .targetCommunity!
                                               .displayName ??
-                                          "Community name",
+                                          "اسم المجتمع", //Community name
                                       style: widget.theme.textTheme.bodyLarge!
                                           .copyWith(
                                         color:
@@ -557,7 +557,7 @@ class _PostWidgetState
                                       const SizedBox(
                                         width: 5,
                                       ),
-                                      Text("Edited",
+                                      Text("عُدل", //Edited
                                           style: TextStyle(
                                             color: widget.feedType ==
                                                     FeedType.user
@@ -649,8 +649,8 @@ class _PostWidgetState
                                                 Text(
                                                     widget.post.reactionCount! >
                                                             1
-                                                        ? "likes"
-                                                        : "like",
+                                                        ? "إعجابات" //likes
+                                                        : "إعجاب", //like
                                                     style: TextStyle(
                                                         color: widget
                                                                     .feedType ==
@@ -674,7 +674,7 @@ class _PostWidgetState
                                       // any logic needed...
                                       if (widget.post.commentCount! > 1) {
                                         return Text(
-                                          '${widget.post.commentCount} comments',
+                                          '${widget.post.commentCount} تعليات ', //comments
                                           style: TextStyle(
                                               color: widget.feedType ==
                                                       FeedType.user
@@ -694,7 +694,7 @@ class _PostWidgetState
                                         );
                                       } else {
                                         return Text(
-                                          '${widget.post.commentCount} comment',
+                                          '${widget.post.commentCount} تعليق ', //comment
                                           style: TextStyle(
                                               color: widget.feedType ==
                                                       FeedType.user
@@ -764,7 +764,7 @@ class _PostWidgetState
                                           .commentIcon(),
                                       const SizedBox(width: 5.5),
                                       Text(
-                                        'Comment',
+                                        'تعليق', //Comment
                                         style: TextStyle(
                                             color: Provider.of<
                                                         AmityUIConfiguration>(
@@ -912,7 +912,7 @@ class PendingSectionButton extends StatelessWidget {
                     borderRadius: BorderRadius.circular(4), // Set border radius
                   ),
                   child: const Center(
-                      child: Text("Accept",
+                      child: Text("قبول", //Accept
                           style: TextStyle(
                               color: Colors.white))), // Text color set to white
                 ),
@@ -938,7 +938,7 @@ class PendingSectionButton extends StatelessWidget {
                     border: Border.all(color: Colors.grey), // Border color
                   ),
                   child: const Center(
-                      child: Text("Decline")), // Text with default color
+                      child: Text("انخفاض")),  //Decline// Text with default color
                 ),
               ),
             ),
@@ -1021,7 +1021,7 @@ class _LatestCommentComponentState extends State<LatestCommentComponent> {
                                       width: 14,
                                     ),
                                     Text(
-                                      "This comment  has been deleted",
+                                      "هذا التعليق تم حذفه", //This comment  has been deleted
                                       style: TextStyle(
                                           color: Color(0xff636878),
                                           fontSize: 13),
@@ -1151,7 +1151,7 @@ class CommentActionComponent extends StatelessWidget {
                                     ),
                                   )
                                 : const Text(
-                                    " Like",
+                                    "إعجاب", //Like
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       color: Color(0xff898E9E),
@@ -1180,7 +1180,7 @@ class CommentActionComponent extends StatelessWidget {
                                         ),
                                       )
                                     : const Text(
-                                        " Like",
+                                        "إعجاب", //Like
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xff898E9E),
@@ -1246,7 +1246,7 @@ class CommentActionComponent extends StatelessWidget {
                           ? const SizedBox()
                           : ListTile(
                               title: const Text(
-                                'Report',
+                                'تقرير', //Report
                                 style: TextStyle(fontWeight: FontWeight.w500),
                               ),
                               onTap: () async {
@@ -1260,7 +1260,7 @@ class CommentActionComponent extends StatelessWidget {
                           ? const SizedBox()
                           : ListTile(
                               title: const Text(
-                                'Edit Comment',
+                                'تعديل التعليق', //Edit Comment
                                 style: TextStyle(fontWeight: FontWeight.w500),
                               ),
                               onTap: () async {
@@ -1281,15 +1281,15 @@ class CommentActionComponent extends StatelessWidget {
                           ? const SizedBox()
                           : ListTile(
                               title: const Text(
-                                'Delete Comment',
+                                'حذف التعليق', // Delete Comment
                                 style: TextStyle(fontWeight: FontWeight.w500),
                               ),
                               onTap: () async {
                                 ConfirmationDialog().show(
                                     context: context,
-                                    title: "Delete this comment",
+                                    title: "حذف هذا التعليق", //Delete this comment
                                     detailText:
-                                        " This comment will be permanently deleted. You'll no longer to see and find this comment",
+                                        "سيتم حذف هذا التعليق بشكل دائم. لن تتمكن بعد الآن من رؤية هذا التعليق أو العثور عليه", // This comment will be permanently deleted. You'll no longer to see and find this comment
                                     onConfirm: () {
                                       Provider.of<PostVM>(context)
                                           .deleteComment(comments);

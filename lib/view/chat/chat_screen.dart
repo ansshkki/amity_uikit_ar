@@ -144,7 +144,7 @@ class ChatTextFieldComponent extends StatelessWidget {
               controller: Provider.of<MessageVM>(context, listen: false)
                   .textEditingController,
               decoration: const InputDecoration(
-                hintText: "Write your message",
+                hintText: "أكتب رسالتك", //Write your message
                 hintStyle: TextStyle(fontSize: 14),
                 border: InputBorder.none,
               ),
@@ -276,7 +276,7 @@ class _MessageComponentState extends State<MessageComponent> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       color: Colors.red),
-                                  child: const Text("Unsupport type message😰",
+                                  child: const Text("رسالة من النوع غير المدعوم😰", //Unsupport type message😰
                                       style: TextStyle(color: Colors.white)),
                                 )
                               : Flexible(

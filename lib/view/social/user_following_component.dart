@@ -89,7 +89,7 @@ class _AmityFollowingScreenScreenState extends State<AmityFollowingScreen> {
                                 Text(
                                   vm.getFollowingList[index].targetUser!
                                           .displayName ??
-                                      "displayname not found",
+                                      "لا يمكن ايجاد اسم للعرض", //display name not found
                                   style: const TextStyle(
                                       fontWeight: FontWeight.w600),
                                 ),

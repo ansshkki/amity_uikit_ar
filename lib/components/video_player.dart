@@ -76,7 +76,7 @@ class _LocalVideoPlayerState extends State<LocalVideoPlayer> {
                           .primary,
                     ),
                     const SizedBox(height: 20),
-                    const Text('Loading',
+                    const Text('جاري التحميل', //Loading
                         style: TextStyle(fontWeight: FontWeight.w500)),
                     const SizedBox(height: 20),
                   ],

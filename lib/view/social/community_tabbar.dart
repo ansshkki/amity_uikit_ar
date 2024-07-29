@@ -23,9 +23,9 @@ class CommunityTabbar extends StatelessWidget {
           unselectedLabelColor: Colors.black,
           indicatorSize: TabBarIndicatorSize.label,
           tabs: const [
-            Tab(text: "Recommended"),
-            Tab(text: "Trending"),
-            Tab(text: "Joined"),
+            Tab(text: "موصى بها"), //Recommended
+            Tab(text: "شائع"), //Trending
+            Tab(text: "انضم"), //Joined
           ],
         ),
         body: const TabBarView(

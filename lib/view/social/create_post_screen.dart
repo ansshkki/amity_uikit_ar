@@ -33,7 +33,7 @@ class CreatePostScreen2State extends State<CreatePostScreen2> {
     final myAppbar = AppBar(
       backgroundColor: Colors.white,
       elevation: 0,
-      title: Text("Create Post",
+      title: Text("إنشاء منشور", //Create Post
           style: theme.textTheme.titleLarge!
               .copyWith(fontWeight: FontWeight.w500)),
       leading: IconButton(
@@ -82,7 +82,7 @@ class CreatePostScreen2State extends State<CreatePostScreen2> {
                             maxLines: null,
                             decoration: const InputDecoration(
                               border: InputBorder.none,
-                              hintText: "Write something to post",
+                              hintText: "اكتب شيئا لنشره", //Write something to post
                             ),
                             // style: t/1heme.textTheme.bodyText1.copyWith(color: Colors.grey),
                           ),
@@ -244,7 +244,7 @@ class CreatePostScreen2State extends State<CreatePostScreen2> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Text(
-                              "Submit Post",
+                              "إرسال المنشور", //Submit Post
                               style: theme.textTheme.labelLarge,
                             ),
                           ),
