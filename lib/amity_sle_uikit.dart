@@ -223,12 +223,7 @@ class AmitySLEProvider extends StatelessWidget {
         ChangeNotifierProvider<ChatRoomVM>(create: ((context) => ChatRoomVM())),
       ],
       child: Builder(
-        builder: (context) => MaterialApp(
-          theme: ThemeData(),
-          debugShowCheckedModeBanner: false,
-          navigatorKey: NavigationService.navigatorKey,
-          home: child,
-        ),
+        builder: (context) => child,
       ),
     );
   }
