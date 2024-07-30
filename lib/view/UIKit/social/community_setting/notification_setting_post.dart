@@ -38,7 +38,7 @@ class _PostNotificationSettingPageState
               size: 30),
         ),
         title: Text(
-          'Posts',
+          'المنشورات', //Posts
           style: TextStyle(
             color: Provider.of<AmityUIConfiguration>(context).appColors.base,
             fontSize: 18,
@@ -56,7 +56,7 @@ class _PostNotificationSettingPageState
           Padding(
             padding: const EdgeInsetsDirectional.all(16.0),
             child: Text(
-              "React Posts",
+              "التفاعل مع المنشورات", //React Posts
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
@@ -69,7 +69,7 @@ class _PostNotificationSettingPageState
           const Padding(
             padding: EdgeInsetsDirectional.only(start: 16.0, bottom: 16, end: 16),
             child: Text(
-              "Receive notifications when someone make a reaction to your posts in this community",
+              "تلقي الاشعارات عند تعليق احدهم على منشوراتك في هذا المجتمع", //Receive notifications when someone make a reaction to your posts in this community
               style: TextStyle(
                 fontSize: 14,
                 color: Color(0xff636878),
@@ -78,7 +78,7 @@ class _PostNotificationSettingPageState
           ),
 
           _buildRadioTile<ReactPostNotificationSetting>(
-            title: 'Everyone',
+            title: 'أي شخص', //Everyone
             value: ReactPostNotificationSetting.everyone,
             groupValue: _reactPostSetting,
             onChanged: (value) {
@@ -88,7 +88,7 @@ class _PostNotificationSettingPageState
             },
           ),
           _buildRadioTile<ReactPostNotificationSetting>(
-            title: 'Only Moderator',
+            title: 'المشرفين فقط', //Only Moderator
             value: ReactPostNotificationSetting.onlyModerator,
             groupValue: _reactPostSetting,
             onChanged: (value) {
@@ -98,7 +98,7 @@ class _PostNotificationSettingPageState
             },
           ),
           _buildRadioTile<ReactPostNotificationSetting>(
-            title: 'Off',
+            title: 'مغلق', //Off
             value: ReactPostNotificationSetting.off,
             groupValue: _reactPostSetting,
             onChanged: (value) {
@@ -118,7 +118,7 @@ class _PostNotificationSettingPageState
           const Padding(
             padding: EdgeInsetsDirectional.all(16.0),
             child: Text(
-              "React Posts",
+              "التفاعل مع المنشورات", //React Posts
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
@@ -129,7 +129,7 @@ class _PostNotificationSettingPageState
           const Padding(
             padding: EdgeInsetsDirectional.only(start: 16.0, bottom: 16, end: 16),
             child: Text(
-              "Receive notifications when someone make a reaction to your posts in this community",
+              "تلقي الاشعارات عند تعليق احدهم على منشوراتك في هذا المجتمع", //Receive notifications when someone make a reaction to your posts in this community
               style: TextStyle(
                 fontSize: 14,
                 color: Color(0xff636878),
@@ -137,7 +137,7 @@ class _PostNotificationSettingPageState
             ),
           ),
           _buildRadioTile<NewPostNotificationSetting>(
-            title: 'Everyone',
+            title: 'أي شخص', //Everyone
             value: NewPostNotificationSetting.everyone,
             groupValue: _newPostSetting,
             onChanged: (value) {
@@ -147,7 +147,7 @@ class _PostNotificationSettingPageState
             },
           ),
           _buildRadioTile<NewPostNotificationSetting>(
-            title: 'Only Moderator',
+            title:  'المشرفين فقط', //Only Moderator
             value: NewPostNotificationSetting.onlyModerator,
             groupValue: _newPostSetting,
             onChanged: (value) {
@@ -157,7 +157,7 @@ class _PostNotificationSettingPageState
             },
           ),
           _buildRadioTile<NewPostNotificationSetting>(
-            title: 'Off',
+            title: 'مغلق', //Off
             value: NewPostNotificationSetting.off,
             groupValue: _newPostSetting,
             onChanged: (value) {

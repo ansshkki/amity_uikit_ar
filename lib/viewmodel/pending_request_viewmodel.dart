@@ -51,7 +51,7 @@ class PendingVM extends ChangeNotifier {
       _pendingList = value.data;
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
 
     notifyListeners();
@@ -86,7 +86,7 @@ class PendingVM extends ChangeNotifier {
     }).onError((error, stackTrace) {
       //handle error
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -103,7 +103,7 @@ class PendingVM extends ChangeNotifier {
     }).onError((error, stackTrace) {
       //handle error
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 }

@@ -421,7 +421,7 @@ class CreatePostVMV2 with ChangeNotifier {
               callback: callback);
         }).onError((error, stackTrace) {
           AmityDialog()
-              .showAlertErrorDialog(title: "Error", message: error.toString());
+              .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
         });
       }
     }

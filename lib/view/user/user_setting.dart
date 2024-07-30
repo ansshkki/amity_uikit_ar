@@ -36,7 +36,7 @@ class UserSettingPage extends StatelessWidget {
                 onPressed: () => Navigator.of(context).pop(),
               ),
               elevation: 0.0,
-              title: Text("Setting",
+              title: Text("الإعدادت", //Setting
                   style: Provider.of<AmityUIConfiguration>(context)
                       .titleTextStyle
                       .copyWith(
@@ -50,7 +50,7 @@ class UserSettingPage extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsetsDirectional.all(16.0),
-                  child: Text("Basic info",
+                  child: Text("المعلومات الأساسية", //Basic info
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
                           fontSize: 17,
@@ -75,7 +75,7 @@ class UserSettingPage extends StatelessWidget {
                                         .appColors
                                         .base)),
                         title: Text(
-                          "Edit Profile",
+                          "تعديل الملف الشخصي", //Edit Profile
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
@@ -108,7 +108,7 @@ class UserSettingPage extends StatelessWidget {
                                     child: const Icon(Icons.person_remove,
                                         color: Color(0xff292B32))),
                                 title: const Text(
-                                  "Follow",
+                                  "تابع", //Follow
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
@@ -141,7 +141,7 @@ class UserSettingPage extends StatelessWidget {
                                                 .appColors
                                                 .base)),
                                 title: Text(
-                                  "Unfollow",
+                                  "عدم المتابعة", //Unfollow
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w600,
@@ -173,7 +173,7 @@ class UserSettingPage extends StatelessWidget {
                                 child: const Icon(Icons.flag,
                                     color: Color(0xff292B32))),
                             title: Text(
-                              "Unreport User",
+                              "إلغاء الإبلاغ عن المستخدم", //Unreport User
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w600,
@@ -203,7 +203,7 @@ class UserSettingPage extends StatelessWidget {
                                         .appColors
                                         .base)),
                             title: Text(
-                              "Report User",
+                              "الإبلاغ عن المستخدم", //Report User
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w600,
@@ -238,8 +238,8 @@ class UserSettingPage extends StatelessWidget {
                                         .base)),
                         title: Text(
                           snapshot.data!.status == AmityFollowStatus.BLOCKED
-                              ? "Unblock"
-                              : "Block User",
+                              ? "إلغاء الحظر" //Unblock
+                              : "حظر المستخدم", //Block User
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,

@@ -27,7 +27,7 @@ class PostVM extends ChangeNotifier {
     }).onError((error, stackTrace) async {
       log(error.toString());
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -105,16 +105,16 @@ class PostVM extends ChangeNotifier {
     }).onError((error, stackTrace) async {
       log(error.toString());
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
   void flagComment(AmityComment comment, BuildContext context) {
     comment.report().flag().then((value) {
-      AmitySuccessDialog.showTimedDialog("Success", context: context);
+      AmitySuccessDialog.showTimedDialog("ناجح", context: context); // Success
     }).onError((error, stackTrace) async {
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -123,7 +123,7 @@ class PostVM extends ChangeNotifier {
       AmitySuccessDialog.showTimedDialog("Success", context: context);
     }).onError((error, stackTrace) async {
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -137,7 +137,7 @@ class PostVM extends ChangeNotifier {
       notifyListeners();
     }).onError((error, stackTrace) async {
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -161,7 +161,7 @@ class PostVM extends ChangeNotifier {
     }).onError((error, stackTrace) async {
       log("flag error ${error.toString()}");
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -174,7 +174,7 @@ class PostVM extends ChangeNotifier {
     }).onError((error, stackTrace) async {
       log("unflag error ${error.toString()}");
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -207,7 +207,7 @@ class PostVM extends ChangeNotifier {
     }).onError((error, stackTrace) async {
       log("unflag error ${error.toString()}");
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 }

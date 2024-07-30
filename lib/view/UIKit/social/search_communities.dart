@@ -46,7 +46,7 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
                     Icons.search,
                     color: Colors.grey,
                   ),
-                  hintText: 'Search',
+                  hintText: 'البحث', //Search
                   filled: true,
                   contentPadding: const EdgeInsetsDirectional.symmetric(vertical: 0),
                   fillColor: Colors.grey[3],
@@ -75,7 +75,7 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
               child: Padding(
                 padding: const EdgeInsetsDirectional.all(8.0),
                 child: Text(
-                  "cancel",
+                  "إلغاء", //cancel
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Provider.of<AmityUIConfiguration>(context)
@@ -161,10 +161,10 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
                               ),
                               tabs: const [
                                 Tab(
-                                  text: "Community",
+                                  text: "المجتمع", //Community
                                 ),
                                 Tab(
-                                  text: "User",
+                                  text: "المستخدم", //User
                                 ),
                               ],
                             ),
@@ -221,7 +221,7 @@ class CommunityWidget extends StatelessWidget {
                   if (!community.isPublic!) const Icon(Icons.lock, size: 16.0),
                   const SizedBox(width: 4.0),
                   Text(
-                    communityStream.displayName ?? "Community",
+                    communityStream.displayName ?? "المجتمع", //Community
                     style: TextStyle(
                         overflow: TextOverflow.ellipsis,
                         color: Provider.of<AmityUIConfiguration>(context)
@@ -309,7 +309,7 @@ class UserWidget extends StatelessWidget {
                   const SizedBox(width: 4.0),
                   Expanded(
                     child: Text(
-                      userStream.displayName ?? "Community",
+                      userStream.displayName ?? "المجتمع", //Community
                       style: TextStyle(
                           color: Provider.of<AmityUIConfiguration>(context)
                               .appColors
@@ -355,7 +355,7 @@ class CommunityIconList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'My Community',
+                  'مجتمعي', //My Community
                   style: TextStyle(
                     fontSize: 17.0,
                     fontWeight: FontWeight.bold,

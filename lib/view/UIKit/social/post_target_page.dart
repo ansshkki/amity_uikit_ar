@@ -39,7 +39,7 @@ class _PostToPageState extends State<PostToPage> {
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
-          "Post to",
+          "النشر إلى", //Post to
           style: Provider.of<AmityUIConfiguration>(context)
               .titleTextStyle
               .copyWith(
@@ -81,7 +81,7 @@ class _PostToPageState extends State<PostToPage> {
                           ),
                         ),
                   title: Text(
-                    "My Timeline",
+                    "جدولي الزماني", //My Timeline
                     style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
@@ -102,7 +102,7 @@ class _PostToPageState extends State<PostToPage> {
                 Padding(
                   padding: const EdgeInsetsDirectional.all(16.0),
                   child: Text(
-                    "My community",
+                    "مجتمعي", //My community
                     style: TextStyle(
                         fontSize: 15,
                         color: Provider.of<AmityUIConfiguration>(context)

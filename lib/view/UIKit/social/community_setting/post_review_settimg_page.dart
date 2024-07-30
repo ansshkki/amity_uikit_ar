@@ -32,7 +32,7 @@ class _PostReviewPageState extends State<PostReviewPage> {
           Provider.of<AmityUIConfiguration>(context).appColors.baseBackground,
       appBar: AppBar(
         title: const Text(
-          'Post Review',
+          'مراجعة المنشور', //Post Review
           style: TextStyle(
             color: Colors.black,
             fontSize: 18,
@@ -49,7 +49,7 @@ class _PostReviewPageState extends State<PostReviewPage> {
 
           ListTile(
             title: const Text(
-              'Approve Member Posts',
+              'الموافقة على منشور أحد الأعضاء', //Approve Member Posts
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
@@ -59,7 +59,7 @@ class _PostReviewPageState extends State<PostReviewPage> {
             subtitle: const Padding(
               padding: EdgeInsetsDirectional.only(top: 8.0),
               child: Text(
-                'Posts by members have to be reviewed and approved by community moderators.',
+                '', //Posts by members have to be reviewed and approved by community moderators.
                 style: TextStyle(
                   fontSize: 12,
                   color: Color(0xff636878),

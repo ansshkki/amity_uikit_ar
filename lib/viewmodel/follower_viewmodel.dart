@@ -67,7 +67,7 @@ class FollowerVM extends ChangeNotifier {
         _followRelationships = value.data;
       }).onError((error, stackTrace) {
         AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     } else {
       await AmityCoreClient.newUserRepository()
@@ -82,7 +82,7 @@ class FollowerVM extends ChangeNotifier {
         _followRelationships = value.data;
       }).onError((error, stackTrace) {
         AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     }
     notifyListeners();

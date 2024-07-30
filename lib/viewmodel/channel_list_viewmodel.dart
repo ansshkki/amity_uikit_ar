@@ -86,7 +86,7 @@ class ChannelVM extends ChangeNotifier {
       } else {
         log(error.toString());
         await AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error!);
+            .showAlertErrorDialog(title: "خطأ!", message: error!); //Error!
       }
 
       notifyListeners();
@@ -111,7 +111,7 @@ class ChannelVM extends ChangeNotifier {
             notifyListeners();
           } else {
             await AmityDialog()
-                .showAlertErrorDialog(title: "Error!", message: error!);
+                .showAlertErrorDialog(title: "خطأ!", message: error!); //Error!
           }
         },
       );
@@ -155,7 +155,7 @@ class ChannelVM extends ChangeNotifier {
       } else {
         log(error.toString());
         await AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error!);
+            .showAlertErrorDialog(title: "خطأ!", message: error!); //Error!
         callback(null, error);
       }
     }, avatarFileId: avatarFileId);
@@ -172,7 +172,7 @@ class ChannelVM extends ChangeNotifier {
       } else {
         log(error.toString());
         await AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error!);
+            .showAlertErrorDialog(title: "خطأ!", message: error!); //Error!
         callback(null, error);
       }
     });
@@ -201,7 +201,7 @@ class ChannelVM extends ChangeNotifier {
       }
     } catch (error) {
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       log(error.toString());
     }
   }

@@ -87,7 +87,7 @@ class ChatRoomVM extends ChangeNotifier {
     }).onError((error, stackTrace) async {
       log("error from channel");
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
     messageLiveCollection = AmityChatClient.newMessageRepository()
         .getMessages(channelId)
@@ -126,7 +126,7 @@ class ChatRoomVM extends ChangeNotifier {
       // Error on pagination controller
       log("error from send message");
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 

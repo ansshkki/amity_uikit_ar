@@ -100,7 +100,7 @@ class ProfileScreenState extends State<ProfileScreen> {
     final mediaQuery = MediaQuery.of(context);
     final myAppBar = AppBar(
       title: Text(
-        "Edit Profile",
+        "تعديل الملف الشخصي", //Edit Profile
         style: Provider.of<AmityUIConfiguration>(context)
             .titleTextStyle
             .copyWith(
@@ -157,13 +157,13 @@ class ProfileScreenState extends State<ProfileScreen> {
                   .then((value) {
                 Navigator.of(context).pop();
                 AmityDialog().showAlertErrorDialog(
-                    title: "Success!",
-                    message: "Profile updated successfully!");
+                    title: "تم بنجاح!", //Success
+                    message: "تم تعديل الملف الشخصي بنجاح"); //Profile updated successfully!
               });
             }
           },
           child: Text(
-            "Save",
+            "حفظ", //Save
             style: theme.textTheme.labelLarge!.copyWith(
                 color: Provider.of<ImagePickerVM>(
                           context,
@@ -275,16 +275,16 @@ class ProfileScreenState extends State<ProfileScreen> {
                         // ),
                         TextFieldWithCounter(
                           controller: _displayNameController,
-                          title: 'Display name',
-                          hintText: 'Display name',
+                          title: 'عرض الاسم', //Display name
+                          hintText: 'عرض الاسم', //Display name
                           maxCharacters: 50,
                         ),
 
                         TextFieldWithCounter(
                           isRequired: false,
                           controller: _descriptionController,
-                          title: 'About',
-                          hintText: 'Enter description',
+                          title: 'عني', //About
+                          hintText: 'اضف الوصف', //Enter description
                           maxCharacters: 180,
                           keyboardType: TextInputType.multiline,
                           maxLines: null,

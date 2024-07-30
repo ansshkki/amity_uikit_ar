@@ -95,7 +95,7 @@ class AmityVM extends ChangeNotifier {
       }).onError((error, stackTrace) async {
         log(error.toString());
         await AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     }
   }

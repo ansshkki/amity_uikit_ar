@@ -112,7 +112,7 @@ class MemberManagementVM extends ChangeNotifier {
       }).onError((error, stackTrace) async {
         print("promoteToModerator: fail");
         AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
       print("finish loading...");
     });
@@ -132,7 +132,7 @@ class MemberManagementVM extends ChangeNotifier {
       AmityLoadingDialog.hideLoadingDialog();
     }).onError((error, stackTrace) async {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
 
     notifyListeners();
@@ -151,7 +151,7 @@ class MemberManagementVM extends ChangeNotifier {
       AmityLoadingDialog.hideLoadingDialog();
     }).onError((error, stackTrace) async {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
     notifyListeners();
   }
@@ -163,7 +163,7 @@ class MemberManagementVM extends ChangeNotifier {
       AmitySuccessDialog.showTimedDialog("Report sent");
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
     notifyListeners();
   }
@@ -175,7 +175,7 @@ class MemberManagementVM extends ChangeNotifier {
       AmitySuccessDialog.showTimedDialog("Unreport sent");
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
     notifyListeners();
   }
@@ -187,7 +187,7 @@ class MemberManagementVM extends ChangeNotifier {
       AmitySuccessDialog.showTimedDialog("Block user");
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
     notifyListeners();
   }
@@ -199,7 +199,7 @@ class MemberManagementVM extends ChangeNotifier {
       AmitySuccessDialog.showTimedDialog("Unblock user");
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
     notifyListeners();
   }
