@@ -108,7 +108,7 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
               ],
             ),
             body: Padding(
-              padding: const EdgeInsets.all(0.0),
+              padding: const EdgeInsetsDirectional.all(0.0),
               child: ListView(
                 children: [
                   GestureDetector(
@@ -140,7 +140,7 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                           ),
                         ),
                         Container(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsetsDirectional.all(8.0),
                           decoration: BoxDecoration(
                             color: Colors.transparent,
                             border: Border.all(color: Colors.white),
@@ -171,7 +171,7 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsetsDirectional.symmetric(horizontal: 16.0),
                     child: Column(
                       children: [
                         TextFieldWithCounter(
@@ -215,7 +215,7 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                         Column(
                           children: [
                             ListTile(
-                              contentPadding: EdgeInsets.zero,
+                              contentPadding: EdgeInsetsDirectional.zero,
                               leading: Container(
                                 height: 40,
                                 width: 40,
@@ -258,7 +258,7 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                               height: 10,
                             ),
                             ListTile(
-                              contentPadding: EdgeInsets.zero,
+                              contentPadding: EdgeInsetsDirectional.zero,
                               leading: Container(
                                 height: 40,
                                 width: 40,

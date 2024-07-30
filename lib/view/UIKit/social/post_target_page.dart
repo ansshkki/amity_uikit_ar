@@ -100,7 +100,7 @@ class _PostToPageState extends State<PostToPage> {
                   },
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsetsDirectional.all(16.0),
                   child: Text(
                     "My community",
                     style: TextStyle(
@@ -140,7 +140,7 @@ class _PostToPageState extends State<PostToPage> {
                             children: [
                               !community.isPublic!
                                   ? Padding(
-                                      padding: const EdgeInsets.only(left: 7.0),
+                                      padding: const EdgeInsetsDirectional.only(start: 7.0),
                                       child: Icon(
                                         Icons.lock,
                                         color:
@@ -166,7 +166,7 @@ class _PostToPageState extends State<PostToPage> {
                               ),
                               community.isOfficial!
                                   ? Padding(
-                                      padding: const EdgeInsets.only(left: 7.0),
+                                      padding: const EdgeInsetsDirectional.only(start: 7.0),
                                       child: Provider.of<AmityUIConfiguration>(
                                               context)
                                           .iconConfig

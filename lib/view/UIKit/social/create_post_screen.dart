@@ -133,7 +133,7 @@
 //                 Expanded(
 //                   child: SingleChildScrollView(
 //                     child: Padding(
-//                       padding: const EdgeInsets.all(16.0),
+//                       padding: const EdgeInsetsDirectional.all(16.0),
 //                       child: Column(
 //                         children: [
 //                           TextField(
@@ -157,7 +157,7 @@
 //                 ),
 //                 Divider(),
 //                 Padding(
-//                   padding: const EdgeInsets.only(top: 16, bottom: 16),
+//                   padding: const EdgeInsetsDirectional.only(top: 16, bottom: 16),
 //                   child: Row(
 //                     mainAxisAlignment: MainAxisAlignment.spaceAround,
 //                     children: [
@@ -264,7 +264,7 @@
 //           ),
 //           child: SafeArea(
 //             child: Padding(
-//               padding: EdgeInsets.only(top: 16.0), // Space at the top
+//               padding: EdgeInsetsDirectional.only(top: 16.0), // Space at the top
 //               child: Wrap(
 //                 children: <Widget>[
 //                   ListTile(

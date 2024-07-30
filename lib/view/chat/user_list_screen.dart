@@ -185,11 +185,11 @@ class UserWidget extends StatelessWidget {
     return Card(
       elevation: 0,
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsetsDirectional.all(10),
         child: Column(
           children: [
             ListTile(
-              contentPadding: const EdgeInsets.all(0),
+              contentPadding: const EdgeInsetsDirectional.all(0),
               onTap: () {
                 Provider.of<UserVM>(context, listen: false).setSelectedUserList(
                     Provider.of<UserVM>(context, listen: false)

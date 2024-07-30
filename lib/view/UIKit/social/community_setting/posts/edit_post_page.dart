@@ -101,7 +101,7 @@ class _AmityEditPostScreenState extends State<AmityEditPostScreen> {
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsetsDirectional.all(16.0),
                     child: Column(
                       children: [
                         TextField(
@@ -144,7 +144,7 @@ class _AmityEditPostScreenState extends State<AmityEditPostScreen> {
               ),
               // const Divider(),
               // Padding(
-              //   padding: const EdgeInsets.only(top: 16, bottom: 16),
+              //   padding: const EdgeInsetsDirectional.only(top: 16, bottom: 16),
               //   child: Row(
               //     mainAxisAlignment: MainAxisAlignment.spaceAround,
               //     children: [
@@ -250,7 +250,7 @@ class _AmityEditPostScreenState extends State<AmityEditPostScreen> {
   //         ),
   //         child: SafeArea(
   //           child: Padding(
-  //             padding: const EdgeInsets.only(top: 16.0), // Space at the top
+  //             padding: const EdgeInsetsDirectional.only(top: 16.0), // Space at the top
   //             child: Wrap(
   //               children: <Widget>[
   //                 ListTile(

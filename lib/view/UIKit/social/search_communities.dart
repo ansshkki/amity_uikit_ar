@@ -35,7 +35,7 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
       var searchBar = Container(
         color:
             Provider.of<AmityUIConfiguration>(context).appColors.baseBackground,
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsetsDirectional.all(10.0),
         child: Row(
           children: [
             Expanded(
@@ -48,7 +48,7 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
                   ),
                   hintText: 'Search',
                   filled: true,
-                  contentPadding: const EdgeInsets.symmetric(vertical: 0),
+                  contentPadding: const EdgeInsetsDirectional.symmetric(vertical: 0),
                   fillColor: Colors.grey[3],
                   focusColor: Colors.white,
                   enabledBorder: OutlineInputBorder(
@@ -73,7 +73,7 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
                 Navigator.of(context).pop();
               },
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsetsDirectional.all(8.0),
                 child: Text(
                   "cancel",
                   style: TextStyle(
@@ -231,7 +231,7 @@ class CommunityWidget extends StatelessWidget {
                   ),
                   community.isOfficial!
                       ? Padding(
-                          padding: const EdgeInsets.only(left: 7.0),
+                          padding: const EdgeInsetsDirectional.only(start: 7.0),
                           child: Provider.of<AmityUIConfiguration>(context)
                               .iconConfig
                               .officialIcon(
@@ -350,7 +350,7 @@ class CommunityIconList extends StatelessWidget {
           Container(
             height: 40,
             color: Colors.white,
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0),
+            padding: const EdgeInsetsDirectional.symmetric(horizontal: 16.0, vertical: 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -380,7 +380,7 @@ class CommunityIconList extends StatelessWidget {
               itemCount: amityCommunites.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
-                  padding: EdgeInsets.only(left: index != 0 ? 0 : 16),
+                  padding: EdgeInsetsDirectional.only(start: index != 0 ? 0 : 16),
                   child: CommunityIconWidget(
                       amityCommunity: amityCommunites[index]),
                 );
@@ -416,7 +416,7 @@ class CommunityIconWidget extends StatelessWidget {
             },
             child: Container(
               width: 62,
-              margin: const EdgeInsets.only(right: 4, bottom: 10),
+              margin: const EdgeInsetsDirectional.only(end: 4, bottom: 10),
               child: Column(
                 children: [
                   Expanded(

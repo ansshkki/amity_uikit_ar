@@ -61,14 +61,14 @@ class _AmityPendingScreenState extends State<AmityPendingScreen> {
                     initialData: vm.pendingRequestList[index],
                     builder: (context, snapshot) {
                       return Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsetsDirectional.all(8.0),
                         child: Row(
                           children: [
                             getAvatarImage(vm.pendingRequestList[index]
                                 .sourceUser!.avatarUrl),
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsetsDirectional.all(8.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [

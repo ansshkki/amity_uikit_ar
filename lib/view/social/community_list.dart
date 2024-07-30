@@ -195,11 +195,11 @@ class CommunityWidget extends StatelessWidget {
       child: Card(
         elevation: 0,
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsetsDirectional.all(10),
           child: Column(
             children: [
               ListTile(
-                  contentPadding: const EdgeInsets.all(0),
+                  contentPadding: const EdgeInsetsDirectional.all(0),
                   leading: FadeAnimation(
                     child: (community.avatarImage?.fileUrl != null)
                         ? CircleAvatar(

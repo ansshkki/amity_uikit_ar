@@ -51,7 +51,7 @@ class CustomButton extends StatelessWidget {
             color: color ??
                 Provider.of<AmityUIConfiguration>(context).primaryColor,
           ),
-          padding: EdgeInsets.all(padding ?? (icon != null ? 16.0 : 18.0)),
+          padding: EdgeInsetsDirectional.all(padding ?? (icon != null ? 16.0 : 18.0)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

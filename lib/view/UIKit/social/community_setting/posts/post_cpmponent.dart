@@ -27,7 +27,7 @@ class PostMedia extends StatelessWidget {
         var progress = rawprogress / 100.0;
 
         return Padding(
-          padding: const EdgeInsets.all(2.0),
+          padding: const EdgeInsetsDirectional.all(2.0),
           child: Stack(
             children: [
               Container(
@@ -45,7 +45,7 @@ class PostMedia extends StatelessWidget {
               progress == 1
                   ? const SizedBox()
                   : Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsetsDirectional.all(8.0),
                       child: Align(
                         alignment: Alignment.center,
                         child: LinearProgressIndicator(
@@ -59,9 +59,9 @@ class PostMedia extends StatelessWidget {
                     ),
               isEditPost
                   ? const SizedBox()
-                  : Positioned(
+                  : PositionedDirectional(
                       top: 0,
-                      right: 0,
+                      end: 0,
                       child: IconButton(
                         icon: const Icon(Icons.close, color: Colors.white),
                         onPressed: () {
@@ -236,7 +236,7 @@ class PostMedia extends StatelessWidget {
                 width: 1.0,
               ),
             ),
-            margin: const EdgeInsets.all(8.0),
+            margin: const EdgeInsetsDirectional.all(8.0),
             child: Stack(
               children: [
                 // Progress indicator
@@ -258,14 +258,14 @@ class PostMedia extends StatelessWidget {
                     : const SizedBox(),
                 ListTile(
                   onTap: () {},
-                  contentPadding: const EdgeInsets.symmetric(
+                  contentPadding: const EdgeInsetsDirectional.symmetric(
                       vertical: 8, horizontal: 14), // Reduced padding
                   tileColor: Colors.white.withOpacity(0.0),
                   leading: Container(
                     height: 100, // Reduced height to make it slimmer
                     width: 40, // Added width to align the image
                     alignment:
-                        Alignment.centerLeft, // Center alignment for the image
+                        AlignmentDirectional.centerStart, // Center alignment for the image
                     child: Image(
                       image: AssetImage(fileImage,
                           package: 'amity_uikit_beta_service'),

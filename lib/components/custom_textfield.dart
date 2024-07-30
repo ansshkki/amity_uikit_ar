@@ -58,7 +58,7 @@ class _TextFieldWithCounterState extends State<TextFieldWithCounter> {
             ),
             widget.showCount
                 ? Container(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    padding: const EdgeInsetsDirectional.symmetric(vertical: 8.0),
                     child: Text(
                       '${widget.controller.text.length}/${widget.maxCharacters}',
                       style: TextStyle(

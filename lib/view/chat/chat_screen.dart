@@ -42,7 +42,7 @@ class ChatSingleScreen extends StatelessWidget {
                   size: 30)),
           Container(
             height: 45,
-            margin: const EdgeInsets.symmetric(vertical: 4),
+            margin: const EdgeInsetsDirectional.symmetric(vertical: 4),
             decoration: const BoxDecoration(shape: BoxShape.circle),
             child: FadedScaleAnimation(
               child: getCommuAvatarImage(null, fileId: channel.avatarFileId),
@@ -126,7 +126,7 @@ class ChatTextFieldComponent extends StatelessWidget {
           border: Border(top: BorderSide(color: theme.highlightColor))),
       height: textfielHeight,
       width: mediaQuery.size.width,
-      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+      padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
       child: Row(
         children: [
           // SizedBox(
@@ -225,7 +225,7 @@ class _MessageComponentState extends State<MessageComponent> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsetsDirectional.all(20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -240,7 +240,7 @@ class _MessageComponentState extends State<MessageComponent> {
               ],
             )
           : Container(
-              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
               child: ListView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -270,9 +270,9 @@ class _MessageComponentState extends State<MessageComponent> {
                           vm.amityMessageList![index].data!.text == null
                               ? Container(
                                   margin:
-                                      const EdgeInsets.fromLTRB(10, 4, 10, 4),
+                                      const EdgeInsetsDirectional.fromSTEB(10, 4, 10, 4),
                                   padding:
-                                      const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                                      const EdgeInsetsDirectional.fromSTEB(10, 5, 10, 5),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       color: Colors.red),
@@ -285,9 +285,9 @@ class _MessageComponentState extends State<MessageComponent> {
                                         maxWidth:
                                             widget.mediaQuery.size.width * 0.7),
                                     margin:
-                                        const EdgeInsets.fromLTRB(10, 4, 10, 4),
+                                        const EdgeInsetsDirectional.fromSTEB(10, 4, 10, 4),
                                     padding:
-                                        const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                                        const EdgeInsetsDirectional.fromSTEB(10, 5, 10, 5),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
                                       color: isSendbyCurrentUser

@@ -44,7 +44,7 @@ class _NotificationSettingPageState extends State<NotificationSettingPage> {
         children: [
           // Section 1: Allow Notification
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsetsDirectional.all(16.0),
             child: Text(
               'Allow Notification',
               style: TextStyle(
@@ -83,7 +83,7 @@ class _NotificationSettingPageState extends State<NotificationSettingPage> {
                   children: [
                     ListTile(
                       leading: Container(
-                        padding: const EdgeInsets.all(
+                        padding: const EdgeInsetsDirectional.all(
                             8), // Adjust padding to your need
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
@@ -114,7 +114,7 @@ class _NotificationSettingPageState extends State<NotificationSettingPage> {
                     ),
                     ListTile(
                       leading: Container(
-                        padding: const EdgeInsets.all(
+                        padding: const EdgeInsetsDirectional.all(
                             8), // Adjust padding to your need
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(

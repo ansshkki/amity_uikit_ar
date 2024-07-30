@@ -93,7 +93,7 @@ class PendingFeddScreenState extends State<PendingFeddScreen> {
               height: 20,
               width: 1,
 
-              margin: const EdgeInsets.symmetric(horizontal: 8),
+              margin: const EdgeInsetsDirectional.symmetric(horizontal: 8),
             ),
             Column(
               children: [
@@ -143,7 +143,7 @@ class PendingFeddScreenState extends State<PendingFeddScreen> {
                   child: Container(
                     color: Colors.grey[200],
                     child: ListView.builder(
-                      padding: const EdgeInsets.only(top: 0),
+                      padding: const EdgeInsetsDirectional.only(top: 0),
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: vm.getCommunityPendingPosts().length,

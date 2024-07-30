@@ -83,7 +83,7 @@ class AmitySLEChannelScreenState extends State<AmitySLEChannelScreen> {
                     color: Provider.of<AmityUIConfiguration>(context)
                         .channelListConfig
                         .backgroundColor,
-                    margin: const EdgeInsets.only(top: 5),
+                    margin: const EdgeInsetsDirectional.only(top: 5),
                     child: ListView.builder(
                       controller: vm.scrollController,
                       shrinkWrap: true,
@@ -115,7 +115,7 @@ class AmitySLEChannelScreenState extends State<AmitySLEChannelScreen> {
                               children: [
                                 Padding(
                                   padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                      const EdgeInsetsDirectional.fromSTEB(0, 0, 5, 0),
                                   child: FadedScaleAnimation(
                                     child: getCommuAvatarImage(null,
                                         fileId: vm
@@ -123,9 +123,9 @@ class AmitySLEChannelScreenState extends State<AmitySLEChannelScreen> {
                                             .avatarFileId),
                                   ),
                                 ),
-                                Positioned(
+                                PositionedDirectional(
                                   top: 0,
-                                  right: 0,
+                                  end: 0,
                                   child: rand
                                       ? Container(
                                           decoration: BoxDecoration(
@@ -135,7 +135,7 @@ class AmitySLEChannelScreenState extends State<AmitySLEChannelScreen> {
                                                 .primaryColor,
                                             shape: BoxShape.circle,
                                           ),
-                                          padding: const EdgeInsets.fromLTRB(
+                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                               4, 0, 4, 2),
                                           child: Center(
                                             child: Text(

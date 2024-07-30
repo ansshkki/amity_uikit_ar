@@ -84,7 +84,7 @@ class _MyCommunityPageState extends State<MyCommunityPage> {
             // If it's the first item in the list, return the search bar
             if (index == 0) {
               return Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsetsDirectional.all(10.0),
                 child: TextField(
                   controller: vm.textEditingController,
                   decoration: InputDecoration(
@@ -94,7 +94,7 @@ class _MyCommunityPageState extends State<MyCommunityPage> {
                     ),
                     hintText: 'Search',
                     filled: true,
-                    contentPadding: const EdgeInsets.symmetric(vertical: 0),
+                    contentPadding: const EdgeInsetsDirectional.symmetric(vertical: 0),
                     fillColor: Colors.grey[3],
                     focusColor: Colors.white,
                     enabledBorder: OutlineInputBorder(
@@ -221,7 +221,7 @@ class CommunityIconList extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
+            padding: const EdgeInsetsDirectional.symmetric(horizontal: 16.0, vertical: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -252,14 +252,14 @@ class CommunityIconList extends StatelessWidget {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(bottom: 0),
+            padding: const EdgeInsetsDirectional.only(bottom: 0),
             height: 70.0,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: amityCommunites.length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
-                  padding: EdgeInsets.only(left: index != 0 ? 0 : 16),
+                  padding: EdgeInsetsDirectional.only(start: index != 0 ? 0 : 16),
                   child: CommunityIconWidget(
                       amityCommunity: amityCommunites[index]),
                 );
@@ -297,7 +297,7 @@ class CommunityIconWidget extends StatelessWidget {
             child: Container(
               color: Colors.transparent,
               width: 62,
-              margin: const EdgeInsets.only(right: 4, bottom: 10),
+              margin: const EdgeInsetsDirectional.only(end: 4, bottom: 10),
               child: Column(
                 children: [
                   Expanded(

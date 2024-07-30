@@ -54,7 +54,7 @@ class _PostNotificationSettingPageState
           // Section 1: React Posts
 
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsetsDirectional.all(16.0),
             child: Text(
               "React Posts",
               style: TextStyle(
@@ -67,7 +67,7 @@ class _PostNotificationSettingPageState
           ),
 
           const Padding(
-            padding: EdgeInsets.only(left: 16.0, bottom: 16, right: 16),
+            padding: EdgeInsetsDirectional.only(start: 16.0, bottom: 16, end: 16),
             child: Text(
               "Receive notifications when someone make a reaction to your posts in this community",
               style: TextStyle(
@@ -108,7 +108,7 @@ class _PostNotificationSettingPageState
             },
           ),
           const Padding(
-            padding: EdgeInsets.only(left: 16, right: 16),
+            padding: EdgeInsetsDirectional.only(start: 16, end: 16),
             child: Divider(
               thickness: 1,
             ),
@@ -116,7 +116,7 @@ class _PostNotificationSettingPageState
 
           // Section 2: New Posts
           const Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsetsDirectional.all(16.0),
             child: Text(
               "React Posts",
               style: TextStyle(
@@ -127,7 +127,7 @@ class _PostNotificationSettingPageState
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(left: 16.0, bottom: 16, right: 16),
+            padding: EdgeInsetsDirectional.only(start: 16.0, bottom: 16, end: 16),
             child: Text(
               "Receive notifications when someone make a reaction to your posts in this community",
               style: TextStyle(
@@ -174,7 +174,7 @@ class _PostNotificationSettingPageState
 
   Widget _buildSectionHeader(String text) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsetsDirectional.all(16.0),
       child: Text(
         text,
         style: const TextStyle(

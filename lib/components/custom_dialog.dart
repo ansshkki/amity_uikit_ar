@@ -48,7 +48,7 @@ class _TimedDialogState extends State<TimedDialog>
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.0),
             ),
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsetsDirectional.all(16.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [

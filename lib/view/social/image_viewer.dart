@@ -76,7 +76,7 @@ class ImageViewer extends StatelessWidget {
               }).toList(),
             ),
             Align(
-                alignment: Alignment.topRight,
+                alignment: AlignmentDirectional.topEnd,
                 child: GestureDetector(
                   behavior: HitTestBehavior.translucent,
                   onTap: () {

@@ -92,7 +92,7 @@ class _ImageViewerScreenState extends State<ImageViewerScreen> {
               itemBuilder: (context, index) {
                 var imageData = widget.files[index].data as ImageData;
                 return Padding(
-                  padding: const EdgeInsets.all(2.0),
+                  padding: const EdgeInsetsDirectional.all(2.0),
                   child: InteractiveViewer(
                     transformationController: _transformationController,
                     minScale: 1,

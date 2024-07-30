@@ -193,7 +193,7 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
                           _openFullScreenVideo(controller);
                         },
                         child: Padding(
-                          padding: const EdgeInsets.all(2.0),
+                          padding: const EdgeInsetsDirectional.all(2.0),
                           child: Stack(
                             children: [
                               Container(

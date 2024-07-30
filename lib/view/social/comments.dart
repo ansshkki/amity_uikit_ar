@@ -238,7 +238,7 @@ class CommentScreenState extends State<CommentScreen> {
                   child: Column(
                     children: [
                       Container(
-                        alignment: Alignment.topLeft,
+                        alignment: AlignmentDirectional.topStart,
                         child: IconButton(
                           onPressed: () {
                             Navigator.of(context).pop();
@@ -265,7 +265,7 @@ class CommentScreenState extends State<CommentScreen> {
                                     //     ? Colors.black
                                     //     : Colors.transparent,
                                     // padding: isMediaPosts()
-                                    //     ? const EdgeInsets.only(top: 285)
+                                    //     ? const EdgeInsetsDirectional.only(top: 285)
                                     //     : null,
                                     // // height: (bHeight - 60) * 0.6,
 
@@ -311,7 +311,7 @@ class CommentScreenState extends State<CommentScreen> {
                               ? const SizedBox()
                               : Container(
                                   color: Colors.grey[200],
-                                  padding: const EdgeInsets.all(10),
+                                  padding: const EdgeInsetsDirectional.all(10),
                                   child: Row(
                                     children: [
                                       Expanded(
@@ -401,7 +401,7 @@ class CommentTextField extends StatelessWidget {
           ]),
       child: ListTile(
           horizontalTitleGap: 0,
-          contentPadding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+          contentPadding: const EdgeInsetsDirectional.fromSTEB(8, 8, 8, 8),
           leading: getAvatarImage(
               Provider.of<AmityVM>(context).currentamityUser?.avatarUrl),
           title: ConstrainedBox(
@@ -421,7 +421,7 @@ class CommentTextField extends StatelessWidget {
                         icon: Stack(
                           children: [
                             const Padding(
-                              padding: EdgeInsets.only(left: 10),
+                              padding: EdgeInsetsDirectional.only(start: 10),
                               child: Icon(
                                 Icons.arrow_outward_sharp,
                                 size: 15,
@@ -429,7 +429,7 @@ class CommentTextField extends StatelessWidget {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 10),
+                              padding: const EdgeInsetsDirectional.only(top: 10),
                               child: Transform(
                                 alignment: Alignment.center,
                                 transform: Matrix4.identity()
@@ -454,7 +454,7 @@ class CommentTextField extends StatelessWidget {
                             BorderRadius.circular(20.0), // Rounded border
                         borderSide: BorderSide.none, // No border side
                       ),
-                      contentPadding: const EdgeInsets.symmetric(
+                      contentPadding: const EdgeInsetsDirectional.symmetric(
                           horizontal: 15,
                           vertical: 10), // Padding inside the text field
                     ),
@@ -597,7 +597,7 @@ class FullCommentPage extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsetsDirectional.all(8.0),
         child: TextField(
           controller: commentTextEditController,
           keyboardType: TextInputType.multiline,
@@ -678,7 +678,7 @@ class _EditCommentPageState extends State<EditCommentPage> {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsetsDirectional.all(8.0),
         child: TextField(
           controller: textEditingController,
           keyboardType: TextInputType.multiline,
@@ -748,7 +748,7 @@ class _CommentComponentState extends State<CommentComponent> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: EdgeInsets.all(16.0),
+                            padding: EdgeInsetsDirectional.all(16.0),
                             child: Row(
                               children: [
                                 SizedBox(
@@ -785,8 +785,8 @@ class _CommentComponentState extends State<CommentComponent> {
                               height: 16,
                             ),
                             Container(
-                                padding: const EdgeInsets.only(
-                                  left: 16,
+                                padding: const EdgeInsetsDirectional.only(
+                                  start: 16,
                                 ),
                                 child: CustomListTile(
                                     avatarUrl: comments.user!.avatarUrl,
@@ -799,9 +799,9 @@ class _CommentComponentState extends State<CommentComponent> {
                               height: 4,
                             ),
                             Container(
-                              padding: const EdgeInsets.all(10),
+                              padding: const EdgeInsetsDirectional.all(10),
                               margin:
-                                  const EdgeInsets.only(left: 70.0, right: 16),
+                                  const EdgeInsetsDirectional.only(start: 70.0, end: 16),
                               decoration: BoxDecoration(
                                 color:
                                     Provider.of<AmityUIConfiguration>(context)
@@ -829,7 +829,7 @@ class _CommentComponentState extends State<CommentComponent> {
                             ),
                             Padding(
                               padding:
-                                  const EdgeInsets.only(left: 70.0, bottom: 16),
+                                  const EdgeInsetsDirectional.only(start: 70.0, bottom: 16),
                               child: Row(
                                 children: [
                                   // Like Button
@@ -1025,8 +1025,8 @@ class _CommentComponentState extends State<CommentComponent> {
                               ),
                             ),
                             Container(
-                              padding: const EdgeInsets.only(
-                                  left: 70, right: 15, top: 0),
+                              padding: const EdgeInsetsDirectional.only(
+                                  start: 70, end: 15, top: 0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -1068,7 +1068,7 @@ class _CommentComponentState extends State<CommentComponent> {
                                             );
                                           },
                                           child: Container(
-                                            margin: const EdgeInsets.all(12),
+                                            margin: const EdgeInsetsDirectional.all(12),
                                             decoration: BoxDecoration(
                                                 color: Provider.of<
                                                             AmityUIConfiguration>(
@@ -1078,7 +1078,7 @@ class _CommentComponentState extends State<CommentComponent> {
                                                 borderRadius:
                                                     const BorderRadius.all(
                                                         Radius.circular(4))),
-                                            padding: const EdgeInsets.all(5.0),
+                                            padding: const EdgeInsetsDirectional.all(5.0),
                                             child: const Wrap(
                                               crossAxisAlignment:
                                                   WrapCrossAlignment.center,
@@ -1190,7 +1190,7 @@ class _CommentComponentState extends State<CommentComponent> {
 //             subtitle: Text(DateFormat.yMMMMEEEEd().format(post.createdAt!)),
 //           ),
 //           Padding(
-//             padding: const EdgeInsets.all(8.0),
+//             padding: const EdgeInsetsDirectional.all(8.0),
 //             child: Text(textData.text ?? ""),
 //           ),
 //           ButtonBar(
@@ -1269,19 +1269,19 @@ class ReplyCommentComponent extends StatelessWidget {
             var commentData = comments.data as CommentTextData;
             return comments.isDeleted!
                 ? Container(
-                    padding: const EdgeInsets.only(left: 0),
+                    padding: const EdgeInsetsDirectional.only(start: 0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                          margin: const EdgeInsets.only(bottom: 12),
+                          margin: const EdgeInsetsDirectional.only(bottom: 12),
                           decoration: BoxDecoration(
                               color: Provider.of<AmityUIConfiguration>(context)
                                   .appColors
                                   .baseShade4,
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(4))),
-                          padding: const EdgeInsets.all(5.0),
+                          padding: const EdgeInsetsDirectional.all(5.0),
                           child: const Wrap(
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
@@ -1312,7 +1312,7 @@ class ReplyCommentComponent extends StatelessWidget {
                   )
                 : Container(
                     padding:
-                        const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+                        const EdgeInsetsDirectional.symmetric(vertical: 0, horizontal: 0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -1324,8 +1324,8 @@ class ReplyCommentComponent extends StatelessWidget {
                             userId: comments.user!.userId!,
                             user: comments.user!),
                         Container(
-                          padding: const EdgeInsets.all(10.0),
-                          margin: const EdgeInsets.only(left: 50.0, top: 8),
+                          padding: const EdgeInsetsDirectional.all(10.0),
+                          margin: const EdgeInsetsDirectional.only(start: 50.0, top: 8),
                           decoration: BoxDecoration(
                             color: Provider.of<AmityUIConfiguration>(context)
                                 .appColors
@@ -1346,7 +1346,7 @@ class ReplyCommentComponent extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 50.0, top: 8),
+                          padding: const EdgeInsetsDirectional.only(start: 50.0, top: 8),
                           child: Row(
                             children: [
                               // Like Button

@@ -57,7 +57,7 @@ class _PostReviewPageState extends State<PostReviewPage> {
               ),
             ),
             subtitle: const Padding(
-              padding: EdgeInsets.only(top: 8.0),
+              padding: EdgeInsetsDirectional.only(top: 8.0),
               child: Text(
                 'Posts by members have to be reviewed and approved by community moderators.',
                 style: TextStyle(

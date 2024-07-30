@@ -121,8 +121,8 @@ class _NotificationAllTabScreenState extends State<NotificationAllTabScreen> {
                                     },
                                     child: Card(
                                       child: ListTile(
-                                        contentPadding: const EdgeInsets.only(
-                                            left: 16, right: 10),
+                                        contentPadding: const EdgeInsetsDirectional.only(
+                                            start: 16, end: 10),
                                         // leading: GestureDetector(
                                         //   onTap: () {
                                         //     Navigator.of(context).push(MaterialPageRoute(
@@ -165,7 +165,7 @@ class _NotificationAllTabScreenState extends State<NotificationAllTabScreen> {
                                     ),
                                   )),
                             Container(
-                                padding: const EdgeInsets.all(10),
+                                padding: const EdgeInsetsDirectional.all(10),
                                 child: Text(
                                   vm.notificationsObject?.data?.isEmpty ?? false
                                       ? ""
@@ -189,8 +189,8 @@ class _NotificationAllTabScreenState extends State<NotificationAllTabScreen> {
                                         child: Card(
                                           child: ListTile(
                                             contentPadding:
-                                                const EdgeInsets.only(
-                                                    left: 16, right: 10),
+                                                const EdgeInsetsDirectional.only(
+                                                    start: 16, end: 10),
                                             leading: GestureDetector(
                                               onTap: () {
                                                 Navigator.of(context).push(
@@ -269,7 +269,7 @@ class _NotificationAllTabScreenState extends State<NotificationAllTabScreen> {
                                                 ? null
                                                 : Container(
                                                     margin:
-                                                        const EdgeInsets.all(0),
+                                                        const EdgeInsetsDirectional.all(0),
                                                     child: AspectRatio(
                                                       aspectRatio: 1 / 1,
                                                       child: ClipRRect(

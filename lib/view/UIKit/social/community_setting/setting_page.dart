@@ -49,7 +49,7 @@ class CommunitySettingPage extends StatelessWidget {
               children: [
                 // Section 1: Basic Info
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsetsDirectional.all(16.0),
                   child: Text("Basic Info",
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
@@ -63,7 +63,7 @@ class CommunitySettingPage extends StatelessWidget {
                     ? const SizedBox()
                     : ListTile(
                         leading: Container(
-                            padding: const EdgeInsets.all(5),
+                            padding: const EdgeInsetsDirectional.all(5),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
                                   4), // Adjust radius to your need
@@ -97,7 +97,7 @@ class CommunitySettingPage extends StatelessWidget {
                       ),
                 ListTile(
                     leading: Container(
-                        padding: const EdgeInsets.all(5),
+                        padding: const EdgeInsetsDirectional.all(5),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
                               4), // Adjust radius to your need
@@ -128,7 +128,7 @@ class CommunitySettingPage extends StatelessWidget {
                     }),
                 // ListTile(
                 //   leading: Container(
-                //       padding: const EdgeInsets.all(5),
+                //       padding: const EdgeInsetsDirectional.all(5),
                 //       decoration: BoxDecoration(
                 //         borderRadius: BorderRadius.circular(
                 //             4), // Adjust radius to your need
@@ -170,7 +170,7 @@ class CommunitySettingPage extends StatelessWidget {
                 !community.hasPermission(AmityPermission.EDIT_COMMUNITY)
                     ? const SizedBox()
                     : Padding(
-                        padding: const EdgeInsets.only(left: 16, right: 16),
+                        padding: const EdgeInsetsDirectional.only(start: 16, end: 16),
                         child: Divider(
                           color: Provider.of<AmityUIConfiguration>(context)
                               .appColors
@@ -183,7 +183,7 @@ class CommunitySettingPage extends StatelessWidget {
                 !community.hasPermission(AmityPermission.EDIT_COMMUNITY)
                     ? const SizedBox()
                     : Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: const EdgeInsetsDirectional.all(16.0),
                         child: Text("Community Permission",
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
@@ -197,7 +197,7 @@ class CommunitySettingPage extends StatelessWidget {
                     ? const SizedBox()
                     : ListTile(
                         leading: Container(
-                            padding: const EdgeInsets.all(5),
+                            padding: const EdgeInsetsDirectional.all(5),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
                                   4), // Adjust radius to your need
@@ -266,7 +266,7 @@ class CommunitySettingPage extends StatelessWidget {
                         },
                       ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 16, right: 16),
+                  padding: const EdgeInsetsDirectional.only(start: 16, end: 16),
                   child: Divider(
                     color: Provider.of<AmityUIConfiguration>(context)
                         .appColors
@@ -288,7 +288,7 @@ class CommunitySettingPage extends StatelessWidget {
                           ),
                         ),
                         subtitle: const Padding(
-                          padding: EdgeInsets.only(top: 8.0),
+                          padding: EdgeInsetsDirectional.only(top: 8.0),
                           child: Text(
                             "Closing this community will remove the community page and all its content and comments.",
                             style: TextStyle(
@@ -330,7 +330,7 @@ class CommunitySettingPage extends StatelessWidget {
                 !community.hasPermission(AmityPermission.EDIT_COMMUNITY)
                     ? const SizedBox()
                     : Padding(
-                        padding: const EdgeInsets.only(left: 16, right: 16),
+                        padding: const EdgeInsetsDirectional.only(start: 16, end: 16),
                         child: Divider(
                           color: Provider.of<AmityUIConfiguration>(context)
                               .appColors

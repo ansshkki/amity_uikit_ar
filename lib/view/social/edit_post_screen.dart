@@ -66,12 +66,12 @@
 //             child: Container(
 //               // height: bheight,
 //               color: Colors.white,
-//               padding: const EdgeInsets.all(15),
+//               padding: const EdgeInsetsDirectional.all(15),
 //               child: Column(
 //                 crossAxisAlignment: CrossAxisAlignment.stretch,
 //                 children: [
 //                   ListTile(
-//                     contentPadding: const EdgeInsets.all(0),
+//                     contentPadding: const EdgeInsetsDirectional.all(0),
 //                     leading: FadeAnimation(
 //                         child: GestureDetector(
 //                             onTap: () {
@@ -220,8 +220,8 @@
 //                             color: Colors.grey[200],
 //                             borderRadius: BorderRadius.circular(10),
 //                           ),
-//                           padding: const EdgeInsets.all(10),
-//                           margin: const EdgeInsets.fromLTRB(5, 0, 10, 5),
+//                           padding: const EdgeInsetsDirectional.all(10),
+//                           margin: const EdgeInsetsDirectional.fromSTEB(5, 0, 10, 5),
 //                           child: FaIcon(
 //                             FontAwesomeIcons.video,
 //                             color: vm.isNotSelectedImageYet()
@@ -241,8 +241,8 @@
 //                             color: Colors.grey[200],
 //                             borderRadius: BorderRadius.circular(10),
 //                           ),
-//                           padding: const EdgeInsets.all(10),
-//                           margin: const EdgeInsets.fromLTRB(5, 0, 10, 5),
+//                           padding: const EdgeInsetsDirectional.all(10),
+//                           margin: const EdgeInsetsDirectional.fromSTEB(5, 0, 10, 5),
 //                           child: Icon(
 //                             Icons.photo,
 //                             color: vm.isNotSelectVideoYet()
@@ -261,8 +261,8 @@
 //                             color: Colors.grey[200],
 //                             borderRadius: BorderRadius.circular(10),
 //                           ),
-//                           padding: const EdgeInsets.all(10),
-//                           margin: const EdgeInsets.fromLTRB(5, 0, 10, 5),
+//                           padding: const EdgeInsetsDirectional.all(10),
+//                           margin: const EdgeInsetsDirectional.fromSTEB(5, 0, 10, 5),
 //                           child: Icon(
 //                             Icons.camera_alt,
 //                             color: vm.isNotSelectVideoYet()
@@ -282,9 +282,9 @@
 //                       Navigator.of(context).pop();
 //                     },
 //                     child: Container(
-//                       margin: const EdgeInsets.only(top: 15),
+//                       margin: const EdgeInsetsDirectional.only(top: 15),
 //                       alignment: Alignment.center,
-//                       padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+//                       padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
 //                       decoration: BoxDecoration(
 //                         color: Provider.of<AmityUIConfiguration>(context)
 //                             .primaryColor,
