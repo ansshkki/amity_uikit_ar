@@ -155,7 +155,7 @@ class ReplyVM extends PostVM {
       notifyListeners();
     }).onError((error, stackTrace) async {
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -187,7 +187,7 @@ class ReplyVM extends PostVM {
     }).onError((error, stackTrace) async {
       log(error.toString());
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 }

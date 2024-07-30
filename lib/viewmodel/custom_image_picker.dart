@@ -49,7 +49,7 @@ class ImagePickerVM extends ChangeNotifier {
                 ),
                 ListTile(
                     leading: const Icon(Icons.photo),
-                    title: const Text('Gallery'),
+                    title: const Text('المعرض'), //Gallery
                     onTap: () async {
                       Navigator.pop(context);
                       final XFile? image =
@@ -80,8 +80,7 @@ class ImagePickerVM extends ChangeNotifier {
                             },
                             error: (error) async {
                               log("error: $error");
-                              await AmityDialog().showAlertErrorDialog(
-                                  title: "Error!", message: error.toString());
+                              await AmityDialog().showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
                               imageState = ImageState.hasImage;
                               notifyListeners();
                             },
@@ -97,7 +96,7 @@ class ImagePickerVM extends ChangeNotifier {
                 ),
                 ListTile(
                   leading: const Icon(Icons.camera_alt),
-                  title: const Text('Camera'),
+                  title: const Text('كاميرا'), //Camera
                   onTap: () async {
                     Navigator.pop(context);
                     final XFile? image =
@@ -128,8 +127,7 @@ class ImagePickerVM extends ChangeNotifier {
                           },
                           error: (error) async {
                             log("error: $error");
-                            await AmityDialog().showAlertErrorDialog(
-                                title: "Error!", message: error.toString());
+                            await AmityDialog().showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
                             imageState = ImageState.hasImage;
                             notifyListeners();
                           },

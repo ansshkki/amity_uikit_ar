@@ -102,7 +102,7 @@ class MessageVM extends ChangeNotifier {
                           ispaginationLoading = false;
                           log(error);
                           await AmityDialog().showAlertErrorDialog(
-                              title: "Error!", message: error);
+                              title: "خطأ!", message: error); //Error!
                         }
                       },
                     );
@@ -136,7 +136,7 @@ class MessageVM extends ChangeNotifier {
             } else {
               log(error);
               await AmityDialog()
-                  .showAlertErrorDialog(title: "Error!", message: error);
+                  .showAlertErrorDialog(title: "خطأ!", message: error); //Error!
             }
           });
     } else {
@@ -153,7 +153,7 @@ class MessageVM extends ChangeNotifier {
       } else {
         log(error.toString());
         await AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error!);
+            .showAlertErrorDialog(title: "خطأ!", message: error!); //Error!
       }
     });
   }

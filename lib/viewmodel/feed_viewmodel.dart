@@ -37,14 +37,14 @@ class FeedVM extends ChangeNotifier {
       if (postIndex != -1) {
         _amityGlobalFeedPosts.removeAt(postIndex);
         notifyListeners();
-        callback(true, "Post deleted successfully.");
+        callback(true, "تم حذف المنشولر بنجاح"); //Post deleted successfully.
       } else {
-        callback(false, "Post not found in the list.");
+        callback(false, "لم نستطع ايجاد المنشور في القائمة"); //Post not found in the list.
       }
     }).onError((error, stackTrace) async {
       String errorMessage = error.toString();
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: errorMessage);
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       callback(false, errorMessage);
     });
   }

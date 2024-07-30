@@ -139,7 +139,7 @@ class _MemberManagementPageState extends State<MemberManagementPage> {
                     Provider.of<AmityUIConfiguration>(context).appColors.base,
                 size: 30),
           ),
-          title: Text("Community",
+          title: Text("مجتمع", //Community
               style: Provider.of<AmityUIConfiguration>(context)
                   .titleTextStyle
                   .copyWith(
@@ -172,8 +172,8 @@ class _MemberManagementPageState extends State<MemberManagementPage> {
                   ),
 
                   tabs: const [
-                    Tab(text: "Members"),
-                    Tab(text: "Moderators"),
+                    Tab(text: "الأعضاء"), //Members
+                    Tab(text: "المشرفون"), //Moderators
                   ],
                 ),
               ],
@@ -340,8 +340,8 @@ void _showOptionsBottomSheet(BuildContext context, AmityCommunityMember member,
                         : ListTile(
                             title: Text(
                               member.roles!.contains('community-moderator')
-                                  ? 'Dismiss moderator'
-                                  : 'Promote to moderator',
+                                  ? 'طرد المشرف' //Dismiss moderator
+                                  : 'ترقية إلى المشرف', //Promote to moderator
                               style:
                                   const TextStyle(fontWeight: FontWeight.w500),
                             ),
@@ -364,7 +364,7 @@ void _showOptionsBottomSheet(BuildContext context, AmityCommunityMember member,
                           ),
                     ListTile(
                       title: Text(
-                        member.user!.isFlaggedByMe ? "Undo Report" : "Report",
+                        member.user!.isFlaggedByMe ? "التراجع عن التقرير" : "تقرير", //Undo Report //Report
                         style: const TextStyle(fontWeight: FontWeight.w500),
                       ),
                       onTap: () async {
@@ -383,7 +383,7 @@ void _showOptionsBottomSheet(BuildContext context, AmityCommunityMember member,
                     ),
                     ListTile(
                       title: const Text(
-                        'Block User',
+                        'حظر المستخدم', //Block User
                         style: TextStyle(fontWeight: FontWeight.w500),
                       ),
                       onTap: () {
@@ -393,7 +393,7 @@ void _showOptionsBottomSheet(BuildContext context, AmityCommunityMember member,
                     ),
                     ListTile(
                       title: const Text(
-                        'Remove from community',
+                        'إخراج من المجتمع', //Remove from community
                         style: TextStyle(
                             color: Colors.red, fontWeight: FontWeight.w500),
                       ),
@@ -401,9 +401,9 @@ void _showOptionsBottomSheet(BuildContext context, AmityCommunityMember member,
                         Navigator.pop(context);
                         await ConfirmationDialog().show(
                           context: context,
-                          title: 'Remove user from Community?',
+                          title: 'إخراج المستخدم من المجتمع ؟', //Remove user from Community?
                           detailText:
-                              "This user won't no longer be able to search, post and interact in this community",
+                              "لن يتمكن هذا المستخدم بعد الآن من البحث والنشر والتفاعل في هذا المجتمع", //This user won't no longer be able to search, post and interact in this community
                           onConfirm: () {
                             viewModel.removeMembers(
                                 viewModel.communityId, [member.userId!]);
@@ -420,7 +420,7 @@ void _showOptionsBottomSheet(BuildContext context, AmityCommunityMember member,
                 : [
                     ListTile(
                       title: const Text(
-                        'Block User',
+                        'حظر المستخدم', //Block User
                         style: TextStyle(fontWeight: FontWeight.w500),
                       ),
                       onTap: () {
@@ -430,7 +430,7 @@ void _showOptionsBottomSheet(BuildContext context, AmityCommunityMember member,
                     ),
                     ListTile(
                       title: const Text(
-                        'Report',
+                        'تقرير', //Report
                         style: TextStyle(fontWeight: FontWeight.w500),
                       ),
                       onTap: () {

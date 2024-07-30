@@ -28,7 +28,7 @@ class _NotificationSettingPageState extends State<NotificationSettingPage> {
           Provider.of<AmityUIConfiguration>(context).appColors.baseBackground,
       appBar: AppBar(
         title: Text(
-          'Notifications',
+          'الإشعارات', //Notifications
           style: Provider.of<AmityUIConfiguration>(context)
               .titleTextStyle
               .copyWith(
@@ -46,7 +46,7 @@ class _NotificationSettingPageState extends State<NotificationSettingPage> {
           Padding(
             padding: const EdgeInsetsDirectional.all(16.0),
             child: Text(
-              'Allow Notification',
+              'السماح بالإشعارات', //Allow Notification
               style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -57,7 +57,7 @@ class _NotificationSettingPageState extends State<NotificationSettingPage> {
           ),
           ListTile(
             title: Text(
-                'Turn on to receive push notification from this community',
+                'السماح بتلقي الاشعارات المرسلة من هذا المجتمع', //Turn on to receive push notification from this community
                 style: TextStyle(
                     color: Provider.of<AmityUIConfiguration>(context)
                         .appColors
@@ -96,7 +96,7 @@ class _NotificationSettingPageState extends State<NotificationSettingPage> {
                                 .appColors
                                 .base),
                       ), // You may want to replace with your icon
-                      title: Text('Posts',
+                      title: Text('المنشورات', //Posts
                           style: TextStyle(
                               color: Provider.of<AmityUIConfiguration>(context)
                                   .appColors
@@ -130,7 +130,7 @@ class _NotificationSettingPageState extends State<NotificationSettingPage> {
                         ),
                       ), // You may want to replace with your icon
                       title: Text(
-                        'Comments',
+                        'التعليقات', //Comments
                         style: TextStyle(
                             color: Provider.of<AmityUIConfiguration>(context)
                                 .appColors

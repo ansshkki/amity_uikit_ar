@@ -46,7 +46,7 @@ class _AmityEditPostScreenState extends State<AmityEditPostScreen> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text(
-            "Edit post",
+            "تعديل المنشور", //Edit post
             style: Provider.of<AmityUIConfiguration>(context)
                 .titleTextStyle
                 .copyWith(
@@ -63,10 +63,10 @@ class _AmityEditPostScreenState extends State<AmityEditPostScreen> {
               if (hasContent) {
                 ConfirmationDialog().show(
                   context: context,
-                  title: 'Discard Post?',
-                  detailText: 'Do you want to discard your post?',
-                  leftButtonText: 'Cancel',
-                  rightButtonText: 'Discard',
+                  title: 'تجاهل المنشور ؟', //Discard Post?
+                  detailText: 'هل تود تجاهل منشورك ؟', //Do you want to discard your post?
+                  leftButtonText: 'إلغاء', //Cancel
+                  rightButtonText: 'تجاهل', //Discard
                   onConfirm: () {
                     Navigator.of(context).pop();
                   },
@@ -88,7 +88,7 @@ class _AmityEditPostScreenState extends State<AmityEditPostScreen> {
                           });
                     }
                   : null,
-              child: Text("Save",
+              child: Text("حفظ", //Save
                   style: TextStyle(
                       color: hasContent
                           ? Provider.of<AmityUIConfiguration>(context)
@@ -130,7 +130,7 @@ class _AmityEditPostScreenState extends State<AmityEditPostScreen> {
                           maxLines: null,
                           decoration: const InputDecoration(
                             border: InputBorder.none,
-                            hintText: "Write something to post",
+                            hintText: "أكتب شيء لنشره", //Write something to post
                           ),
                         ),
                         Consumer<EditPostVM>(
@@ -304,19 +304,19 @@ class _AmityEditPostScreenState extends State<AmityEditPostScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Discard Post?'),
-        content: const Text('Do you want to discard your post?'),
+        title: const Text('تجاهل المنشور ؟'), //Discard Post?
+        content: const Text('هل تود تجاهل منشورك ؟'), //Do you want to discard your post?
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('Cancel'),
+            child: const Text('إلغاء'), //Cancel
           ),
           TextButton(
             onPressed: () {
               Navigator.of(context).pop(true);
               Navigator.of(context).pop();
             },
-            child: const Text('Discard'),
+            child: const Text('تجاهل'), //Discard
           ),
         ],
       ),

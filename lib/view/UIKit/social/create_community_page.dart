@@ -70,7 +70,7 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
           },
         ),
         title: const Text(
-          'Create community',
+          'إنشاء مجتمع', //Create community
           style: TextStyle(color: Colors.black),
         ),
       ),
@@ -129,7 +129,7 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
                             width:
                                 8.0), // Adding some space between the icon and the text
                         Text(
-                          'Upload image',
+                          'تحميل صورة', //Upload image
                           style: TextStyle(
                             color: Colors.white,
                           ),
@@ -148,16 +148,16 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
                 children: [
                   buildTextFieldWithCounter(
                     controller: _communityNameController,
-                    title: 'Community name',
-                    hintText: 'Name your community',
+                    title: 'اسم المجتمع', //Community name
+                    hintText: 'اسم مجتمعك', //Name your community
                     maxCharacters: 30,
                   ),
                   const SizedBox(height: 16.0),
                   buildTextFieldWithCounter(
                     isRequred: false,
                     controller: _aboutController,
-                    title: 'About',
-                    hintText: 'Enter description',
+                    title: 'حول المجتمع', //About
+                    hintText: 'أضف الوصف',
                     maxCharacters: 180,
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
@@ -165,8 +165,8 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
                   const SizedBox(height: 16.0),
                   buildTextFieldWithCounter(
                     controller: _categoryController,
-                    title: 'Category',
-                    hintText: 'Select category',
+                    title: 'التصنيف', //Category
+                    hintText: 'اختر التصنيف', //Select category
                     showCount: false,
                     maxCharacters: 30,
                     onTap: () async {
@@ -194,9 +194,9 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
                               color: Colors.grey[200], shape: BoxShape.circle),
                           child: const Icon(Icons.public),
                         ),
-                        title: const Text('Public'),
+                        title: const Text('عام'), //Public
                         subtitle: const Text(
-                            'Anyone can join, view and search this community'),
+                            'أي شخص يستطيع الانضمام والزيارة و البحث في هذا المجتمع'), //Anyone can join, view and search this community
                         trailing: Radio(
                           value: true,
                           groupValue: _isPublic,
@@ -219,9 +219,9 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
                               color: Colors.grey[200], shape: BoxShape.circle),
                           child: const Icon(Icons.lock),
                         ),
-                        title: const Text('Private'),
+                        title: const Text('خاص'), //Private
                         subtitle: const Text(
-                            'Only members invited by the moderators can join, view and search this community'),
+                            'فقط الأعضاء المدعوين عن طريق المشرفين يمكنهم الانضمام و الزيارة و البحث في هذا المجتمع'), //Only members invited by the moderators can join, view and search this community
                         trailing: Radio(
                           value: true,
                           groupValue: !_isPublic,
@@ -251,7 +251,7 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
                               ),
                               RichText(
                                 text: TextSpan(
-                                  text: 'Add members',
+                                  text: 'اضافة أعضاء', //Add members
                                   style: Provider.of<AmityUIConfiguration>(
                                           context,
                                           listen: false)
@@ -365,7 +365,7 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
                             ),
                             const SizedBox(width: 10),
                             const Text(
-                              'Create Community',
+                              'إنشاء مجتمع', //Create Community
                               style: TextStyle(color: Colors.white),
                             ),
                           ],

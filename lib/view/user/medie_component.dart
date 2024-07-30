@@ -34,11 +34,11 @@ class MediaGalleryPage extends StatelessWidget {
               const SizedBox(
                 width: 12,
               ),
-              _mediaButton(context, "Photos", MediaType.photos),
+              _mediaButton(context, "الصور", MediaType.photos), //Photos
               const SizedBox(
                 width: 6,
               ),
-              _mediaButton(context, "Videos", MediaType.videos),
+              _mediaButton(context, "الفيديوهات", MediaType.videos), //Videos
             ],
           ),
           const SizedBox(
@@ -115,14 +115,14 @@ class MediaGalleryPage extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         const Text(
-          "This account is private",
+          "هذا الحساب خاص", //This account is private
           style: TextStyle(
               fontSize: 17,
               fontWeight: FontWeight.w600,
               color: Color(0xff292B32)),
         ),
         const Text(
-          "Follow this user to see all posts",
+          "تابع هذا الحساب لمشاهدة جميع المنشورات", //Follow this user to see all posts
           style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w400,
@@ -145,7 +145,7 @@ class MediaGalleryPage extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Text(
-              "No photos yet",
+              "ما من صور", //No photos yet
               style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w600,
@@ -236,7 +236,7 @@ class MediaGalleryPage extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             const Text(
-              "No videos yet",
+              "ما من فيديوهات", //No videos yet
               style: TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w600,

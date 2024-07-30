@@ -64,15 +64,15 @@ class UserProfileScreenState extends State<UserProfileScreen>
 
   String getFollowingStatusString(AmityFollowStatus amityFollowStatus) {
     if (amityFollowStatus == AmityFollowStatus.NONE) {
-      return "Follow";
+      return "تابع"; //Follow
     } else if (amityFollowStatus == AmityFollowStatus.PENDING) {
-      return "Pending";
+      return "قيد الانتظار"; //Pending
     } else if (amityFollowStatus == AmityFollowStatus.ACCEPTED) {
-      return "Following";
+      return "متابع"; //Following
     } else if (amityFollowStatus == AmityFollowStatus.BLOCKED) {
-      return "Blocked";
+      return "محظور"; //Blocked
     } else {
-      return "Miss Type";
+      return "غير محدد"; //Miss Type
     }
   }
 
@@ -216,7 +216,7 @@ class UserProfileScreenState extends State<UserProfileScreen>
                                                                             .displayName))));
                                                       },
                                                       child: Text(
-                                                          '${snapshot.data!.followingCount} following  ',
+                                                          '${snapshot.data!.followingCount} متابع', //following
                                                           style: TextStyle(
                                                               color: Provider.of<
                                                                           AmityUIConfiguration>(
@@ -243,7 +243,7 @@ class UserProfileScreenState extends State<UserProfileScreen>
                                                                             .displayName))));
                                                       },
                                                       child: Text(
-                                                        '${snapshot.data!.followerCount} followers',
+                                                        '${snapshot.data!.followerCount} متابعين', //followers
                                                         style: TextStyle(
                                                             color: Provider.of<
                                                                         AmityUIConfiguration>(
@@ -325,7 +325,7 @@ class UserProfileScreenState extends State<UserProfileScreen>
                                                   .base,
                                             ),
                                             Text(
-                                              "Edit Profile",
+                                              "تعديل الملف الشخصي", //Edit Profile
                                               style: theme.textTheme.titleSmall!
                                                   .copyWith(
                                                 color: Provider.of<
@@ -603,14 +603,14 @@ class _StickyHeaderList extends StatelessWidget {
                             ),
                             const SizedBox(height: 12),
                             const Text(
-                              "This account is private",
+                              "هذا الحساب خاص", //This account is private
                               style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.w600,
                                   color: Color(0xff292B32)),
                             ),
                             const Text(
-                              "Follow this user to see all posts",
+                              "تابع هذا المستخدم امشاهدة جميع المنشورات", //Follow this user to see all posts
                               style: TextStyle(
                                   fontSize: 15,
                                   fontWeight: FontWeight.w400,
@@ -643,7 +643,7 @@ class _StickyHeaderList extends StatelessWidget {
                             ),
                             const SizedBox(height: 12),
                             const Text(
-                              "No post yet",
+                              "ما من منشورات", //No post yet
                               style: TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.w600,
@@ -865,8 +865,8 @@ class Header extends StatelessWidget {
                           fontFamily: 'SF Pro Text',
                         ),
                         tabs: const [
-                          Tab(text: "Timeline"),
-                          Tab(text: "Gallery"),
+                          Tab(text: "جدول الزمني"), //Timeline
+                          Tab(text: "المعرض"), //Gallery
                         ],
                       ),
                     ),

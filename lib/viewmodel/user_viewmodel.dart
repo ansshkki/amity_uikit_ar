@@ -53,7 +53,7 @@ class UserVM extends ChangeNotifier {
     }).onError((error, stackTrace) async {
       log(error.toString());
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
     return amityUser;
   }
@@ -83,7 +83,7 @@ class UserVM extends ChangeNotifier {
     }).catchError((error, stackTrace) async {
       log(error.toString());
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       notifyListeners();
     });
   }
@@ -265,17 +265,17 @@ class UserVM extends ChangeNotifier {
   void reportOrUnReportUser(AmityUser user) {
     if (user.isFlaggedByMe) {
       user.report().unflag().then((value) {
-        AmitySuccessDialog.showTimedDialog("Unreport sent");
+        AmitySuccessDialog.showTimedDialog("إلغاء إرسال التقرير"); //Unreport sent
       }).onError((error, stackTrace) {
         AmityDialog()
-            .showAlertErrorDialog(title: "Error", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     } else {
       user.report().flag().then((value) {
-        AmitySuccessDialog.showTimedDialog("Report sent");
+        AmitySuccessDialog.showTimedDialog("إرسال تقرير"); //Report sent
       }).onError((error, stackTrace) {
         AmityDialog()
-            .showAlertErrorDialog(title: "Error", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     }
   }
@@ -293,12 +293,12 @@ class UserVM extends ChangeNotifier {
         .blockUser(userId)
         .then((value) {
       print(value);
-      AmitySuccessDialog.showTimedDialog("Blocked user");
+      AmitySuccessDialog.showTimedDialog("مستخدم محظور"); //Blocked user
       notifyListeners();
       onCallBack();
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -308,11 +308,11 @@ class UserVM extends ChangeNotifier {
         .unblockUser(userId)
         .then((value) {
       print(value);
-      AmitySuccessDialog.showTimedDialog("Unblock user");
+      AmitySuccessDialog.showTimedDialog("إلغاء حظر المستخدم"); //Unblock user
       notifyListeners();
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 

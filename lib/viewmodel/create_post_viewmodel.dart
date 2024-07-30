@@ -298,7 +298,7 @@ class CreatePostVM extends ChangeNotifier {
         }).onError((error, stackTrace) async {
           log("error: $error");
           await AmityDialog()
-              .showAlertErrorDialog(title: "Error!", message: error.toString());
+              .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
         });
       }
     }
@@ -340,7 +340,7 @@ class CreatePostVM extends ChangeNotifier {
       } catch (error) {
         log("error: $error");
         await AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       }
     }
   }
@@ -438,7 +438,7 @@ class CreatePostVM extends ChangeNotifier {
       }).onError((error, stackTrace) async {
         log(error.toString());
         await AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     } else {
       await AmitySocialClient.newPostRepository()
@@ -465,7 +465,7 @@ class CreatePostVM extends ChangeNotifier {
       }).onError((error, stackTrace) async {
         log(error.toString());
         await AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     }
   }
@@ -573,7 +573,7 @@ class CreatePostVM extends ChangeNotifier {
       }).onError((error, stackTrace) async {
         log(error.toString());
         await AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     } else {
       var builder = AmitySocialClient.newPostRepository()
@@ -603,7 +603,7 @@ class CreatePostVM extends ChangeNotifier {
       }).onError((error, stackTrace) async {
         log(error.toString());
         await AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     }
   }
@@ -641,7 +641,7 @@ class CreatePostVM extends ChangeNotifier {
               .jumpTo(0);
         }).onError((error, stackTrace) async {
           await AmityDialog()
-              .showAlertErrorDialog(title: "Error!", message: error.toString());
+              .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
         });
       } else {
         var builder = AmitySocialClient.newPostRepository()
@@ -670,7 +670,7 @@ class CreatePostVM extends ChangeNotifier {
           }
         }).onError((error, stackTrace) async {
           await AmityDialog()
-              .showAlertErrorDialog(title: "Error!", message: error.toString());
+              .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
         });
       }
     }

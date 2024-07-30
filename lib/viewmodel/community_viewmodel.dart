@@ -48,7 +48,7 @@ class CommunityVM extends ChangeNotifier {
       notifyListeners();
     }).onError((error, stackTrace) async {
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 //ป่าวๆ
@@ -114,7 +114,7 @@ class CommunityVM extends ChangeNotifier {
           .then((value) => notifyListeners())
           .onError((error, stackTrace) async {
         await AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     } else {
       await AmitySocialClient.newCommunityRepository()
@@ -127,7 +127,7 @@ class CommunityVM extends ChangeNotifier {
           .then((value) => notifyListeners())
           .onError((error, stackTrace) async {
         await AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     }
   }
@@ -146,7 +146,7 @@ class CommunityVM extends ChangeNotifier {
       notifyListeners();
     }).onError((error, stackTrace) async {
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -164,7 +164,7 @@ class CommunityVM extends ChangeNotifier {
       callback(true); // Calling the callback with success status
     }).onError((error, stackTrace) async {
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -177,12 +177,12 @@ class CommunityVM extends ChangeNotifier {
       if (type != null) {
         refreshCommunity(type);
       }
-      AmitySuccessDialog.showTimedDialog("Leave community");
+      AmitySuccessDialog.showTimedDialog("مغادرة المجتمع"); //Leave community
       notifyListeners();
       callback(true); // Calling the callback with success status
     }).onError((error, stackTrace) async {
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       callback(false); // Calling the callback with failure status
     });
   }
@@ -260,8 +260,7 @@ class CommunityVM extends ChangeNotifier {
           error: (error) async {
             final AmityException amityException = error;
             //handle error
-            await AmityDialog().showAlertErrorDialog(
-                title: "Error!", message: error.toString());
+            await AmityDialog().showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
           },
           cancel: () {
             //upload is cancelled
@@ -306,15 +305,12 @@ class CommunityVM extends ChangeNotifier {
             error: (error) async {
               final AmityException amityException = error;
               //handle error
-              await AmityDialog().showAlertErrorDialog(
-                title: "Error!",
-                message: error.toString(),
-              );
+              await AmityDialog().showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
               completer.completeError(error);
             },
             cancel: () {
               //upload is cancelled
-              completer.completeError(Exception('Upload cancelled'));
+              completer.completeError(Exception('فشل في التحميل')); //Upload cancelled
             },
           );
         },
@@ -334,14 +330,14 @@ class CommunityVM extends ChangeNotifier {
       //success
       _amityMyCommunities
           .removeWhere((element) => element.communityId == communityId);
-      AmitySuccessDialog.showTimedDialog("Community deleted");
+      AmitySuccessDialog.showTimedDialog("المجتمع حذف"); //Community deleted
       notifyListeners(); // To update the UI after removing the community
 
       callback(true); // Success status
     }).onError((error, stackTrace) async {
       //handle error
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       callback(false); // Failure status
     });
   }
@@ -364,7 +360,7 @@ class CommunityVM extends ChangeNotifier {
     }).onError((error, stackTrace) async {
       //handle error
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -376,7 +372,7 @@ class CommunityVM extends ChangeNotifier {
         .onError((error, stackTrace) async {
       //handle error
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 }

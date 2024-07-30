@@ -118,7 +118,7 @@ class EditPostVM extends CreatePostVMV2 {
       callback!();
     }).onError((error, stackTrace) async {
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
