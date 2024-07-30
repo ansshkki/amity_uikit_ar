@@ -51,7 +51,7 @@ class _CommunityPageState extends State<CommunityPage> {
           // centerTitle: false,
           automaticallyImplyLeading: false,
           title: Text(
-            "Community",
+            "مجتمع", //Community
             style: Provider.of<AmityUIConfiguration>(context)
                 .titleTextStyle
                 .copyWith(
@@ -101,9 +101,9 @@ class _CommunityPageState extends State<CommunityPage> {
                       ),
                       tabs: const [
                         Tab(
-                          text: "Newsfeed",
+                          text: "الرأي عن الاخبار", //Newsfeed
                         ),
-                        Tab(text: "Explore"),
+                        Tab(text: "استكشاف"), //Explore
                       ],
                     ),
                   ],
@@ -178,7 +178,7 @@ class RecommendationSection extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 16, top: 20),
                 child: Text(
-                  'Recommended for you',
+                  'قد ترغب به', //Recommended for you
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -363,7 +363,7 @@ class TrendingSection extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 16, top: 20),
                 child: Text(
-                  'Today\'s Trending',
+                  'صيحات اليوم', //Today\'s Trending
                   style: TextStyle(
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
@@ -452,12 +452,12 @@ class TrendingSection extends StatelessWidget {
                     ),
                     subtitle: community.categories!.isEmpty
                         ? Text(
-                            'no category • ${community.membersCount} ${community.membersCount == 1 ? "member" : "members"}',
+                            'ما من تصنيف • ${community.membersCount} ${community.membersCount == 1 ? "عضو" : "أعضاء"}', //no category //member //members
                             style: const TextStyle(
                                 fontSize: 13, color: Color(0xff636878)),
                           )
                         : Text(
-                            '${community.categories?[0]?.name ?? ""} • ${community.membersCount} ${community.membersCount == 1 ? "member" : "members"}',
+                            '${community.categories?[0]?.name ?? ""} • ${community.membersCount} ${community.membersCount == 1 ? "عضو" : "أعضاء"}', //member //members
                             style: const TextStyle(
                                 fontSize: 13, color: Color(0xff636878)),
                           ),
@@ -494,7 +494,7 @@ class CategorySection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Categories',
+                    'التصنيفات', //Categories
                     style: Provider.of<AmityUIConfiguration>(context)
                         .titleTextStyle
                         .copyWith(
@@ -628,7 +628,7 @@ class _CategoryListPageState extends State<CategoryListPage> {
         backgroundColor: Colors.transparent,
         elevation: 0.0, // Remove shadow
         title: Text(
-          "Category",
+          "تصنيف", //Category
           style: Provider.of<AmityUIConfiguration>(context).titleTextStyle,
         ),
         iconTheme: const IconThemeData(color: Colors.black),
@@ -707,7 +707,7 @@ class _CommunityListPageState extends State<CommunityListPage> {
         elevation: 0.0, // Remove shadow
 
         title: Text(
-          widget.category.name ?? "Community",
+          widget.category.name ?? "مجتمع", //Community
           style: Provider.of<AmityUIConfiguration>(context).titleTextStyle,
         ),
         iconTheme: const IconThemeData(color: Colors.black),

@@ -28,8 +28,7 @@ class NotificationVM extends ChangeNotifier {
       log(">>>>updateNotification...");
       await updateNotification();
     } else {
-      AmityDialog().showAlertErrorDialog(
-          title: "Error!", message: "accessToken is null");
+      AmityDialog().showAlertErrorDialog(title: "خطأ!", message: "accessToken is null"); //Error
     }
   }
 
@@ -42,12 +41,12 @@ class NotificationVM extends ChangeNotifier {
           notifyListeners();
         } else {
           AmityDialog()
-              .showAlertErrorDialog(title: "Error!", message: error.toString());
+              .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
         }
       });
     } else {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: ".env is missing");
+          .showAlertErrorDialog(title: "خطأ!", message: ".env is missing"); //Error!
     }
   }
 

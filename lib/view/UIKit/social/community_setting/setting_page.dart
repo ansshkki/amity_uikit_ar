@@ -50,7 +50,7 @@ class CommunitySettingPage extends StatelessWidget {
                 // Section 1: Basic Info
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text("Basic Info",
+                  child: Text("المعلومات الاساسية", //Basic Info
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: 17,
@@ -77,7 +77,7 @@ class CommunitySettingPage extends StatelessWidget {
                                   .base,
                             )),
                         title: Text(
-                          "Edit Profile",
+                          "تعديل الملف الشخصي", //Edit Profile
                           style: TextStyle(
                             color: Provider.of<AmityUIConfiguration>(context)
                                 .appColors
@@ -109,7 +109,7 @@ class CommunitySettingPage extends StatelessWidget {
                                 .appColors
                                 .base)),
                     title: Text(
-                      "Members",
+                      "الأعضاء", //Members
                       style: TextStyle(
                         color: Provider.of<AmityUIConfiguration>(context)
                             .appColors
@@ -184,7 +184,7 @@ class CommunitySettingPage extends StatelessWidget {
                     ? const SizedBox()
                     : Padding(
                         padding: const EdgeInsets.all(16.0),
-                        child: Text("Community Permission",
+                        child: Text("أذونات المجتمع", //Community Permission
                             style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: 17,
@@ -209,7 +209,7 @@ class CommunitySettingPage extends StatelessWidget {
                                     Provider.of<AmityUIConfiguration>(context)
                                         .appColors
                                         .base)),
-                        title: Text("Post Review",
+                        title: Text("مراجعة المنشور", //Post Review
                             style: TextStyle(
                               color: Provider.of<AmityUIConfiguration>(context)
                                   .appColors
@@ -230,7 +230,7 @@ class CommunitySettingPage extends StatelessWidget {
                     ? const SizedBox()
                     : ListTile(
                         title: const Text(
-                          "Leave Community",
+                          "مغادرة المجتمع", //Leave Community
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 15,
@@ -239,9 +239,9 @@ class CommunitySettingPage extends StatelessWidget {
                         onTap: () async {
                           await ConfirmationDialog().show(
                               context: context,
-                              title: "Leave community",
+                              title: "مغادرة المجتمع", //Leave community
                               detailText:
-                                  "You won't no longer be able to post and interact in this community after leaving.",
+                                  "لن تتمكن بعد الآن من النشر والتفاعل في هذا المجتمع بعد مغادرته.", //You won't no longer be able to post and interact in this community after leaving.
                               onConfirm: () async {
                                 // Perform Leave Community action
                                 final communityVm = Provider.of<CommunityVM>(
@@ -280,7 +280,7 @@ class CommunitySettingPage extends StatelessWidget {
                     ? const SizedBox()
                     : ListTile(
                         title: const Text(
-                          "Close Community",
+                          "إغلاق المجتمع", //Close Community
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
@@ -290,7 +290,7 @@ class CommunitySettingPage extends StatelessWidget {
                         subtitle: const Padding(
                           padding: EdgeInsets.only(top: 8.0),
                           child: Text(
-                            "Closing this community will remove the community page and all its content and comments.",
+                            "سيؤدي إغلاق هذا المجتمع إلى إزالة صفحة المجتمع وجميع محتوياتها وتعليقاتها.", //Closing this community will remove the community page and all its content and comments.
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w400,
@@ -303,11 +303,11 @@ class CommunitySettingPage extends StatelessWidget {
 
                           ConfirmationDialog().show(
                             context: context,
-                            title: 'Close community?',
+                            title: 'إغلاق المجتمع', //Close community?
                             detailText:
-                                'All members will be removed from the community. All posts, messages, reactions, and media shared in community will be deleted. This cannot be undone.',
-                            leftButtonText: 'Cancel',
-                            rightButtonText: 'Close',
+                                'سيتم حذف جميع الأعضاء من المجتمع و حذف جميع المنشورات والرسائل والتفاعلات والوسائط المشتركة في المجتمع. لا يمكن التراجع عن هذا.', //All members will be removed from the community. All posts, messages, reactions, and media shared in community will be deleted. This cannot be undone.
+                            leftButtonText: 'إلغاء', //Cancel
+                            rightButtonText: 'إغلاق', //Close
                             onConfirm: () {
                               final communityVm = Provider.of<CommunityVM>(
                                   context,

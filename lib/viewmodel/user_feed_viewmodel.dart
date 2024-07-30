@@ -68,7 +68,7 @@ class UserFeedVM extends ChangeNotifier {
       notifyListeners();
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -231,9 +231,7 @@ class UserFeedVM extends ChangeNotifier {
     } else if (amityFollowStatus == AmityFollowStatus.BLOCKED) {
       //do nothing
     } else {
-      AmityDialog().showAlertErrorDialog(
-          title: "Error!",
-          message: "followButtonAction: cant handle amityFollowStatus");
+      AmityDialog().showAlertErrorDialog(title: "خطأ!", message: "followButtonAction: cant handle amityFollowStatus"); //Error!
     }
   }
 
@@ -257,7 +255,7 @@ class UserFeedVM extends ChangeNotifier {
     }).onError((error, stackTrace) async {
       String errorMessage = error.toString();
       await AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: errorMessage);
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       callback(false, errorMessage);
     });
   }
@@ -275,7 +273,7 @@ class UserFeedVM extends ChangeNotifier {
     }).onError((error, stackTrace) {
       //handle error
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -289,7 +287,7 @@ class UserFeedVM extends ChangeNotifier {
       notifyListeners();
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -308,7 +306,7 @@ class UserFeedVM extends ChangeNotifier {
       initUserFeed(userId: user.userId!);
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -318,13 +316,13 @@ class UserFeedVM extends ChangeNotifier {
         .blockUser(userId)
         .then((value) {
       print(value);
-      AmitySuccessDialog.showTimedDialog("Blocked user");
+      AmitySuccessDialog.showTimedDialog("المستخدم محظور"); //Blocked user
       _getUser(userId: userId);
       notifyListeners();
       // onCallBack();
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -334,12 +332,12 @@ class UserFeedVM extends ChangeNotifier {
         .unblockUser(userId)
         .then((value) {
       print(value);
-      AmitySuccessDialog.showTimedDialog("Unblock user");
+      AmitySuccessDialog.showTimedDialog("إلغاء حظر المستخدم"); //Unblock user
       _getUser(userId: userId);
       notifyListeners();
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 }

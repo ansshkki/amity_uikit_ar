@@ -53,8 +53,8 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
           elevation: 0,
           title: Text(
             widget.community != null
-                ? widget.community?.displayName ?? "Community"
-                : "My Feed",
+                ? widget.community?.displayName ?? "مجتمع" //Community
+                : "رأيي", //My Feed
             style: Provider.of<AmityUIConfiguration>(context)
                 .titleTextStyle
                 .copyWith(
@@ -70,10 +70,10 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
               if (hasContent) {
                 ConfirmationDialog().show(
                   context: context,
-                  title: 'Discard Post?',
-                  detailText: 'Do you want to discard your post?',
-                  leftButtonText: 'Cancel',
-                  rightButtonText: 'Discard',
+                  title: 'تجاهل المنشور ؟', //Discard Post?
+                  detailText: 'هل تريد تجاهل منشورك ؟', //Do you want to discard your post?
+                  leftButtonText: 'إلغاء', //Cancel
+                  rightButtonText: 'تجاهل', //Discard
                   onConfirm: () {
                     Navigator.of(context).pop();
                   },
@@ -115,9 +115,9 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                                 if (!widget.community!.hasPermission(
                                     AmityPermission.REVIEW_COMMUNITY_POST)) {
                                   await AmityDialog().showAlertErrorDialog(
-                                      title: "Post submitted",
+                                      title: "المنشورات المرسلة", //Post submitted
                                       message:
-                                          "Your post has been submitted to the pending list. It will be reviewed by community moderator");
+                                          "لقد تم إرسال منشورك إلى قائمة الانتظار. سيتم مراجعتها بواسطة مشرف المجتمع"); //Your post has been submitted to the pending list. It will be reviewed by community moderator
                                 }
                               }
                               Navigator.of(context).pop();
@@ -145,7 +145,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                       }
                     }
                   : null,
-              child: Text("Post",
+              child: Text("المنشور", //Post
                   style: TextStyle(
                       color: vm.isPostValid
                           ? Provider.of<AmityUIConfiguration>(context)
@@ -174,7 +174,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                           maxLines: null,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: "Write something to post",
+                            hintText: "أكتب شيء لنشره", //Write something to post
                             hintStyle: TextStyle(
                                 color:
                                     Provider.of<AmityUIConfiguration>(context)
@@ -202,7 +202,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                       Icons.camera_alt_outlined,
                       isEnable:
                           vm.availableFileSelectionOptions()[MyFileType.image]!,
-                      label: "Photo",
+                      label: "صورة", //Photo
                       // debugingText:
                       //     "${vm2.isNotSelectVideoYet()}&& ${vm2.isNotSelectedFileYet()}",
                       onTap: () {
@@ -211,7 +211,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     ),
                     _iconButton(
                       Icons.image_outlined,
-                      label: "Image",
+                      label: "صورة", //Image
                       isEnable:
                           vm.availableFileSelectionOptions()[MyFileType.image]!,
                       onTap: () async {
@@ -220,7 +220,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     ),
                     _iconButton(
                       Icons.play_circle_outline,
-                      label: "Video",
+                      label: "فيديو", //Video
                       isEnable:
                           vm.availableFileSelectionOptions()[MyFileType.video]!,
                       onTap: () async {
@@ -229,7 +229,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     ),
                     _iconButton(
                       Icons.attach_file_outlined,
-                      label: "File",
+                      label: "ملف", //File
                       isEnable:
                           vm.availableFileSelectionOptions()[MyFileType.file]!,
                       onTap: () async {
@@ -239,7 +239,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     _iconButton(
                       Icons.more_horiz,
                       isEnable: true,
-                      label: "More",
+                      label: "المزيد", //More
                       onTap: () {
                         // TODO: Implement more options logic
                         _showMoreOptions(context);
@@ -309,10 +309,10 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                       leading: _iconButton(Icons.camera_alt_outlined,
                           isEnable: vm.availableFileSelectionOptions()[
                               MyFileType.image]!,
-                          label: "Camera",
+                          label: "كاميرا", //Camera
                           onTap: () {}),
                       title: Text(
-                        'Camera',
+                        'كاميرا', //Camera
                         style: TextStyle(
                             color: vm.availableFileSelectionOptions()[
                                     MyFileType.image]!
@@ -331,10 +331,10 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                       leading: _iconButton(Icons.image_outlined,
                           isEnable: vm.availableFileSelectionOptions()[
                               MyFileType.image]!,
-                          label: "Photo",
+                          label: "صورة", //Photo
                           onTap: () {}),
                       title: Text(
-                        'Photo',
+                        'صورة', //Photo
                         style: TextStyle(
                             color: vm.availableFileSelectionOptions()[
                                     MyFileType.image]!
@@ -353,10 +353,10 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                       leading: _iconButton(Icons.attach_file_rounded,
                           isEnable: vm.availableFileSelectionOptions()[
                               MyFileType.file]!,
-                          label: "Attachment",
+                          label: "ملحق", //Attachment
                           onTap: () {}),
                       title: Text(
-                        'Attachment',
+                        'ملحق', //Attachment
                         style: TextStyle(
                             color: vm.availableFileSelectionOptions()[
                                     MyFileType.file]!
@@ -376,11 +376,11 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                         Icons.play_circle_outline_outlined,
                         isEnable: vm
                             .availableFileSelectionOptions()[MyFileType.video]!,
-                        label: "Video",
+                        label: "فيديو", //Video
                         onTap: () {},
                       ),
                       title: Text(
-                        'Video',
+                        'فيديو', //Video
                         style: TextStyle(
                             color: vm.availableFileSelectionOptions()[
                                     MyFileType.video]!
@@ -409,19 +409,19 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Discard Post?'),
-        content: const Text('Do you want to discard your post?'),
+        title: const Text('تجاهل المنشور؟'), //Discard Post?
+        content: const Text('هل تود تجاهل منشورك؟'), //Do you want to discard your post?
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('Cancel'),
+            child: const Text('إلغاء'), //Cancel
           ),
           TextButton(
             onPressed: () {
               Navigator.of(context).pop(true);
               Navigator.of(context).pop();
             },
-            child: const Text('Discard'),
+            child: const Text('تجاهل'), //Discard
           ),
         ],
       ),

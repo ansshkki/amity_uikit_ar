@@ -94,7 +94,7 @@ class CategoryListState extends State<CategoryList> {
             },
           ),
           title: Text(
-            'Select category',
+            'اختر التصنيف', //Select category
             style: Provider.of<AmityUIConfiguration>(context)
                 .titleTextStyle
                 .copyWith(fontWeight: FontWeight.bold),
@@ -217,7 +217,7 @@ class CategoryWidget extends StatelessWidget {
                     ),
                   ),
           ),
-          title: Text(category.name ?? "Category",
+          title: Text(category.name ?? "تصنيف", //Category
               style: Provider.of<AmityUIConfiguration>(context).hintTextStyle),
           trailing: Provider.of<CategoryVM>(context, listen: true)
                   .checkIfSelected(

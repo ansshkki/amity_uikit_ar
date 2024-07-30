@@ -36,9 +36,9 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
     var category = widget.community.categories!;
     var categories = widget.community.categories;
     if (categories != null && categories.isNotEmpty) {
-      _categoryController.text = categories[0]!.name ?? "No Name";
+      _categoryController.text = categories[0]!.name ?? "لا يوجد اسم"; //No Name
     } else {
-      _categoryController.text = "No Category";
+      _categoryController.text = "لا يوجد تصنيف"; //No Category
     }
     communityType = widget.community.isPublic!
         ? CommunityType.public
@@ -57,7 +57,7 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                 .baseBackground,
             appBar: AppBar(
               title: Text(
-                "Edit Community",
+                "تعديل المجتمع", //Edit Community
                 style: Provider.of<AmityUIConfiguration>(context)
                     .titleTextStyle
                     .copyWith(
@@ -96,7 +96,7 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                     Navigator.of(context).pop();
                   },
                   child: Text(
-                    "Save",
+                    "حفظ", //Save
                     style: TextStyle(
                       color: Provider.of<AmityUIConfiguration>(context)
                           .appColors
@@ -159,7 +159,7 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                                   width:
                                       8.0), // Adding some space between the icon and the text
                               Text(
-                                'Upload image',
+                                'تحميل الصور', //Upload image
                                 style: TextStyle(
                                   color: Colors.white,
                                 ),
@@ -176,16 +176,16 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                       children: [
                         TextFieldWithCounter(
                           controller: _displayNameController,
-                          title: 'Community name',
-                          hintText: 'Name your community',
+                          title: 'سم المجتمع', //Community name
+                          hintText: 'اسم مجتمعك', //Name your community
                           maxCharacters: 30,
                         ),
                         const SizedBox(height: 16.0),
                         TextFieldWithCounter(
                           isRequired: false,
                           controller: _descriptionController,
-                          title: 'About',
-                          hintText: 'Enter description',
+                          title: 'عن المجتمع', //About
+                          hintText: 'اضف الوصف', //Enter description
                           maxCharacters: 180,
                           keyboardType: TextInputType.multiline,
                           maxLines: null,
@@ -193,8 +193,8 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                         const SizedBox(height: 16.0),
                         TextFieldWithCounter(
                           controller: _categoryController,
-                          title: 'Category',
-                          hintText: 'Select category',
+                          title: 'التصنيف', //Category
+                          hintText: 'اختر التصنيف', //Select category
                           showCount: false,
                           maxCharacters: 30,
                           onTap: () async {
@@ -225,7 +225,7 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                                 child: const Icon(Icons.public),
                               ),
                               title: Text(
-                                'Public',
+                                'عام', //Public
                                 style: TextStyle(
                                     color: Provider.of<AmityUIConfiguration>(
                                             context)
@@ -233,7 +233,7 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                                         .base),
                               ),
                               subtitle: Text(
-                                'Anyone can join, view and search this community',
+                                'يمكن لأي شخص الانضمام إلى هذا المجتمع وزيارته والبحث فيه', //Anyone can join, view and search this community
                                 style: TextStyle(
                                     color: Provider.of<AmityUIConfiguration>(
                                             context)
@@ -268,7 +268,7 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                                 child: const Icon(Icons.lock),
                               ),
                               title: Text(
-                                'Private',
+                                'خاص', //Private
                                 style: TextStyle(
                                     color: Provider.of<AmityUIConfiguration>(
                                             context)
@@ -276,7 +276,7 @@ class AmityEditCommunityScreenState extends State<AmityEditCommunityScreen> {
                                         .base),
                               ),
                               subtitle: Text(
-                                'Only members invited by the moderators can join, view and search this community',
+                                'يمكن فقط للأعضاء المدعوين من قبل المشرفين الانضمام إلى هذا المجتمع وزيارته والبحث فيه', //Only members invited by the moderators can join, view and search this community
                                 style: TextStyle(
                                     color: Provider.of<AmityUIConfiguration>(
                                             context)

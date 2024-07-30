@@ -52,19 +52,19 @@ class TimeAgoWidget extends StatelessWidget {
     int years = (difference.inDays / 365).floor(); // Approximation
 
     if (years > 0) {
-      return '$years year${years > 1 ? 's' : ''} ago';
+      return '$years ${years > 1 ? 'من سنوات' : 'سنة'}'; //year
     } else if (months > 0) {
-      return '$months month${months > 1 ? 's' : ''} ago';
+      return '$months ${months > 1 ? 'من الشهور' : 'شهر'}'; // month
     } else if (weeks > 0) {
-      return '$weeks week${weeks > 1 ? 's' : ''} ago';
+      return '$weeks ${weeks > 1 ? 'من الأسابيع' : 'اسبوع'}'; //week
     } else if (difference.inDays > 0) {
-      return '${difference.inDays} day${difference.inDays > 1 ? 's' : ''} ago';
+      return '${difference.inDays} ${difference.inDays > 1 ? 'من الأيام' : 'يوم'}'; //day
     } else if (difference.inHours > 0) {
-      return '${difference.inHours} hour${difference.inHours > 1 ? 's' : ''} ago';
+      return '${difference.inHours} ${difference.inHours > 1 ? 'من الساعات' : 'ساعة'}'; //hour
     } else if (difference.inMinutes > 0) {
-      return '${difference.inMinutes} minute${difference.inMinutes > 1 ? 's' : ''} ago';
+      return '${difference.inMinutes} ${difference.inMinutes > 1 ? 'من الدقائق' : 'دقيقة'} '; //minute
     } else {
-      return 'Just now';
+      return 'الآن'; //Just now
     }
   }
 }

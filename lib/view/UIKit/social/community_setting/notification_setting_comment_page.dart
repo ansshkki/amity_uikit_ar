@@ -29,7 +29,7 @@ class _CommentsNotificationSettingPageState
           Provider.of<AmityUIConfiguration>(context).appColors.baseBackground,
       appBar: AppBar(
         title: Text(
-          'Comments',
+          'التعليقات', //Comments
           style: TextStyle(
             color: Provider.of<AmityUIConfiguration>(context).appColors.base,
             fontSize: 18,
@@ -43,11 +43,11 @@ class _CommentsNotificationSettingPageState
       body: ListView(
         children: [
           // Section 1: React Comments
-          _buildSectionHeader('React Comments'),
+          _buildSectionHeader('التفاعل مع المنشورات'), //React Comments
           _buildDescriptionTile(
-              'Receive notifications when someone likes your comment in this community'),
+              'تلقي الإشعارات عندما يقوم شخص ما بالإعجاب بتعليقك في هذا المجتمع'), //Receive notifications when someone likes your comment in this community
           _buildRadioTile<NotificationSetting>(
-            title: 'Everyone',
+            title: 'أي شخص', //Everyone
             value: NotificationSetting.everyone,
             groupValue: _reactCommentsSetting,
             onChanged: (value) {
@@ -57,7 +57,7 @@ class _CommentsNotificationSettingPageState
             },
           ),
           _buildRadioTile<NotificationSetting>(
-            title: 'Only Moderator',
+            title: 'فقط المشرفين', //Only Moderator
             value: NotificationSetting.onlyModerator,
             groupValue: _reactCommentsSetting,
             onChanged: (value) {
@@ -67,7 +67,7 @@ class _CommentsNotificationSettingPageState
             },
           ),
           _buildRadioTile<NotificationSetting>(
-            title: 'Off',
+            title: 'مغلق', //Off
             value: NotificationSetting.off,
             groupValue: _reactCommentsSetting,
             onChanged: (value) {
@@ -79,11 +79,11 @@ class _CommentsNotificationSettingPageState
           const Divider(),
 
           // Section 2: New Comments
-          _buildSectionHeader('New Comments'),
+          _buildSectionHeader('تعليقات جدد'), //New Comments
           _buildDescriptionTile(
-              'Receive notifications when someone comments on your posts in this community'),
+              'تلقي اشعارات عندما يعلق احدهم على منشوراتك في هذا المجتمع'), //Receive notifications when someone comments on your posts in this community
           _buildRadioTile<NotificationSetting>(
-            title: 'Everyone',
+            title: 'أي شخص', //Everyone
             value: NotificationSetting.everyone,
             groupValue: _newCommentsSetting,
             onChanged: (value) {
@@ -93,7 +93,7 @@ class _CommentsNotificationSettingPageState
             },
           ),
           _buildRadioTile<NotificationSetting>(
-            title: 'Only Moderator',
+            title: 'المشرفين فقط', //Only Moderator
             value: NotificationSetting.onlyModerator,
             groupValue: _newCommentsSetting,
             onChanged: (value) {
@@ -103,7 +103,7 @@ class _CommentsNotificationSettingPageState
             },
           ),
           _buildRadioTile<NotificationSetting>(
-            title: 'Off',
+            title: 'مغلق', //Off
             value: NotificationSetting.off,
             groupValue: _newCommentsSetting,
             onChanged: (value) {
@@ -115,11 +115,11 @@ class _CommentsNotificationSettingPageState
           const Divider(),
 
           // Section 3: Replies
-          _buildSectionHeader('Replies'),
+          _buildSectionHeader('الردود'), //Replies
           _buildDescriptionTile(
-              'Receive notifications when someone replies to your comments in this community'),
+              'تلقي اشعارات عندما يرد احدهم على تعليقاتك في هذا المجتمع'), //Receive notifications when someone replies to your comments in this community
           _buildRadioTile<NotificationSetting>(
-            title: 'Everyone',
+            title: 'أي شخص', //Everyone
             value: NotificationSetting.everyone,
             groupValue: _repliesSetting,
             onChanged: (value) {
@@ -129,7 +129,7 @@ class _CommentsNotificationSettingPageState
             },
           ),
           _buildRadioTile<NotificationSetting>(
-            title: 'Only Moderator',
+            title: 'المشرفين فقط', //Only Moderator
             value: NotificationSetting.onlyModerator,
             groupValue: _repliesSetting,
             onChanged: (value) {
@@ -139,7 +139,7 @@ class _CommentsNotificationSettingPageState
             },
           ),
           _buildRadioTile<NotificationSetting>(
-            title: 'Off',
+            title: 'مغلق', //Off
             value: NotificationSetting.off,
             groupValue: _repliesSetting,
             onChanged: (value) {

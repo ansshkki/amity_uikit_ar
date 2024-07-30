@@ -67,7 +67,7 @@ class FollowerVM extends ChangeNotifier {
         _followingList = value.data;
       }).onError((error, stackTrace) {
         AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     } else {
       await AmityCoreClient.newUserRepository()
@@ -82,7 +82,7 @@ class FollowerVM extends ChangeNotifier {
         _followingList = value.data;
       }).onError((error, stackTrace) {
         AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     }
     notifyListeners();
@@ -140,7 +140,7 @@ class FollowerVM extends ChangeNotifier {
         _followerList = value.data;
       }).onError((error, stackTrace) {
         AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     } else {
       await AmityCoreClient.newUserRepository()
@@ -155,7 +155,7 @@ class FollowerVM extends ChangeNotifier {
         _followerList = value.data;
       }).onError((error, stackTrace) {
         AmityDialog()
-            .showAlertErrorDialog(title: "Error!", message: error.toString());
+            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     }
     notifyListeners();
@@ -169,9 +169,8 @@ class FollowerVM extends ChangeNotifier {
     } else if (amityFollowStatus == AmityFollowStatus.ACCEPTED) {
       withdrawFollowRequest(user);
     } else {
-      AmityDialog().showAlertErrorDialog(
-          title: "Error!",
-          message: "followButtonAction: cant handle amityFollowStatus");
+      AmityDialog().showAlertErrorDialog(title: "خطأ!",
+          message: "followButtonAction: cant handle amityFollowStatus"); //Error!
     }
   }
 
@@ -187,7 +186,7 @@ class FollowerVM extends ChangeNotifier {
     }).onError((error, stackTrace) {
       //handle error
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
@@ -201,7 +200,7 @@ class FollowerVM extends ChangeNotifier {
       notifyListeners();
     }).onError((error, stackTrace) {
       AmityDialog()
-          .showAlertErrorDialog(title: "Error!", message: error.toString());
+          .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
     });
   }
 
