@@ -82,7 +82,7 @@ class _AmityFollowingScreenScreenState extends State<AmityFollowingScreen> {
                                 .getFollowingList[index].targetUser!.avatarUrl),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsetsDirectional.all(8.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [

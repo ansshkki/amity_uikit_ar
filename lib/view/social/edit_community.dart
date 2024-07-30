@@ -93,7 +93,7 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
               child: Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(top: 20, bottom: 20),
+                    margin: const EdgeInsetsDirectional.only(top: 20, bottom: 20),
                     width: double.infinity,
                     alignment: Alignment.center,
                     child: Stack(
@@ -109,11 +109,11 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                               backgroundImage: getImageProvider(
                                   widget.community.avatarImage?.fileUrl),
                             ))),
-                        Positioned(
-                          right: 0,
+                        PositionedDirectional(
+                          end: 0,
                           top: 7,
                           child: Container(
-                            padding: const EdgeInsets.all(5),
+                            padding: const EdgeInsetsDirectional.all(5),
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: Provider.of<AmityUIConfiguration>(context)
@@ -131,8 +131,8 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                   Column(
                     children: [
                       Container(
-                        padding: const EdgeInsets.fromLTRB(20, 20, 0, 20),
-                        alignment: Alignment.centerLeft,
+                        padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 0, 20),
+                        alignment: AlignmentDirectional.centerStart,
                         color: Colors.grey[200],
                         width: double.infinity,
                         child: Text(
@@ -146,7 +146,7 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                       // Container(
                       //   color: Colors.white,
                       //   width: double.infinity,
-                      //   padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                      //   padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                       //   child: TextField(
                       //     enabled: false,
                       //     controller:
@@ -159,7 +159,7 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                       //   ),
                       // ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                         child: TextField(
                           controller: _displayNameController,
                           decoration: const InputDecoration(
@@ -175,7 +175,7 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                         thickness: 3,
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                         child: TextField(
                           controller: _descriptionController,
                           decoration: const InputDecoration(
@@ -191,7 +191,7 @@ class EditCommunityScreenState extends State<EditCommunityScreen> {
                         thickness: 3,
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(16, 8, 16, 0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(16, 8, 16, 0),
                         child: TextField(
                           controller: _categoryController,
                           readOnly: true,

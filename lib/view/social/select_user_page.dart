@@ -89,7 +89,7 @@ class _UserListPageState extends State<UserListPage> {
               child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(
+                padding: const EdgeInsetsDirectional.all(
                     10.0), // Adjust this value based on your needs
                 child: TextField(
                   decoration: InputDecoration(
@@ -99,7 +99,7 @@ class _UserListPageState extends State<UserListPage> {
                     ),
                     hintText: 'بحث', //Search
                     filled: true,
-                    contentPadding: const EdgeInsets.symmetric(vertical: 0),
+                    contentPadding: const EdgeInsetsDirectional.symmetric(vertical: 0),
                     fillColor: Colors.grey[3],
                     focusColor: Colors.white, // Removes focus highlight
                     enabledBorder: OutlineInputBorder(
@@ -133,7 +133,7 @@ class _UserListPageState extends State<UserListPage> {
                           var user = Provider.of<UserVM>(context)
                               .selectedCommunityUsers[index];
                           return Padding(
-                            padding: const EdgeInsets.fromLTRB(10, 5, 0, 5),
+                            padding: const EdgeInsetsDirectional.fromSTEB(10, 5, 0, 5),
                             child: Column(
                               children: [
                                 GestureDetector(
@@ -142,7 +142,7 @@ class _UserListPageState extends State<UserListPage> {
                                         .toggleUserSelection(user);
                                   },
                                   child: Stack(
-                                    alignment: Alignment.topRight,
+                                    alignment: AlignmentDirectional.topEnd,
                                     children: [
                                       CircleAvatar(
                                         backgroundColor:
@@ -160,8 +160,8 @@ class _UserListPageState extends State<UserListPage> {
                                                 color: Colors
                                                     .white), // Adjust to use the correct attribute for avatar URL
                                       ),
-                                      Positioned(
-                                        right: 0,
+                                      PositionedDirectional(
+                                        end: 0,
                                         child: InkWell(
                                             onTap: () {
                                               // Handle the logic to remove the user when "X" is tapped
@@ -215,7 +215,7 @@ class _UserListPageState extends State<UserListPage> {
                     .map<Widget>((item) {
                   return SliverStickyHeader(
                     header: Container(
-                      padding: const EdgeInsets.fromLTRB(10, 5, 0, 5),
+                      padding: const EdgeInsetsDirectional.fromSTEB(10, 5, 0, 5),
                       color: Provider.of<AmityUIConfiguration>(context)
                           .appColors
                           .baseShade4,
@@ -236,7 +236,7 @@ class _UserListPageState extends State<UserListPage> {
                             children: [
                               ListTile(
                                 dense: true,
-                                contentPadding: const EdgeInsets.symmetric(
+                                contentPadding: const EdgeInsetsDirectional.symmetric(
                                     vertical: 4.0, horizontal: 16.0),
                                 leading: CircleAvatar(
                                   backgroundColor:

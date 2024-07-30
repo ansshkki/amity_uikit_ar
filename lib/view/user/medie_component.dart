@@ -98,7 +98,7 @@ class MediaGalleryPage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(18.0),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        padding: const EdgeInsetsDirectional.symmetric(horizontal: 16.0, vertical: 8.0),
       ),
       child: Text(text),
     );
@@ -156,7 +156,7 @@ class MediaGalleryPage extends StatelessWidget {
       ),
     );
     Widget gridView = GridView.builder(
-      padding: EdgeInsets.zero,
+      padding: EdgeInsetsDirectional.zero,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 4.0,
@@ -247,7 +247,7 @@ class MediaGalleryPage extends StatelessWidget {
       ),
     );
     var gridView = GridView.builder(
-      padding: EdgeInsets.zero,
+      padding: EdgeInsetsDirectional.zero,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 4.0,

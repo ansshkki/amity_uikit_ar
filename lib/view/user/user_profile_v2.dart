@@ -146,7 +146,7 @@ class UserProfileScreenState extends State<UserProfileScreen>
                     color: Provider.of<AmityUIConfiguration>(context)
                         .appColors
                         .baseBackground,
-                    padding: const EdgeInsets.only(left: 16, right: 16),
+                    padding: const EdgeInsetsDirectional.only(start: 16, end: 16),
                     child: Column(
                       children: [
                         SizedBox(
@@ -264,7 +264,7 @@ class UserProfileScreenState extends State<UserProfileScreen>
                         ),
                         const SizedBox(height: 12),
                         Align(
-                          alignment: Alignment.centerLeft,
+                          alignment: AlignmentDirectional.centerStart,
                           child: Wrap(
                             alignment: WrapAlignment.start,
                             children: [
@@ -310,7 +310,7 @@ class UserProfileScreenState extends State<UserProfileScreen>
                                                   .appColors
                                                   .baseBackground,
                                         ),
-                                        padding: const EdgeInsets.fromLTRB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10, 10, 10, 10),
                                         child: Row(
                                           mainAxisAlignment:
@@ -362,7 +362,7 @@ class UserProfileScreenState extends State<UserProfileScreen>
                                   //         borderRadius:
                                   //             BorderRadius.circular(10),
                                   //         color: Colors.white),
-                                  //     padding: const EdgeInsets.fromLTRB(
+                                  //     padding: const EdgeInsetsDirectional.fromSTEB(
                                   //         10, 10, 10, 10),
                                   //     child: Text(
                                   //       "Messages",
@@ -381,7 +381,7 @@ class UserProfileScreenState extends State<UserProfileScreen>
 
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsets.only(),
+                                      padding: const EdgeInsetsDirectional.only(),
                                       child: vm.amityMyFollowInfo.id == null
                                           ? Container(
                                               decoration: BoxDecoration(
@@ -396,7 +396,7 @@ class UserProfileScreenState extends State<UserProfileScreen>
                                                     BorderRadius.circular(10),
                                               ),
                                               padding:
-                                                  const EdgeInsets.fromLTRB(
+                                                  const EdgeInsetsDirectional.fromSTEB(
                                                       10, 10, 10, 10),
                                               child: Text(
                                                 "",
@@ -444,8 +444,8 @@ class UserProfileScreenState extends State<UserProfileScreen>
                                                                           .data!
                                                                           .status)),
                                                               padding:
-                                                                  const EdgeInsets
-                                                                      .fromLTRB(
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
                                                                       10,
                                                                       10,
                                                                       10,
@@ -544,7 +544,7 @@ class _Item extends StatelessWidget {
         onTap: () =>
             Navigator.push(context, MaterialPageRoute(builder: builder)),
         child: Container(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsetsDirectional.all(16),
           child: Text(
             text,
             style: const TextStyle(
@@ -668,7 +668,7 @@ class _StickyHeaderList extends StatelessWidget {
                             .appColors
                             .baseShade4,
                         child: ListView.builder(
-                          padding: EdgeInsets.zero,
+                          padding: EdgeInsetsDirectional.zero,
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: Provider.of<UserFeedVM>(context)

@@ -156,7 +156,7 @@ class _CommentsNotificationSettingPageState
 
   Widget _buildSectionHeader(String text) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsetsDirectional.all(16.0),
       child: Text(
         text,
         style: TextStyle(
@@ -169,7 +169,7 @@ class _CommentsNotificationSettingPageState
 
   Widget _buildDescriptionTile(String text) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16.0, bottom: 16, right: 16),
+      padding: const EdgeInsetsDirectional.only(start: 16.0, bottom: 16, end: 16),
       child: Text(
         text,
         style: const TextStyle(

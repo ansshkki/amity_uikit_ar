@@ -205,7 +205,7 @@
 //                   .appColors
 //                   .baseShade4,
 //               child: ListView.builder(
-//                 padding: EdgeInsets.zero,
+//                 padding: EdgeInsetsDirectional.zero,
 //                 physics: const NeverScrollableScrollPhysics(),
 //                 shrinkWrap: true,
 //                 itemCount: Provider.of<UserFeedVM>(context).amityPosts.length,
@@ -323,7 +323,7 @@
 //                             ? const SizedBox(height: 10)
 //                             : const SizedBox(height: 120),
 //                         Padding(
-//                           padding: const EdgeInsets.only(left: 16, right: 16),
+//                           padding: const EdgeInsetsDirectional.only(start: 16, end: 16),
 //                           child: Column(
 //                             children: [
 //                               SizedBox(
@@ -492,7 +492,7 @@
 //                                                     .baseBackground,
 //                                               ),
 //                                               padding:
-//                                                   const EdgeInsets.fromLTRB(
+//                                                   const EdgeInsetsDirectional.fromSTEB(
 //                                                       10, 10, 10, 10),
 //                                               child: Row(
 //                                                 mainAxisAlignment:

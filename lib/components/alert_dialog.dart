@@ -93,7 +93,7 @@ class AmityLoadingDialog {
                   color: Colors.grey.withOpacity(0.6),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsetsDirectional.all(16.0),
                 child: const Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

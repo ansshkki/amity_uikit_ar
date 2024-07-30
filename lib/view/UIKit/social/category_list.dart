@@ -188,9 +188,9 @@ class CategoryWidget extends StatelessWidget {
       color: Colors.transparent,
       elevation: 0,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+        padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
         child: ListTile(
-          contentPadding: const EdgeInsets.all(0),
+          contentPadding: const EdgeInsetsDirectional.all(0),
           onTap: () {
             Provider.of<CategoryVM>(context, listen: false)
                 .setSelectedCategory(category.categoryId!);

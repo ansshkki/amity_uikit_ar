@@ -323,7 +323,7 @@ void _showOptionsBottomSheet(BuildContext context, AmityCommunityMember member,
       context: context,
       builder: (BuildContext bc) {
         return Container(
-          padding: const EdgeInsets.only(top: 20, bottom: 20),
+          padding: const EdgeInsetsDirectional.only(top: 20, bottom: 20),
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(

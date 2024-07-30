@@ -194,7 +194,7 @@ class ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 children: [
                   Container(
-                    margin: const EdgeInsets.only(top: 20, bottom: 20),
+                    margin: const EdgeInsetsDirectional.only(top: 20, bottom: 20),
                     width: double.infinity,
                     alignment: Alignment.center,
                     child: Stack(
@@ -211,11 +211,11 @@ class ProfileScreenState extends State<ProfileScreen> {
                                 context,
                               ).imageState)),
                         ),
-                        Positioned(
-                          right: 0,
+                        PositionedDirectional(
+                          end: 0,
                           bottom: 0,
                           child: Container(
-                            padding: const EdgeInsets.all(5),
+                            padding: const EdgeInsetsDirectional.all(5),
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Color(0xffEBECEF),
@@ -238,11 +238,11 @@ class ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsetsDirectional.all(16.0),
                     child: Column(
                       children: [
                         // Container(
-                        //   padding: const EdgeInsets.fromLTRB(20, 20, 0, 20),
+                        //   padding: const EdgeInsetsDirectional.fromSTEB(20, 20, 0, 20),
                         //   alignment: Alignment.centerLeft,
                         //   color: Colors.grey[200],
                         //   width: double.infinity,
@@ -257,7 +257,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                         // Container(
                         //   color: Colors.white,
                         //   width: double.infinity,
-                        //   padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                        //   padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                         //   child: TextField(
                         //     enabled: false,
                         //     controller:
@@ -293,7 +293,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                         // Container(
                         //   color: Colors.white,
                         //   width: double.infinity,
-                        //   padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                        //   padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                         //   child: TextField(
                         //     controller:
                         //         TextEditingController(text: '+1 9876543210'),
@@ -311,7 +311,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                         // Container(
                         //   color: Colors.white,
                         //   width: double.infinity,
-                        //   padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                        //   padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                         //   child: TextField(
                         //     controller: TextEditingController(
                         //         text: S.of(context).samanthasmithmailcom),
@@ -329,7 +329,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                         // Container(
                         //   color: Colors.white,
                         //   width: double.infinity,
-                        //   padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+                        //   padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                         //   child: TextField(
                         //     controller:
                         //         TextEditingController(text: S.of(context).female),

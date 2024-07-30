@@ -177,7 +177,7 @@ class AmityPostWidgetState extends State<AmityPostWidget> {
     Widget backgroundThumbnail(String fileUrl, int index,
         {BorderRadius? borderRadius}) {
       return Padding(
-        padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsetsDirectional.all(2.0),
         child: Stack(
           children: [
             Container(
@@ -572,9 +572,9 @@ class AmityPostWidgetState extends State<AmityPostWidget> {
     Widget backgroundImage(String fileUrl, int index,
         {BorderRadius? borderRadius}) {
       return Padding(
-        padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsetsDirectional.all(2.0),
         child: Container(
-          padding: const EdgeInsets.all(2.0),
+          padding: const EdgeInsetsDirectional.all(2.0),
           decoration: BoxDecoration(
             borderRadius: borderRadius,
             image: DecorationImage(
@@ -1006,7 +1006,7 @@ String _getFileImage(String filePath) {
 
 Widget _listMediaGrid(List<AmityPost> files) {
   return ListView.builder(
-    padding: EdgeInsets.zero,
+    padding: EdgeInsetsDirectional.zero,
     physics: const NeverScrollableScrollPhysics(),
     itemCount: files.length,
     shrinkWrap: true,
@@ -1023,7 +1023,7 @@ Widget _listMediaGrid(List<AmityPost> files) {
             width: 1.0,
           ),
         ),
-        margin: const EdgeInsets.all(8.0),
+        margin: const EdgeInsetsDirectional.all(8.0),
         child: Stack(
           children: [
             ListTile(
@@ -1032,14 +1032,14 @@ Widget _listMediaGrid(List<AmityPost> files) {
                   files[index].data!.fileInfo.fileUrl!,
                 );
               },
-              contentPadding: const EdgeInsets.symmetric(
+              contentPadding: const EdgeInsetsDirectional.symmetric(
                   vertical: 8, horizontal: 14), // Reduced padding
               tileColor: Colors.white.withOpacity(0.0),
               leading: Container(
                 height: 100, // Reduced height to make it slimmer
                 width: 40, // Added width to align the image
                 alignment:
-                    Alignment.centerLeft, // Center alignment for the image
+                    AlignmentDirectional.centerStart, // Center alignment for the image
                 child: Image(
                   image: AssetImage(fileImage,
                       package: 'amity_uikit_beta_service'),
@@ -1143,7 +1143,7 @@ class _TextPostState extends State<TextPost> {
                 children: [
                   widget.post.type == AmityDataType.TEXT && text.isNotEmpty
                       ? Padding(
-                          padding: const EdgeInsets.only(bottom: 16),
+                          padding: const EdgeInsetsDirectional.only(bottom: 16),
                           child: shouldShorten
                               ? RichText(
                                   text: TextSpan(
@@ -1219,7 +1219,7 @@ class ImagePost extends StatelessWidget {
               },
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(
+                margin: EdgeInsetsDirectional.symmetric(
                     horizontal: imageURLs.length > 1 ? 5.0 : 0.0),
                 decoration: const BoxDecoration(color: Colors.transparent),
                 child: ClipRRect(

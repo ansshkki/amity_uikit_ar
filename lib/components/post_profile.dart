@@ -40,7 +40,7 @@ class CustomListTile extends StatelessWidget {
         ));
       },
       child: Container(
-        padding: const EdgeInsets.only(bottom: 2, top: 2),
+        padding: const EdgeInsetsDirectional.only(bottom: 2, top: 2),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -60,12 +60,12 @@ class CreatePostScreen2State extends State<CreatePostScreen2> {
             child: Container(
               // height: bheight,
               color: Colors.white,
-              padding: const EdgeInsets.all(15),
+              padding: const EdgeInsetsDirectional.all(15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Align(
-                      alignment: Alignment.topLeft,
+                      alignment: AlignmentDirectional.topStart,
                       child: getAvatarImage(Provider.of<AmityVM>(context)
                           .currentamityUser
                           ?.avatarUrl)),
@@ -114,7 +114,7 @@ class CreatePostScreen2State extends State<CreatePostScreen2> {
                                             fit: BoxFit.cover,
                                           ),
                                           Align(
-                                              alignment: Alignment.topRight,
+                                              alignment: AlignmentDirectional.topEnd,
                                               child: GestureDetector(
                                                   onTap: () {
                                                     vm.deleteImageAt(index: i);
@@ -153,8 +153,8 @@ class CreatePostScreen2State extends State<CreatePostScreen2> {
                             color: Colors.grey[200],
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          padding: const EdgeInsets.all(10),
-                          margin: const EdgeInsets.fromLTRB(5, 0, 10, 5),
+                          padding: const EdgeInsetsDirectional.all(10),
+                          margin: const EdgeInsetsDirectional.fromSTEB(5, 0, 10, 5),
                           child: FaIcon(
                             FontAwesomeIcons.video,
                             color: vm.isNotSelectedImageYet()
@@ -174,8 +174,8 @@ class CreatePostScreen2State extends State<CreatePostScreen2> {
                             color: Colors.grey[200],
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          padding: const EdgeInsets.all(10),
-                          margin: const EdgeInsets.fromLTRB(5, 0, 10, 5),
+                          padding: const EdgeInsetsDirectional.all(10),
+                          margin: const EdgeInsetsDirectional.fromSTEB(5, 0, 10, 5),
                           child: Icon(
                             Icons.photo,
                             color: vm.isNotSelectVideoYet()
@@ -194,8 +194,8 @@ class CreatePostScreen2State extends State<CreatePostScreen2> {
                             color: Colors.grey[200],
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          padding: const EdgeInsets.all(10),
-                          margin: const EdgeInsets.fromLTRB(5, 0, 10, 5),
+                          padding: const EdgeInsetsDirectional.all(10),
+                          margin: const EdgeInsetsDirectional.fromSTEB(5, 0, 10, 5),
                           child: Icon(
                             Icons.camera_alt,
                             color: vm.isNotSelectVideoYet()
@@ -235,9 +235,9 @@ class CreatePostScreen2State extends State<CreatePostScreen2> {
                             // Navigator.of(context).pop();
                           },
                           child: Container(
-                            margin: const EdgeInsets.only(top: 15),
+                            margin: const EdgeInsetsDirectional.only(top: 15),
                             alignment: Alignment.center,
-                            padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                            padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 10),
                             decoration: BoxDecoration(
                               color: Provider.of<AmityUIConfiguration>(context)
                                   .primaryColor,

@@ -190,14 +190,14 @@ class RecommendationSection extends StatelessWidget {
     return Consumer<ExplorePageVM>(
       builder: (context, vm, _) {
         return Container(
-          padding: const EdgeInsets.only(bottom: 24),
+          padding: const EdgeInsetsDirectional.only(bottom: 24),
           color:
               Provider.of<AmityUIConfiguration>(context).appColors.baseShade4,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 16, top: 20),
+                padding: const EdgeInsetsDirectional.only(start: 16, top: 20),
                 child: Text(
                   'Recommended for you',
                   style: TextStyle(
@@ -219,7 +219,7 @@ class RecommendationSection extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final community = vm.recommendedCommunities[index];
                     return Padding(
-                      padding: const EdgeInsets.only(left: 8),
+                      padding: const EdgeInsetsDirectional.only(start: 8),
                       child: GestureDetector(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
@@ -237,7 +237,7 @@ class RecommendationSection extends StatelessWidget {
                           child: Container(
                             width: 131,
                             height: 194,
-                            margin: const EdgeInsets.all(12),
+                            margin: const EdgeInsetsDirectional.all(12),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -377,12 +377,12 @@ class TrendingSection extends StatelessWidget {
           color: Provider.of<AmityUIConfiguration>(context)
               .appColors
               .baseBackground,
-          padding: const EdgeInsets.only(),
+          padding: const EdgeInsetsDirectional.only(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 16, top: 20),
+                padding: const EdgeInsetsDirectional.only(start: 16, top: 20),
                 child: Text(
                   'Today\'s Trending',
                   style: TextStyle(
@@ -501,7 +501,7 @@ class CategorySection extends StatelessWidget {
     return Consumer<ExplorePageVM>(
       builder: (context, vm, _) {
         return Container(
-          padding: const EdgeInsets.only(left: 16, top: 20, bottom: 25),
+          padding: const EdgeInsetsDirectional.only(start: 16, top: 20, bottom: 25),
           color: Provider.of<AmityUIConfiguration>(context)
               .appColors
               .baseBackground,
@@ -535,7 +535,7 @@ class CategorySection extends StatelessWidget {
                       );
                     },
                     child: const Padding(
-                      padding: EdgeInsets.only(right: 14.0),
+                      padding: EdgeInsetsDirectional.only(end: 14.0),
                       child: Icon(
                         Icons.chevron_right,
                         size: 18,
@@ -744,7 +744,7 @@ class _CommunityListPageState extends State<CommunityListPage> {
       body: Consumer<ExplorePageVM>(
         builder: (context, vm, _) {
           return ListView.builder(
-            padding: EdgeInsets.zero,
+            padding: EdgeInsetsDirectional.zero,
             itemCount: vm.amityCommunities.length,
             controller: vm.communityScrollcontroller,
             itemBuilder: (context, index) {

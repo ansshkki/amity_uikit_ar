@@ -75,7 +75,7 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(0.0),
+        padding: const EdgeInsetsDirectional.all(0.0),
         child: ListView(
           children: [
             GestureDetector(
@@ -110,7 +110,7 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsetsDirectional.all(8.0),
                     decoration: BoxDecoration(
                       color: Colors.transparent,
                       border: Border.all(color: Colors.white),
@@ -142,7 +142,7 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
             ),
             const SizedBox(height: 16.0),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsetsDirectional.symmetric(horizontal: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -186,7 +186,7 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
                   Column(
                     children: [
                       ListTile(
-                        contentPadding: EdgeInsets.zero,
+                        contentPadding: EdgeInsetsDirectional.zero,
                         leading: Container(
                           height: 40,
                           width: 40,
@@ -211,7 +211,7 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
                         height: 10,
                       ),
                       ListTile(
-                        contentPadding: EdgeInsets.zero,
+                        contentPadding: EdgeInsetsDirectional.zero,
                         leading: Container(
                           height: 40,
                           width: 40,
@@ -238,7 +238,7 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
                   _isPublic
                       ? Container()
                       : ListTile(
-                          contentPadding: EdgeInsets.zero,
+                          contentPadding: EdgeInsetsDirectional.zero,
                           title: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -281,7 +281,7 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
             Center(
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    const EdgeInsetsDirectional.symmetric(horizontal: 16, vertical: 10),
                 child: ElevatedButton(
                   onPressed: () async {
                     // Collect necessary data
@@ -411,7 +411,7 @@ class _CreateCommunityPageState extends State<CreateCommunityPage> {
             ),
             showCount
                 ? Container(
-                    padding: const EdgeInsets.symmetric(
+                    padding: const EdgeInsetsDirectional.symmetric(
                         vertical: 8.0), // Adding vertical padding for symmetry
                     child: Text(
                       '${controller.text.length}/$maxCharacters',

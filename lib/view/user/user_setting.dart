@@ -49,7 +49,7 @@ class UserSettingPage extends StatelessWidget {
             body: ListView(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsetsDirectional.all(16.0),
                   child: Text("Basic info",
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
@@ -62,7 +62,7 @@ class UserSettingPage extends StatelessWidget {
                     ? ListTile(
                         trailing: const Icon(Icons.chevron_right),
                         leading: Container(
-                            padding: const EdgeInsets.all(5),
+                            padding: const EdgeInsetsDirectional.all(5),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
                                   4), // Adjust radius to your need
@@ -98,7 +98,7 @@ class UserSettingPage extends StatelessWidget {
                         : snapshot.data!.status == AmityFollowStatus.NONE
                             ? ListTile(
                                 leading: Container(
-                                    padding: const EdgeInsets.all(5),
+                                    padding: const EdgeInsetsDirectional.all(5),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(
                                           4), // Adjust radius to your need
@@ -127,7 +127,7 @@ class UserSettingPage extends StatelessWidget {
                                 })
                             : ListTile(
                                 leading: Container(
-                                    padding: const EdgeInsets.all(5),
+                                    padding: const EdgeInsetsDirectional.all(5),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(
                                           4), // Adjust radius to your need
@@ -163,7 +163,7 @@ class UserSettingPage extends StatelessWidget {
                     : amityUser.isFlaggedByMe
                         ? ListTile(
                             leading: Container(
-                                padding: const EdgeInsets.all(5),
+                                padding: const EdgeInsetsDirectional.all(5),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
                                       4), // Adjust radius to your need
@@ -190,7 +190,7 @@ class UserSettingPage extends StatelessWidget {
                             })
                         : ListTile(
                             leading: Container(
-                                padding: const EdgeInsets.all(5),
+                                padding: const EdgeInsetsDirectional.all(5),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(
                                       4), // Adjust radius to your need
@@ -224,7 +224,7 @@ class UserSettingPage extends StatelessWidget {
                     ? const SizedBox()
                     : ListTile(
                         leading: Container(
-                            padding: const EdgeInsets.all(5),
+                            padding: const EdgeInsetsDirectional.all(5),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(
                                   4), // Adjust radius to your need

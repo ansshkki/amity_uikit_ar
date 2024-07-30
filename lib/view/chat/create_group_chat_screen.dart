@@ -96,7 +96,7 @@ class CreateChatGroupState extends State<CreateChatGroup> {
               child: Column(
             children: [
               Container(
-                margin: const EdgeInsets.only(top: 20, bottom: 20),
+                margin: const EdgeInsetsDirectional.only(top: 20, bottom: 20),
                 width: double.infinity,
                 alignment: Alignment.center,
                 child: Stack(
@@ -122,11 +122,11 @@ class CreateChatGroupState extends State<CreateChatGroup> {
                         ),
                       ),
                     ),
-                    Positioned(
-                      right: 0,
+                    PositionedDirectional(
+                      end: 0,
                       top: 7,
                       child: Container(
-                        padding: const EdgeInsets.all(5),
+                        padding: const EdgeInsetsDirectional.all(5),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Provider.of<AmityUIConfiguration>(context)
@@ -142,7 +142,7 @@ class CreateChatGroupState extends State<CreateChatGroup> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 16, 16, 0),
                 child: TextField(
                   onChanged: (value) {
                     setState(() {

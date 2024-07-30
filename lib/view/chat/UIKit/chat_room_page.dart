@@ -48,7 +48,7 @@ class _ChatRoomPageState extends State<ChatRoomPage> {
                   size: 30)),
           Container(
             height: 45,
-            margin: const EdgeInsets.symmetric(vertical: 4),
+            margin: const EdgeInsetsDirectional.symmetric(vertical: 4),
             decoration: const BoxDecoration(shape: BoxShape.circle),
           ),
           const SizedBox(width: 10),
@@ -133,7 +133,7 @@ class ChatTextFieldComponent extends StatelessWidget {
           border: Border(top: BorderSide(color: theme.highlightColor))),
       height: textfielHeight,
       width: mediaQuery.size.width,
-      padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+      padding: const EdgeInsetsDirectional.fromSTEB(10, 0, 10, 0),
       child: Row(
         children: [
           // SizedBox(
@@ -214,7 +214,7 @@ class MessageComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ChatRoomVM>(builder: (context, vm, _) {
       return Container(
-        padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+        padding: const EdgeInsetsDirectional.fromSTEB(10, 10, 10, 0),
         child: ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
@@ -241,8 +241,8 @@ class MessageComponent extends StatelessWidget {
                       ),
                     vm.amitymessage[index].type != AmityMessageDataType.TEXT
                         ? Container(
-                            margin: const EdgeInsets.fromLTRB(10, 4, 10, 4),
-                            padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                            margin: const EdgeInsetsDirectional.fromSTEB(10, 4, 10, 4),
+                            padding: const EdgeInsetsDirectional.fromSTEB(10, 5, 10, 5),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: Colors.red),
@@ -253,8 +253,8 @@ class MessageComponent extends StatelessWidget {
                             child: Container(
                               constraints: BoxConstraints(
                                   maxWidth: mediaQuery.size.width * 0.7),
-                              margin: const EdgeInsets.fromLTRB(10, 4, 10, 4),
-                              padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
+                              margin: const EdgeInsetsDirectional.fromSTEB(10, 4, 10, 4),
+                              padding: const EdgeInsetsDirectional.fromSTEB(10, 5, 10, 5),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
                                 color: isSendbyCurrentUser

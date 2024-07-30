@@ -43,7 +43,7 @@ class CreatePostScreenState extends State<CreatePostScreen> {
         child: Container(
           height: bheight,
           color: Colors.white,
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsetsDirectional.all(15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -78,9 +78,9 @@ class CreatePostScreenState extends State<CreatePostScreen> {
                       builder: (context) => const CreatePostScreen()));
                 },
                 child: Container(
-                  margin: const EdgeInsets.only(top: 20),
+                  margin: const EdgeInsetsDirectional.only(top: 20),
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 16),
                   decoration: BoxDecoration(
                     color:
                         Provider.of<AmityUIConfiguration>(context).primaryColor,

@@ -406,18 +406,18 @@ class _PostWidgetState
               }
             },
             child: Container(
-              margin: const EdgeInsets.only(bottom: 0),
+              margin: const EdgeInsetsDirectional.only(bottom: 0),
               color: Provider.of<AmityUIConfiguration>(context)
                   .appColors
                   .baseBackground,
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
                 child: Column(
                   children: [
                     Container(
                       child: ListTile(
-                        contentPadding: const EdgeInsets.only(
-                            left: 0, top: 0, right: 0, bottom: 0),
+                        contentPadding: const EdgeInsetsDirectional.only(
+                            start: 0, top: 0, end: 0, bottom: 0),
                         leading: FadeAnimation(
                             child: GestureDetector(
                                 onTap: () {
@@ -602,8 +602,8 @@ class _PostWidgetState
                         ? const SizedBox()
                         : Container(
                             child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 16, bottom: 16, left: 0, right: 0),
+                                padding: const EdgeInsetsDirectional.only(
+                                    top: 16, bottom: 16, start: 0, end: 0),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -985,7 +985,7 @@ class _LatestCommentComponentState extends State<LatestCommentComponent> {
   Widget build(BuildContext context) {
     return Consumer<PostVM>(builder: (context, vm, _) {
       return ListView.builder(
-        padding: EdgeInsets.zero,
+        padding: EdgeInsetsDirectional.zero,
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         itemCount: widget.comments.length,
@@ -1006,7 +1006,7 @@ class _LatestCommentComponentState extends State<LatestCommentComponent> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsets.all(9.0),
+                                padding: EdgeInsetsDirectional.all(9.0),
                                 child: Row(
                                   children: [
                                     SizedBox(
@@ -1043,14 +1043,14 @@ class _LatestCommentComponentState extends State<LatestCommentComponent> {
                                       .appColors
                                       .userProfileBGColor
                                   : Colors.white,
-                              padding: const EdgeInsets.symmetric(
+                              padding: const EdgeInsetsDirectional.symmetric(
                                   vertical: 0, horizontal: 0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Container(
-                                    padding: const EdgeInsets.only(
-                                        top: 14, left: 16, bottom: 8),
+                                    padding: const EdgeInsetsDirectional.only(
+                                        top: 14, start: 16, bottom: 8),
                                     child: CustomListTile(
                                         avatarUrl: comments.user!.avatarUrl,
                                         displayName:
@@ -1061,9 +1061,9 @@ class _LatestCommentComponentState extends State<LatestCommentComponent> {
                                         user: comments.user!),
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.all(10.0),
-                                    margin: const EdgeInsets.only(
-                                        left: 70.0, right: 18),
+                                    padding: const EdgeInsetsDirectional.all(10.0),
+                                    margin: const EdgeInsetsDirectional.only(
+                                        start: 70.0, end: 18),
                                     decoration: BoxDecoration(
                                       color: Provider.of<AmityUIConfiguration>(
                                               context)
@@ -1127,7 +1127,7 @@ class CommentActionComponent extends StatelessWidget {
         builder: (context, snapshot) {
           var comments = snapshot.data!;
           return Padding(
-            padding: const EdgeInsets.only(left: 70.0, top: 5.0),
+            padding: const EdgeInsetsDirectional.only(start: 70.0, top: 5.0),
             child: Row(
               children: [
                 // Like Button

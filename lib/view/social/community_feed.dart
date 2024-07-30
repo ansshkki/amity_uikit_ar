@@ -117,7 +117,7 @@ class CommunityScreenState extends State<CommunityScreen> {
               height: 20,
               width: 1,
 
-              margin: const EdgeInsets.symmetric(horizontal: 8),
+              margin: const EdgeInsetsDirectional.symmetric(horizontal: 8),
             ),
             GestureDetector(
               onTap: () {},
@@ -173,7 +173,7 @@ class CommunityScreenState extends State<CommunityScreen> {
                           AmityFeedType.REVIEWING);
                 },
                 child: ListView.builder(
-                  padding: const EdgeInsets.only(top: 0),
+                  padding: const EdgeInsetsDirectional.only(top: 0),
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: vm.getCommunityPosts().length,
@@ -445,7 +445,7 @@ class _EditProfileButtonState extends State<EditProfileButton> {
                   }
                 },
                 child: Container(
-                  padding: const EdgeInsets.symmetric(
+                  padding: const EdgeInsetsDirectional.symmetric(
                       horizontal: 20.0, vertical: 10.0),
                   decoration: BoxDecoration(
                     color:
@@ -484,7 +484,7 @@ class _EditProfileButtonState extends State<EditProfileButton> {
             },
             child: Container(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                  const EdgeInsetsDirectional.symmetric(horizontal: 20.0, vertical: 10.0),
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 border: Border.all(
@@ -538,7 +538,7 @@ class PedindingButton extends StatelessWidget {
                 )));
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+        padding: const EdgeInsetsDirectional.symmetric(horizontal: 20.0, vertical: 10.0),
         decoration: BoxDecoration(
           color:
               Provider.of<AmityUIConfiguration>(context).appColors.baseShade4,
@@ -668,7 +668,7 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
               height: 20,
               width: 1,
 
-              margin: const EdgeInsets.symmetric(horizontal: 8),
+              margin: const EdgeInsetsDirectional.symmetric(horizontal: 8),
             ),
             GestureDetector(
               onTap: () {
@@ -750,7 +750,7 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
               ],
             ),
             Container(
-              padding: const EdgeInsets.only(left: 16),
+              padding: const EdgeInsetsDirectional.only(start: 16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -808,7 +808,7 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
           ],
         ),
         Container(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsetsDirectional.all(12.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
