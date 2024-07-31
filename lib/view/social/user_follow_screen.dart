@@ -54,11 +54,11 @@ class _FollowScreenState extends State<FollowScreen> {
               labelColor: const Color(0xFF1054DE),
               unselectedLabelColor: Colors.black,
               indicatorColor: const Color(0xFF1054DE),
-              labelStyle: const TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'SF Pro Text',
-              ),
+              // labelStyle: const TextStyle(
+              //   fontSize: 17,
+              //   fontWeight: FontWeight.w600,
+              //   fontFamily: 'SF Pro Text',
+              // ),
               tabs: const [
                 Tab(
                   child: Text(

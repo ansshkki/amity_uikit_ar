@@ -1018,11 +1018,11 @@ class Header extends StatelessWidget {
                             Provider.of<AmityUIConfiguration>(context)
                                 .appColors
                                 .primary,
-                        labelStyle: const TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'SF Pro Text',
-                        ),
+                        // labelStyle: const TextStyle(
+                        //   fontSize: 17,
+                        //   fontWeight: FontWeight.w600,
+                        //   fontFamily: 'SF Pro Text',
+                        // ),
                         tabs: const [
                           Tab(text: "الجدول الزمني"), //Timeline
                           Tab(text: "المعرض"), //Gallery

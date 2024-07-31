@@ -61,7 +61,7 @@ class _CommunityPageState extends State<CommunityPage> {
           // centerTitle: false,
           automaticallyImplyLeading: false,
           title: Text(
-            "مجتمع", //Community
+            "المجتمع", //Community
             style: Provider.of<AmityUIConfiguration>(context)
                 .titleTextStyle
                 .copyWith(
@@ -104,14 +104,14 @@ class _CommunityPageState extends State<CommunityPage> {
                       indicatorColor: Provider.of<AmityUIConfiguration>(context)
                           .appColors
                           .primary,
-                      labelStyle: const TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: 'SF Pro Text',
-                      ),
+                      // labelStyle: const TextStyle(
+                      //   fontSize: 17,
+                      //   fontWeight: FontWeight.w600,
+                      //   fontFamily: 'SF Pro Text',
+                      // ),
                       tabs: const [
                         Tab(
-                          text: "الرأي عن الاخبار", //Newsfeed
+                          text: "آخر الأخبار", // Newsfeed
                         ),
                         Tab(text: "استكشاف"), //Explore
                       ],
