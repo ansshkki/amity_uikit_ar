@@ -146,6 +146,7 @@ class _CommunityPageState extends State<CommunityPage> {
               ),
               body: GlobalFeedScreen(
                 isShowMyCommunity: widget.isShowMyCommunity,
+                canCreateCommunity: false,
               ),
             ),
             RefreshIndicator(
