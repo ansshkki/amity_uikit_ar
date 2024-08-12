@@ -45,7 +45,7 @@ class _ImagePostViewerState extends State<ImagePostViewer> {
           ),
           centerTitle: true,
           leading: Container(
-            padding: EdgeInsets.only(left: 16),
+            padding: EdgeInsetsDirectional.only(start: 16),
             child:IconButton(
               icon: SvgPicture.asset(
                 'assets/Icons/amity_ic_close_viewer.svg',

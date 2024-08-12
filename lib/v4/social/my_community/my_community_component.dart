@@ -227,7 +227,7 @@ class AmityMyCommunitiesComponent extends NewBaseComponent {
             width: 64,
             height: 56,
             padding:
-                const EdgeInsets.only(top: 8, left: 16, right: 8, bottom: 8),
+                const EdgeInsetsDirectional.only(top: 8, start: 16, end: 8, bottom: 8),
             child: const SkeletonImage(
               height: 40,
               width: 40,

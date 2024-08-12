@@ -43,7 +43,7 @@ class PostItemBottom extends NewBaseComponent {
         ),
         Container(
           width: double.infinity,
-          padding: const EdgeInsets.only(left: 16, top: 0, right: 16, bottom: 0),
+          padding: const EdgeInsetsDirectional.only(start: 16, top: 0, end: 16, bottom: 0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,

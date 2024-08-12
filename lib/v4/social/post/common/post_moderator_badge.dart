@@ -8,7 +8,7 @@ class CommunityModeratorBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 18,
-      padding: const EdgeInsets.only(left: 4, right: 6),
+      padding: const EdgeInsetsDirectional.only(start: 4, end: 6),
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
         color: Color(0xFFD9E5FC),

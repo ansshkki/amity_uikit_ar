@@ -38,7 +38,7 @@ class AmityPostHeader extends StatelessWidget {
             width: 48,
             height: 48,
             padding:
-                const EdgeInsets.only(top: 8, left: 12, right: 4, bottom: 8),
+                const EdgeInsetsDirectional.only(top: 8, start: 12, end: 4, bottom: 8),
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(color: theme.backgroundColor),
             child: SizedBox(
@@ -60,7 +60,7 @@ class AmityPostHeader extends StatelessWidget {
               width: 44,
               height: double.infinity,
               padding:
-                  const EdgeInsets.only(top: 8, left: 4, right: 16, bottom: 8),
+                  const EdgeInsetsDirectional.only(top: 8, start: 4, end: 16, bottom: 8),
               child: isShowOption ? getPostOptionIcon() : Container(),
             ),
           ),

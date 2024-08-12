@@ -219,7 +219,7 @@ class PostItem extends NewBaseComponent {
                   height: 100, // Reduced height to make it slimmer
                   width: 40, // Added width to align the image
                   alignment:
-                      Alignment.centerLeft, // Center alignment for the image
+                      AlignmentDirectional.centerStart, // Center alignment for the image
                   child: Image(
                     image: AssetImage(fileImage,
                         package: 'amity_uikit_beta_service'),

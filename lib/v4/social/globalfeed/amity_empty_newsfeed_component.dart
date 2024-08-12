@@ -80,10 +80,10 @@ class AmityEmptyNewsFeedComponent extends BaseElement {
                         },
                         child: Container(
                           width: 220,
-                          padding: const EdgeInsets.only(
+                          padding: const EdgeInsetsDirectional.only(
                             top: 10,
-                            left: 12,
-                            right: 16,
+                            start: 12,
+                            end: 16,
                             bottom: 10,
                           ),
                           decoration: ShapeDecoration(

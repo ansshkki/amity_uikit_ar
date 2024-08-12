@@ -90,8 +90,8 @@ class LoadingSkeleton extends StatelessWidget {
                 Container(
                   width: 48,
                   height: 60,
-                  padding: const EdgeInsets.only(
-                      top: 12, left: 0, right: 8, bottom: 8),
+                  padding: const EdgeInsetsDirectional.only(
+                      top: 12, start: 0, end: 8, bottom: 8),
                   child: const SkeletonImage(
                     height: 40,
                     width: 40,

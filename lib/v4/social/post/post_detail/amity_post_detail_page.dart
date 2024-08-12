@@ -91,7 +91,7 @@ class AmityPostDetailPage extends NewBasePage {
                   ),
                 ),
                 SliverPadding(
-                  padding: const EdgeInsets.only(left: 12, right: 16, top: 7),
+                  padding: const EdgeInsetsDirectional.only(start: 12, end: 16, top: 7),
                   sliver: AmityCommentTrayComponent(
                     referenceId: postId,
                     referenceType: AmityCommentReferenceType.POST,
@@ -172,8 +172,8 @@ class AmityPostDetailPage extends NewBasePage {
                     Container(
                       width: 48,
                       height: 60,
-                      padding: const EdgeInsets.only(
-                          top: 12, left: 0, right: 8, bottom: 8),
+                      padding: const EdgeInsetsDirectional.only(
+                          top: 12, start: 0, end: 8, bottom: 8),
                       child: const SkeletonImage(
                         height: 40,
                         width: 40,

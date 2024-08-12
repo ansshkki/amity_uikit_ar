@@ -105,8 +105,8 @@ class _AmityCommentCreatorInternalState
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Container(
-                padding: const EdgeInsets.only(
-                    top: 0, left: 12, right: 8, bottom: 8),
+                padding: const EdgeInsetsDirectional.only(
+                    top: 0, start: 12, end: 8, bottom: 8),
                 child: SizedBox(
                   width: 32,
                   height: 32,
@@ -123,7 +123,7 @@ class _AmityCommentCreatorInternalState
                 child: Container(
                   constraints: const BoxConstraints(maxHeight: 200),
                   height: state.currentHeight,
-                  alignment: Alignment.centerLeft,
+                  alignment: AlignmentDirectional.centerStart,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
                   decoration: ShapeDecoration(
@@ -179,7 +179,7 @@ class _AmityCommentCreatorInternalState
                 },
                 child: Container(
                   padding:
-                      const EdgeInsets.only(bottom: 12, right: 12, left: 8),
+                      const EdgeInsetsDirectional.only(bottom: 12, end: 12, start: 8),
                   clipBehavior: Clip.antiAlias,
                   decoration:
                       BoxDecoration(color: widget.theme.backgroundColor),
@@ -214,7 +214,7 @@ class _AmityCommentCreatorInternalState
     return Container(
       width: double.infinity,
       height: 40,
-      padding: const EdgeInsets.only(top: 10, left: 16, right: 12, bottom: 10),
+      padding: const EdgeInsetsDirectional.only(top: 10, start: 16, end: 12, bottom: 10),
       decoration: BoxDecoration(color: widget.theme.baseColorShade4),
       child: Row(
         mainAxisSize: MainAxisSize.min,

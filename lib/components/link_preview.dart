@@ -78,7 +78,7 @@ class _CustomLinkPreviewState extends State<CustomLinkPreview> {
                             fit: BoxFit.cover,
                           ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+                          padding: const EdgeInsetsDirectional.only(start: 8.0, top: 8.0),
                           child: Text(
                             _displayUrl,
                             style: style.copyWith(
@@ -89,8 +89,8 @@ class _CustomLinkPreviewState extends State<CustomLinkPreview> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(
-                              left: 8.0, bottom: 16.0, top: 8),
+                          padding: const EdgeInsetsDirectional.only(
+                              start: 8.0, bottom: 16.0, top: 8),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

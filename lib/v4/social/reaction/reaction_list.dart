@@ -159,7 +159,7 @@ class AmityReactionListComponent extends NewBaseComponent {
         fontWeight: FontWeight.w600);
     return Container(
       color: theme.backgroundColor,
-      alignment: Alignment.centerLeft,
+      alignment: AlignmentDirectional.centerStart,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -175,7 +175,7 @@ class AmityReactionListComponent extends NewBaseComponent {
             double textWidth = textPainter.width;
             return GestureDetector(
               child: Padding(
-                padding: const EdgeInsets.only(left: 16, top: 12),
+                padding: const EdgeInsetsDirectional.only(start: 16, top: 12),
                 child: Column(
                   children: [
                     Row(
@@ -310,7 +310,7 @@ class AmityReactionListComponent extends NewBaseComponent {
               width: 64,
               height: 56,
               padding:
-                  const EdgeInsets.only(top: 8, left: 16, right: 8, bottom: 8),
+                  const EdgeInsetsDirectional.only(top: 8, start: 16, end: 8, bottom: 8),
               child: const SkeletonImage(
                 height: 40,
                 width: 40,

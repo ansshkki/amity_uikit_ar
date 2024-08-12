@@ -110,7 +110,7 @@ class AmityToast extends BaseElement {
             ),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.only(top: 18, right: 16, bottom: 18),
+                padding: const EdgeInsetsDirectional.only(top: 18, end: 16, bottom: 18),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
