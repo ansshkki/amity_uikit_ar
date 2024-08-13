@@ -251,14 +251,7 @@ class AmityUIKitProvider extends StatelessWidget {
           ],
         ),
       ],
-      child: Builder(
-        builder: (context) => MaterialApp(
-          theme: ThemeData(),
-          debugShowCheckedModeBanner: false,
-          navigatorKey: NavigationService.navigatorKey,
-          home: child,
-        ),
-      ),
+      child: child,
     );
   }
 }

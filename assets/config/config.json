@@ -2,8 +2,8 @@
     "preferred_theme": "default",
     "theme": {
         "light": {
-            "primary_color": "#1054DE",
-            "secondary_color": "#292B32",
+            "primary_color": "#FC2C86",
+            "secondary_color": "#5AB2A3",
             "base_color": "#292B32",
             "base_shade1_color": "#636878",
             "base_shade2_color": "#898E9E",
@@ -14,8 +14,8 @@
             "base_inverse_color": "#000000"
         },
         "dark": {
-            "primary_color": "#1054DE",
-            "secondary_color": "#292B32",
+            "primary_color": "#FC2C86",
+            "secondary_color": "#5AB2A3",
             "base_color": "#EBECEF",
             "base_shade1_color": "#A5A9B5",
             "base_shade2_color": "#6E7487",
