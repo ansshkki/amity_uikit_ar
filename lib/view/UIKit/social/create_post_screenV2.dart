@@ -1,8 +1,7 @@
 import 'package:amity_sdk/amity_sdk.dart';
 import 'package:amity_uikit_beta_service/components/alert_dialog.dart';
 import 'package:amity_uikit_beta_service/view/UIKit/social/community_setting/posts/post_cpmponent.dart';
-import 'package:amity_uikit_beta_service/viewmodel/community_feed_viewmodel.dart';
-import 'package:amity_uikit_beta_service/viewmodel/community_member_viewmodel.dart';
+import 'package:amity_uikit_beta_service/view/UIKit/social/post_target_page.dart';
 import 'package:amity_uikit_beta_service/viewmodel/configuration_viewmodel.dart';
 import 'package:amity_uikit_beta_service/viewmodel/create_postV2_viewmodel.dart';
 // import 'package:amity_uikit_beta_service/viewmodel/create_post_viewmodel.dart';
@@ -11,17 +10,21 @@ import 'package:amity_uikit_beta_service/viewmodel/create_postV2_viewmodel.dart'
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../viewmodel/community_feed_viewmodel.dart';
+import '../../../viewmodel/community_member_viewmodel.dart';
 import '../../social/global_feed.dart';
 
 class AmityCreatePostV2Screen extends StatefulWidget {
   final AmityCommunity? community;
-  final AmityUser? amityUser;
+
+  // final AmityUser? amityUser;
   final bool isFromPostToPage;
   final FeedType? feedType;
+
   const AmityCreatePostV2Screen(
       {super.key,
       this.community,
-      this.amityUser,
+      // this.amityUser,
       this.isFromPostToPage = false,
       this.feedType});
 
@@ -31,10 +34,11 @@ class AmityCreatePostV2Screen extends StatefulWidget {
 }
 
 class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
-  bool hasContent = true;
+  AmityCommunity? community;
 
   @override
   void initState() {
+    community = widget.community;
     Provider.of<CreatePostVMV2>(context, listen: false).inits();
 
     super.initState();
@@ -51,10 +55,9 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
+          centerTitle: false,
           title: Text(
-            widget.community != null
-                ? widget.community?.displayName ?? "مجتمع" //Community
-                : "رأيي", //My Feed
+            "منشور جديد", //My Feed
             style: Provider.of<AmityUIConfiguration>(context)
                 .titleTextStyle
                 .copyWith(
@@ -62,95 +65,101 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                         .appColors
                         .base),
           ),
-          leading: IconButton(
-            icon: Icon(Icons.chevron_left,
-                color:
-                    Provider.of<AmityUIConfiguration>(context).appColors.base),
-            onPressed: () {
-              if (hasContent) {
-                ConfirmationDialog().show(
-                  context: context,
-                  title: 'تجاهل المنشور ؟', //Discard Post?
-                  detailText: 'هل تريد تجاهل منشورك ؟', //Do you want to discard your post?
-                  leftButtonText: 'إلغاء', //Cancel
-                  rightButtonText: 'تجاهل', //Discard
-                  onConfirm: () {
-                    Navigator.of(context).pop();
-                  },
-                );
-              } else {
-                Navigator.of(context).pop();
-              }
-            },
-          ),
+          automaticallyImplyLeading: false,
           actions: [
-            TextButton(
-              onPressed: hasContent
-                  ? () async {
-                      if (vm.isUploadComplete) {
-                        if (widget.community == null) {
-                          //creat post in user Timeline
-                          await vm.createPost(context,
-                              callback: (isSuccess, error) {
-                            if (isSuccess) {
-                              Navigator.of(context).pop();
-                              if (widget.isFromPostToPage) {
-                                Navigator.of(context).pop();
-                              }
-                            } else {}
-                          });
-                        } else {
-                          //create post in Community
-                          await vm.createPost(context,
-                              communityId: widget.community?.communityId!,
-                              callback: (isSuccess, error) async {
-                            if (isSuccess) {
-                              var roleVM = Provider.of<MemberManagementVM>(
-                                  context,
-                                  listen: false);
-                              roleVM.checkCurrentUserRole(
-                                  widget.community!.communityId!);
-
-                              if (widget.community!.isPostReviewEnabled!) {
-                                if (!widget.community!.hasPermission(
-                                    AmityPermission.REVIEW_COMMUNITY_POST)) {
-                                  await AmityDialog().showAlertErrorDialog(
-                                      title: "المنشورات المرسلة", //Post submitted
-                                      message:
-                                          "لقد تم إرسال منشورك إلى قائمة الانتظار. سيتم مراجعتها بواسطة مشرف المجتمع"); //Your post has been submitted to the pending list. It will be reviewed by community moderator
-                                }
-                              }
-                              Navigator.of(context).pop();
-                              if (widget.isFromPostToPage) {
-                                Navigator.of(context).pop();
-                              }
-                              if (widget.community!.isPostReviewEnabled!) {
-                                Provider.of<CommuFeedVM>(context, listen: false)
-                                    .initAmityPendingCommunityFeed(
-                                        widget.community!.communityId!,
-                                        AmityFeedType.REVIEWING);
-                              }
-
-                              // Navigator.of(context).push(MaterialPageRoute(
-                              //     builder: (context) => ChangeNotifierProvider(
-                              //           create: (context) => CommuFeedVM(),
-                              //           child: CommunityScreen(
-                              //             isFromFeed: true,
-                              //             community: widget.community!,
-                              //           ),
-                              //         )));
-                            }
-                          });
-                        }
-                      }
-                    }
-                  : null,
-              child: Text("المنشور", //Post
-                  style: TextStyle(
-                      color: vm.isPostValid
-                          ? Provider.of<AmityUIConfiguration>(context)
-                              .primaryColor
-                          : Colors.grey)),
+            // TextButton(
+            //   onPressed: hasContent
+            //       ? () async {
+            //           if (vm.isUploadComplete) {
+            //             if (widget.community == null) {
+            //               //creat post in user Timeline
+            //               await vm.createPost(context,
+            //                   callback: (isSuccess, error) {
+            //                 if (isSuccess) {
+            //                   Navigator.of(context).pop();
+            //                   if (widget.isFromPostToPage) {
+            //                     Navigator.of(context).pop();
+            //                   }
+            //                 } else {}
+            //               });
+            //             } else {
+            //               //create post in Community
+            //               await vm.createPost(context,
+            //                   communityId: widget.community?.communityId!,
+            //                   callback: (isSuccess, error) async {
+            //                 if (isSuccess) {
+            //                   var roleVM = Provider.of<MemberManagementVM>(
+            //                       context,
+            //                       listen: false);
+            //                   roleVM.checkCurrentUserRole(
+            //                       widget.community!.communityId!);
+            //
+            //                   if (widget.community!.isPostReviewEnabled!) {
+            //                     if (!widget.community!.hasPermission(
+            //                         AmityPermission.REVIEW_COMMUNITY_POST)) {
+            //                       await AmityDialog().showAlertErrorDialog(
+            //                           title: "تم تسجيل المنشور", //Post submitted
+            //                           message:
+            //                               "لقد تم إرسال منشورك إلى قائمة الانتظار. سيتم مراجعتها بواسطة مشرف المجتمع"); //Your post has been submitted to the pending list. It will be reviewed by community moderator
+            //                     }
+            //                   }
+            //                   Navigator.of(context).pop();
+            //                   if (widget.isFromPostToPage) {
+            //                     Navigator.of(context).pop();
+            //                   }
+            //                   if (widget.community!.isPostReviewEnabled!) {
+            //                     Provider.of<CommuFeedVM>(context, listen: false)
+            //                         .initAmityPendingCommunityFeed(
+            //                             widget.community!.communityId!,
+            //                             AmityFeedType.REVIEWING);
+            //                   }
+            //
+            //                   // Navigator.of(context).push(MaterialPageRoute(
+            //                   //     builder: (context) => ChangeNotifierProvider(
+            //                   //           create: (context) => CommuFeedVM(),
+            //                   //           child: CommunityScreen(
+            //                   //             isFromFeed: true,
+            //                   //             community: widget.community!,
+            //                   //           ),
+            //                   //         )));
+            //                 }
+            //               });
+            //             }
+            //           }
+            //         }
+            //       : null,
+            //   child: Text("نشر", //Post
+            //       style: TextStyle(
+            //           color: vm.isPostValid
+            //               ? Provider.of<AmityUIConfiguration>(context)
+            //                   .primaryColor
+            //               : Colors.grey)),
+            // ),
+            IconButton(
+              icon: Icon(Icons.close,
+                  color: Provider.of<AmityUIConfiguration>(context)
+                      .appColors
+                      .base),
+              onPressed: () {
+                if (vm.isPostValid) {
+                  ConfirmationDialog().show(
+                    context: context,
+                    title: 'تجاهل المنشور؟',
+                    //Discard Post?
+                    detailText: 'هل تريد تجاهل منشورك؟',
+                    //Do you want to discard your post?
+                    leftButtonText: 'إلغاء',
+                    //Cancel
+                    rightButtonText: 'تجاهل',
+                    //Discard
+                    onConfirm: () {
+                      Navigator.of(context).pop();
+                    },
+                  );
+                } else {
+                  Navigator.of(context).pop();
+                }
+              },
             ),
           ],
         ),
@@ -174,7 +183,8 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                           maxLines: null,
                           decoration: InputDecoration(
                             border: InputBorder.none,
-                            hintText: "أكتب شيء لنشره", //Write something to post
+                            hintText: "اكتب شيئاً لنشره",
+                            //Write something to post
                             hintStyle: TextStyle(
                                 color:
                                     Provider.of<AmityUIConfiguration>(context)
@@ -193,16 +203,54 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                 ),
               ),
               const Divider(),
+              InkWell(
+                onTap: () async {
+                  final community = await showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: Radius.circular(12),
+                      ),
+                    ),
+                    clipBehavior: Clip.hardEdge,
+                    builder: (context) => FractionallySizedBox(
+                      heightFactor: 0.8,
+                      child: PostToPage(),
+                    ),
+                  );
+                  if (community is AmityCommunity?) {
+                    setState(() {
+                      this.community = community;
+                    });
+                  }
+                },
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          "النشر إلى: ${community?.displayName ?? "صفحتي الشخصية"}",
+                        ),
+                      ),
+                      Icon(Icons.keyboard_arrow_down),
+                    ],
+                  ),
+                ),
+              ),
+              const Divider(),
               Padding(
-                padding: const EdgeInsetsDirectional.only(top: 16, bottom: 16),
+                padding: const EdgeInsetsDirectional.symmetric(horizontal: 16, vertical: 8),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     _iconButton(
                       Icons.camera_alt_outlined,
                       isEnable:
                           vm.availableFileSelectionOptions()[MyFileType.image]!,
-                      label: "صورة", //Photo
+                      label: "كاميرا",
+                      //Photo
                       // debugingText:
                       //     "${vm2.isNotSelectVideoYet()}&& ${vm2.isNotSelectedFileYet()}",
                       onTap: () {
@@ -236,14 +284,86 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                         _handleFileTap(context);
                       },
                     ),
-                    _iconButton(
-                      Icons.more_horiz,
-                      isEnable: true,
-                      label: "المزيد", //More
-                      onTap: () {
-                        // TODO: Implement more options logic
-                        _showMoreOptions(context);
-                      },
+                    // _iconButton(
+                    //   Icons.more_horiz,
+                    //   isEnable: true,
+                    //   label: "المزيد", //More
+                    //   onTap: () {
+                    //     // TODO: Implement more options logic
+                    //     _showMoreOptions(context);
+                    //   },
+                    // ),
+                    Spacer(),
+                    ElevatedButton(
+                      onPressed: vm.isPostValid
+                          ? () async {
+                              if (vm.isUploadComplete) {
+                                if (community == null) {
+                                  //creat post in user Timeline
+                                  await vm.createPost(context,
+                                      callback: (isSuccess, error) {
+                                    if (isSuccess) {
+                                      Navigator.of(context).pop();
+                                      if (widget.isFromPostToPage) {
+                                        Navigator.of(context).pop();
+                                      }
+                                    } else {}
+                                  });
+                                } else {
+                                  //create post in Community
+                                  await vm.createPost(context,
+                                      communityId: community?.communityId!,
+                                      callback: (isSuccess, error) async {
+                                    if (isSuccess) {
+                                      var roleVM =
+                                          Provider.of<MemberManagementVM>(
+                                              context,
+                                              listen: false);
+                                      roleVM.checkCurrentUserRole(
+                                          community!.communityId!);
+
+                                      if (community!.isPostReviewEnabled!) {
+                                        if (!community!.hasPermission(
+                                            AmityPermission
+                                                .REVIEW_COMMUNITY_POST)) {
+                                          await AmityDialog()
+                                              .showAlertErrorDialog(
+                                                  title: "تم تسجيل المنشور",
+                                                  //Post submitted
+                                                  message:
+                                                      "لقد تم إرسال منشورك إلى قائمة الانتظار. سيتم مراجعتها بواسطة مشرف المجتمع"); //Your post has been submitted to the pending list. It will be reviewed by community moderator
+                                        }
+                                      }
+                                      Navigator.of(context).pop();
+                                      if (widget.isFromPostToPage) {
+                                        Navigator.of(context).pop();
+                                      }
+                                      if (community!.isPostReviewEnabled!) {
+                                        Provider.of<CommuFeedVM>(context,
+                                                listen: false)
+                                            .initAmityPendingCommunityFeed(
+                                                community!.communityId!,
+                                                AmityFeedType.REVIEWING);
+                                      }
+
+                                      // Navigator.of(context).push(MaterialPageRoute(
+                                      //     builder: (context) => ChangeNotifierProvider(
+                                      //           create: (context) => CommuFeedVM(),
+                                      //           child: CommunityScreen(
+                                      //             isFromFeed: true,
+                                      //             community: community!,
+                                      //           ),
+                                      //         )));
+                                    }
+                                  });
+                                }
+                              }
+                            }
+                          : null,
+                      style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.symmetric(horizontal: 40),
+                      ),
+                      child: Text("نشر"),
                     ),
                   ],
                 ),
@@ -264,24 +384,14 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         debugingText == null ? const SizedBox() : Text(debugingText),
-        CircleAvatar(
-          radius: 16,
-          backgroundColor: Colors.grey[200],
-          child: IconButton(
-            icon: Icon(
-              icon,
-              size: 18,
-              color: isEnable ? Colors.black : Colors.grey,
-            ),
-            onPressed: () {
-              if (isEnable) {
-                onTap();
-              }
-            },
+        IconButton(
+          icon: Icon(
+            icon,
+            color:
+                Provider.of<AmityUIConfiguration>(context).appColors.baseShade1,
           ),
+          onPressed: isEnable ? onTap : null,
         ),
-        // SizedBox(height: 4),
-        // Text(label),
       ],
     );
   }
@@ -302,7 +412,8 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
             ),
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsetsDirectional.only(top: 16.0), // Space at the top
+                padding: const EdgeInsetsDirectional.only(top: 16.0),
+                // Space at the top
                 child: Wrap(
                   children: <Widget>[
                     ListTile(
@@ -409,8 +520,10 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('تجاهل المنشور؟'), //Discard Post?
-        content: const Text('هل تود تجاهل منشورك؟'), //Do you want to discard your post?
+        title: const Text('تجاهل المنشور؟'),
+        //Discard Post?
+        content: const Text('هل تود تجاهل منشورك؟'),
+        //Do you want to discard your post?
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),

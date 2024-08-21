@@ -742,11 +742,20 @@ class AppScaffold extends StatelessWidget {
                 : FloatingActionButton(
                     shape: const CircleBorder(),
                     onPressed: () async {
-                      await Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => AmityCreatePostV2Screen(
-                          amityUser: amityUser,
+                      await showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(12),
+                          ),
                         ),
-                      ));
+                        clipBehavior: Clip.hardEdge,
+                        builder: (context) => FractionallySizedBox(
+                          heightFactor: 0.8,
+                          child: AmityCreatePostV2Screen(),
+                        ),
+                      );
                       Provider.of<UserFeedVM>(context, listen: false)
                           .initUserFeed(userId: amityUserId);
                     },

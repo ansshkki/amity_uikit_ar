@@ -127,7 +127,8 @@ class CommunityScreenState extends State<CommunityScreen> {
                     community.membersCount.toString(),
                     style: const TextStyle(fontSize: 16),
                   ),
-                  Text(community.membersCount == 1 ? 'عضو' : 'أعضاء', //member //members
+                  Text(community.membersCount == 1 ? 'عضو' : 'أعضاء',
+                      //member //members
                       style: const TextStyle(
                           fontSize: 16, color: Color(0xff898E9E)))
                 ],
@@ -219,11 +220,23 @@ class CommunityScreenState extends State<CommunityScreen> {
                     ? FloatingActionButton(
                         shape: const CircleBorder(),
                         onPressed: () async {
-                          await Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context2) => AmityCreatePostV2Screen(
-                                    community: snapshot.data!,
-                                    feedType: FeedType.community,
-                                  )));
+                          await showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(12),
+                              ),
+                            ),
+                            clipBehavior: Clip.hardEdge,
+                            builder: (context) => FractionallySizedBox(
+                              heightFactor: 0.8,
+                              child: AmityCreatePostV2Screen(
+                                community: snapshot.data,
+                                feedType: FeedType.community,
+                              ),
+                            ),
+                          );
                           Provider.of<CommuFeedVM>(context, listen: false)
                               .getPostCount(widget.community);
                           Provider.of<CommuFeedVM>(context, listen: false)
@@ -355,8 +368,10 @@ class CommunityScreenState extends State<CommunityScreen> {
                                           //   fontFamily: 'SF Pro Text',
                                           // ),
                                           tabs: const [
-                                            Tab(text: "الجدول الزمني"), //Timeline
-                                            Tab(text: "المعرض"), //Gallery
+                                            Tab(text: "الجدول الزمني"),
+                                            //Timeline
+                                            Tab(text: "المعرض"),
+                                            //Gallery
                                           ],
                                         ),
                                       ),
@@ -483,8 +498,8 @@ class _EditProfileButtonState extends State<EditProfileButton> {
                       AmityEditCommunityScreen(widget.community)));
             },
             child: Container(
-              padding:
-                  const EdgeInsetsDirectional.symmetric(horizontal: 20.0, vertical: 10.0),
+              padding: const EdgeInsetsDirectional.symmetric(
+                  horizontal: 20.0, vertical: 10.0),
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 border: Border.all(
@@ -538,7 +553,8 @@ class PedindingButton extends StatelessWidget {
                 )));
       },
       child: Container(
-        padding: const EdgeInsetsDirectional.symmetric(horizontal: 20.0, vertical: 10.0),
+        padding: const EdgeInsetsDirectional.symmetric(
+            horizontal: 20.0, vertical: 10.0),
         decoration: BoxDecoration(
           color:
               Provider.of<AmityUIConfiguration>(context).appColors.baseShade4,
@@ -581,7 +597,8 @@ class PedindingButton extends StatelessWidget {
                   !community
                           .hasPermission(AmityPermission.REVIEW_COMMUNITY_POST)
                       ? "منشوراتك معلقة للمراجعة" //Your posts are pending for review
-                      : "${Provider.of<CommuFeedVM>(context).reviewingPostCount}المشاركات تحتاج إلى موافقة ", //posts need approval
+                      : "${Provider.of<CommuFeedVM>(context).reviewingPostCount}المشاركات تحتاج إلى موافقة ",
+                  //posts need approval
                   style: TextStyle(
                     fontSize: 13,
                     color: Provider.of<AmityUIConfiguration>(context)
@@ -659,7 +676,7 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
                           .appColors
                           .base,
                     )),
-                const Text('المنشورات',//posts
+                const Text('المنشورات', //posts
                     style: TextStyle(fontSize: 16, color: Color(0xff898E9E)))
               ],
             ),
@@ -688,7 +705,8 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
                           .base,
                     ),
                   ),
-                  Text(community.membersCount == 1 ? 'عضو' : 'أعضاء', //member //members
+                  Text(community.membersCount == 1 ? 'عضو' : 'أعضاء',
+                      //member //members
                       style: const TextStyle(
                           fontSize: 16, color: Color(0xff898E9E)))
                 ],

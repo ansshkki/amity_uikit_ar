@@ -14,13 +14,13 @@ class AmityUIConfiguration extends ChangeNotifier {
   // Color userProfileTextColor = Colors.black;
   // Color userProfileIconColor = Colors.grey;
   TextStyle titleTextStyle = const TextStyle(
-    fontSize: 17,
+    fontSize: 14,
     color: Colors.black,
     fontWeight: FontWeight.w600,
   );
 
   TextStyle hintTextStyle = const TextStyle(
-    fontSize: 15,
+    fontSize: 12,
     color: Colors.black,
     fontWeight: FontWeight.w400,
   );
@@ -40,9 +40,9 @@ class AppColors {
   final Color base;
   // final Color baseInverse;
   // final Color baseDefault;
-  // final Color baseShade1;
-  // final Color baseShade2;
-  // final Color baseShade3;
+  final Color baseShade1;
+  final Color baseShade2;
+  final Color baseShade3;
   final Color baseShade4;
   final Color baseBackground;
 
@@ -72,10 +72,10 @@ class AppColors {
     this.base = const Color(0xFF000000),
     // this.baseInverse = const Color(0xFFFFFFFF),
     // this.baseDefault = const Color(0xFF292b32),
-    // this.baseShade1 = const Color(0xFF636878),
-    // this.baseShade2 = const Color(0xFF8989e9),
-    // this.baseShade3 = const Color(0xFFa5a9b5),
-    this.baseShade4 = const Color(0xFFebecef),
+    this.baseShade1 = const Color(0xFF4B5563),
+    this.baseShade2 = const Color(0xFF8F9BB3),
+    this.baseShade3 = const Color(0xFFF3F4F6),
+    this.baseShade4 = const Color(0xFFF7F6F9),
     this.baseBackground = const Color(0xFFFFFFFF),
     this.userProfileBGColor = const Color(0xFFFFFFFF),
     this.userProfileTextColor = const Color(0xff898E9E),

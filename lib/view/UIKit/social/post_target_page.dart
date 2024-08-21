@@ -81,7 +81,7 @@ class _PostToPageState extends State<PostToPage> {
                           ),
                         ),
                   title: Text(
-                    "جدولي الزماني", //My Timeline
+                    "صفحتي الشخصية", //My Timeline
                     style: TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
@@ -92,17 +92,18 @@ class _PostToPageState extends State<PostToPage> {
                   ),
                   onTap: () {
                     // Navigate or perform action based on 'Newsfeed' tap
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const AmityCreatePostV2Screen(
-                        isFromPostToPage: true,
-                      ),
-                    ));
+                    // Navigator.of(context).push(MaterialPageRoute(
+                    //   builder: (context) => const AmityCreatePostV2Screen(
+                    //     isFromPostToPage: true,
+                    //   ),
+                    // ));
+                    Navigator.pop(context);
                   },
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.all(16.0),
                   child: Text(
-                    "مجتمعي", //My community
+                    "مجتمعاتي", //My community
                     style: TextStyle(
                         fontSize: 15,
                         color: Provider.of<AmityUIConfiguration>(context)
@@ -182,13 +183,14 @@ class _PostToPageState extends State<PostToPage> {
                           ),
                           onTap: () {
                             // Navigate or perform action based on 'Newsfeed' tap
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => AmityCreatePostV2Screen(
-                                community: community,
-                                isFromPostToPage: true,
-                                feedType: FeedType.community,
-                              ),
-                            ));
+                            // Navigator.of(context).push(MaterialPageRoute(
+                            //   builder: (context) => AmityCreatePostV2Screen(
+                            //     community: community,
+                            //     isFromPostToPage: true,
+                            //     feedType: FeedType.community,
+                            //   ),
+                            // ));
+                            Navigator.pop(context, community);
                           },
                         );
                       });
