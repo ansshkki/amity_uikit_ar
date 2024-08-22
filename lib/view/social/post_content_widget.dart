@@ -1215,7 +1215,7 @@ class ImagePost extends StatelessWidget {
           builder: (BuildContext context) {
             return GestureDetector(
               onTap: () {
-                Navigator.of(context).push(_goToImageViewer(url));
+                // Navigator.of(context).push(_goToImageViewer(url));
               },
               child: Container(
                 width: MediaQuery.of(context).size.width,

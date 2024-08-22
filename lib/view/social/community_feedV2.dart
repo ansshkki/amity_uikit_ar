@@ -7,7 +7,6 @@ import 'package:amity_uikit_beta_service/view/UIKit/social/community_setting/set
 import 'package:amity_uikit_beta_service/view/UIKit/social/create_post_screenV2.dart';
 import 'package:amity_uikit_beta_service/view/social/global_feed.dart';
 import 'package:amity_uikit_beta_service/view/social/pending_page.dart';
-import 'package:amity_uikit_beta_service/view/user/medie_component.dart';
 import 'package:amity_uikit_beta_service/viewmodel/explore_page_viewmodel.dart';
 import 'package:amity_uikit_beta_service/viewmodel/my_community_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -128,7 +127,8 @@ class CommunityScreenState extends State<CommunityScreen>
                     community.membersCount.toString(),
                     style: const TextStyle(fontSize: 16),
                   ),
-                  Text(community.membersCount == 1 ? 'عضو' : 'أعضاء',//member //members
+                  Text(community.membersCount == 1 ? 'عضو' : 'أعضاء',
+                      //member //members
                       style: const TextStyle(
                           fontSize: 16, color: Color(0xff898E9E)))
                 ],
@@ -212,8 +212,8 @@ class _EditProfileButtonState extends State<EditProfileButton> {
     return !widget.community.hasPermission(AmityPermission.EDIT_COMMUNITY)
         ? widget.community.isJoined!
             ? const SizedBox()
-            : InkWell(
-                onTap: () {
+            : ElevatedButton(
+                onPressed: () {
                   // Navigate to Edit Profile Page or perform an action
                   if (widget.community.isJoined != null) {
                     if (widget.community.isJoined!) {
@@ -263,35 +263,16 @@ class _EditProfileButtonState extends State<EditProfileButton> {
                     }
                   }
                 },
-                child: Container(
-                  padding: const EdgeInsetsDirectional.symmetric(
-                      horizontal: 20.0, vertical: 10.0),
-                  decoration: BoxDecoration(
-                    color:
-                        Provider.of<AmityUIConfiguration>(context).primaryColor,
-                    border: Border.all(
-                        color: Provider.of<AmityUIConfiguration>(context)
-                            .primaryColor), // Grey border color
-                    borderRadius: BorderRadius.circular(4), // Rounded corners
-                  ),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize:
-                        MainAxisSize.min, // To wrap the content of the row
-                    children: <Widget>[
-                      Icon(
-                        Icons.add,
-                        color: Colors.white,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      Theme.of(context).colorScheme.primary.withOpacity(0.2),
+                  foregroundColor: Theme.of(context).colorScheme.primary,
+                  textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontSize: 18,
                       ),
-                      SizedBox(width: 8.0), // Space between icon and text
-                      Text(
-                        "انضم", //Join
-                        style: TextStyle(
-                          color: Colors.white, // Text color
-                        ),
-                      ),
-                    ],
-                  ),
+                ),
+                child: Text(
+                  "انضم الآن", //Join
                 ),
               )
         : InkWell(
@@ -302,8 +283,8 @@ class _EditProfileButtonState extends State<EditProfileButton> {
                       AmityEditCommunityScreen(widget.community)));
             },
             child: Container(
-              padding:
-                  const EdgeInsetsDirectional.symmetric(horizontal: 20.0, vertical: 10.0),
+              padding: const EdgeInsetsDirectional.symmetric(
+                  horizontal: 20.0, vertical: 10.0),
               decoration: BoxDecoration(
                 color: Colors.transparent,
                 border: Border.all(
@@ -325,7 +306,7 @@ class _EditProfileButtonState extends State<EditProfileButton> {
                       ),
                   const SizedBox(width: 8.0), // Space between icon and text
                   Text(
-                    "تعديل الملف الشخصي",//Edit Profile
+                    "تعديل الملف الشخصي", //Edit Profile
                     style: TextStyle(
                       color: Provider.of<AmityUIConfiguration>(context)
                           .appColors
@@ -357,7 +338,8 @@ class PedindingButton extends StatelessWidget {
                 )));
       },
       child: Container(
-        padding: const EdgeInsetsDirectional.symmetric(horizontal: 20.0, vertical: 10.0),
+        padding: const EdgeInsetsDirectional.symmetric(
+            horizontal: 20.0, vertical: 10.0),
         decoration: BoxDecoration(
           color:
               Provider.of<AmityUIConfiguration>(context).appColors.baseShade4,
@@ -400,7 +382,8 @@ class PedindingButton extends StatelessWidget {
                   !community
                           .hasPermission(AmityPermission.REVIEW_COMMUNITY_POST)
                       ? "منشوراتك معلقة للمراجعة" //Your posts are pending for review
-                      : "${Provider.of<CommuFeedVM>(context).reviewingPostCount}المشاركات تحتاج إلى موافقة ", //posts need approval
+                      : "${Provider.of<CommuFeedVM>(context).reviewingPostCount}المشاركات تحتاج إلى موافقة ",
+                  //posts need approval
                   style: TextStyle(
                     fontSize: 13,
                     color: Provider.of<AmityUIConfiguration>(context)
@@ -438,7 +421,7 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
         Text(
           community.description ?? "",
           style: TextStyle(
-            fontSize: 15,
+            fontSize: 13,
             color: Provider.of<AmityUIConfiguration>(context).appColors.base,
           ),
         ),
@@ -469,26 +452,6 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Column(
-              children: [
-                Text("${Provider.of<CommuFeedVM>(context).postCount}",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Provider.of<AmityUIConfiguration>(context)
-                          .appColors
-                          .base,
-                    )),
-                const Text('المنشورات', //posts
-                    style: TextStyle(fontSize: 16, color: Color(0xff898E9E)))
-              ],
-            ),
-            Container(
-              color: const Color(0xffE5E5E5), // Divider color
-              height: 20,
-              width: 1,
-
-              margin: const EdgeInsetsDirectional.symmetric(horizontal: 8),
-            ),
             GestureDetector(
               onTap: () {
                 // Navigate to Members Page or perform an action
@@ -497,6 +460,7 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
                         communityId: widget.community.communityId!)));
               },
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     community.membersCount.toString(),
@@ -507,11 +471,33 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
                           .base,
                     ),
                   ),
-                  Text(community.membersCount == 1 ? 'عضو' : 'أعضاء', //member //members
+                  Text("الأعضاء",
+                      //member //members
                       style: const TextStyle(
                           fontSize: 16, color: Color(0xff898E9E)))
                 ],
               ),
+            ),
+            Container(
+              color: const Color(0xffE5E5E5), // Divider color
+              height: 20,
+              width: 1,
+
+              margin: const EdgeInsetsDirectional.symmetric(horizontal: 16),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("${Provider.of<CommuFeedVM>(context).postCount}",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Provider.of<AmityUIConfiguration>(context)
+                          .appColors
+                          .base,
+                    )),
+                const Text('منشور', //posts
+                    style: TextStyle(fontSize: 16, color: Color(0xff898E9E)))
+              ],
             ),
           ],
         ),
@@ -744,124 +730,160 @@ class _StickyHeaderList extends StatelessWidget {
   final Widget? profileSectionWidget;
   final ThemeData theme;
   final double bheight;
+
   @override
   Widget build(BuildContext context) {
     return SliverStickyHeader(
-      header: Header(
-        index: index,
-      ),
+      // header: Header(
+      //   index: index,
+      // ),
+      header: SizedBox(height: 20),
       sliver: SliverList(
         delegate: SliverChildBuilderDelegate(
           (context, i) {
             if (index == 0) {
               return profileSectionWidget;
             } else {
-              return Consumer<CommuFeedVM>(
-                builder: (context, vm, _) {
-                  Widget buildPrivateAccountWidget(double bheight) {
-                    return SingleChildScrollView(
-                      child: Container(
-                        color: Provider.of<AmityUIConfiguration>(context)
-                            .appColors
-                            .baseShade4,
-                        width: MediaQuery.of(context).size.width,
-                        height: bheight - 300,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/images/privateIcon.png",
-                              package: "amity_uikit_beta_service",
-                            ),
-                            const SizedBox(height: 12),
-                            const Text(
-                              "هذا الحساب خاص", //This account is private
-                              style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xff292B32)),
-                            ),
-                            const Text(
-                              "اتبع هذا المستخدم لرؤية جميع المنشورات", //Follow this user to see all posts
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xffA5A9B5)),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }
+              return Consumer<CommuFeedVM>(builder: (context, vm, _) {
+                Widget buildContent(BuildContext context, double bheight) {
+                  return ListView.builder(
+                    padding: const EdgeInsetsDirectional.only(top: 0),
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: vm.getCommunityPosts().length,
+                    itemBuilder: (context, index) {
+                      return StreamBuilder<AmityPost>(
+                          key: Key(vm.getCommunityPosts()[index].postId!),
+                          stream: vm.getCommunityPosts()[index].listen.stream,
+                          initialData: vm.getCommunityPosts()[index],
+                          builder: (context, snapshot) {
+                            return PostWidget(
+                              isPostDetail: false,
+                              showCommunity: false,
+                              showlatestComment: true,
+                              isFromFeed: true,
+                              post: snapshot.data!,
+                              theme: theme,
+                              postIndex: index,
+                              feedType: FeedType.community,
+                            );
+                          });
+                    },
+                  );
+                }
 
-                  Widget buildNoPostsWidget(
-                      double bheight, BuildContext context) {
-                    return SingleChildScrollView(
-                      child: Container(
-                        color: Provider.of<AmityUIConfiguration>(context)
-                            .appColors
-                            .baseShade4,
-                        width: MediaQuery.of(context).size.width,
-                        height: bheight - 300,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              "assets/images/noPostYet.png",
-                              package: "amity_uikit_beta_service",
-                            ),
-                            const SizedBox(height: 12),
-                            const Text(
-                              "لا يوجد مشورات حتى الآن", //No post yet
-                              style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w600,
-                                  color: Color(0xffA5A9B5)),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  }
-
-                  Widget buildContent(BuildContext context, double bheight) {
-                    return ListView.builder(
-                      padding: const EdgeInsetsDirectional.only(top: 0),
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: vm.getCommunityPosts().length,
-                      itemBuilder: (context, index) {
-                        return StreamBuilder<AmityPost>(
-                            key: Key(vm.getCommunityPosts()[index].postId!),
-                            stream: vm.getCommunityPosts()[index].listen.stream,
-                            initialData: vm.getCommunityPosts()[index],
-                            builder: (context, snapshot) {
-                              return PostWidget(
-                                isPostDetail: false,
-                                showCommunity: false,
-                                showlatestComment: true,
-                                isFromFeed: true,
-                                post: snapshot.data!,
-                                theme: theme,
-                                postIndex: index,
-                                feedType: FeedType.community,
-                              );
-                            });
-                      },
-                    );
-                  }
-
-                  if (vm.userFeedTabController!.index == 0) {
-                    return buildContent(context, bheight);
-                  } else {
-                    return MediaGalleryPage(
-                      galleryFeed: GalleryFeed.community,
-                      onRefresh: () {},
-                    );
-                  }
-                },
-              );
+                return buildContent(context, bheight);
+              });
             }
+            // if (index == 0) {
+            //   return profileSectionWidget;
+            // } else {
+            //   return Consumer<CommuFeedVM>(
+            //     builder: (context, vm, _) {
+            //       Widget buildPrivateAccountWidget(double bheight) {
+            //         return SingleChildScrollView(
+            //           child: Container(
+            //             color: Provider.of<AmityUIConfiguration>(context)
+            //                 .appColors
+            //                 .baseShade4,
+            //             width: MediaQuery.of(context).size.width,
+            //             height: bheight - 300,
+            //             child: Column(
+            //               mainAxisAlignment: MainAxisAlignment.center,
+            //               children: [
+            //                 Image.asset(
+            //                   "assets/images/privateIcon.png",
+            //                   package: "amity_uikit_beta_service",
+            //                 ),
+            //                 const SizedBox(height: 12),
+            //                 const Text(
+            //                   "هذا الحساب خاص", //This account is private
+            //                   style: TextStyle(
+            //                       fontSize: 17,
+            //                       fontWeight: FontWeight.w600,
+            //                       color: Color(0xff292B32)),
+            //                 ),
+            //                 const Text(
+            //                   "اتبع هذا المستخدم لرؤية جميع المنشورات", //Follow this user to see all posts
+            //                   style: TextStyle(
+            //                       fontSize: 15,
+            //                       fontWeight: FontWeight.w400,
+            //                       color: Color(0xffA5A9B5)),
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //         );
+            //       }
+            //
+            //       Widget buildNoPostsWidget(
+            //           double bheight, BuildContext context) {
+            //         return SingleChildScrollView(
+            //           child: Container(
+            //             color: Provider.of<AmityUIConfiguration>(context)
+            //                 .appColors
+            //                 .baseShade4,
+            //             width: MediaQuery.of(context).size.width,
+            //             height: bheight - 300,
+            //             child: Column(
+            //               mainAxisAlignment: MainAxisAlignment.center,
+            //               children: [
+            //                 Image.asset(
+            //                   "assets/images/noPostYet.png",
+            //                   package: "amity_uikit_beta_service",
+            //                 ),
+            //                 const SizedBox(height: 12),
+            //                 const Text(
+            //                   "لا يوجد مشورات حتى الآن", //No post yet
+            //                   style: TextStyle(
+            //                       fontSize: 17,
+            //                       fontWeight: FontWeight.w600,
+            //                       color: Color(0xffA5A9B5)),
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //         );
+            //       }
+            //
+            //       Widget buildContent(BuildContext context, double bheight) {
+            //         return ListView.builder(
+            //           padding: const EdgeInsetsDirectional.only(top: 0),
+            //           physics: const NeverScrollableScrollPhysics(),
+            //           shrinkWrap: true,
+            //           itemCount: vm.getCommunityPosts().length,
+            //           itemBuilder: (context, index) {
+            //             return StreamBuilder<AmityPost>(
+            //                 key: Key(vm.getCommunityPosts()[index].postId!),
+            //                 stream: vm.getCommunityPosts()[index].listen.stream,
+            //                 initialData: vm.getCommunityPosts()[index],
+            //                 builder: (context, snapshot) {
+            //                   return PostWidget(
+            //                     isPostDetail: false,
+            //                     showCommunity: false,
+            //                     showlatestComment: true,
+            //                     isFromFeed: true,
+            //                     post: snapshot.data!,
+            //                     theme: theme,
+            //                     postIndex: index,
+            //                     feedType: FeedType.community,
+            //                   );
+            //                 });
+            //           },
+            //         );
+            //       }
+            //
+            //       if (vm.userFeedTabController!.index == 0) {
+            //         return buildContent(context, bheight);
+            //       } else {
+            //         return MediaGalleryPage(
+            //           galleryFeed: GalleryFeed.community,
+            //           onRefresh: () {},
+            //         );
+            //       }
+            //     },
+            //   );
+            // }
           },
           childCount: 1,
         ),

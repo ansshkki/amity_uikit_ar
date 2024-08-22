@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:amity_sdk/amity_sdk.dart';
+import 'package:amity_uikit_beta_service/components/custom_user_avatar.dart';
 import 'package:amity_uikit_beta_service/view/UIKit/social/post_target_page.dart';
 import 'package:amity_uikit_beta_service/view/UIKit/social/search_communities.dart'
     hide CommunityIconList;
@@ -13,7 +14,11 @@ import 'package:amity_uikit_beta_service/viewmodel/my_community_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../components/search_field.dart';
+import '../../../viewmodel/amity_viewmodel.dart';
 import '../../../viewmodel/community_feed_viewmodel.dart';
+import '../../../viewmodel/user_feed_viewmodel.dart';
+import '../../user/user_profile_v2.dart';
 import 'create_post_screenV2.dart';
 import 'my_community_feed.dart';
 
@@ -111,16 +116,39 @@ class _CommunityPageState extends State<CommunityPage>
         // ),
         // centerTitle: false,
         automaticallyImplyLeading: false,
-        title: Text(
-          "المجتمع", //Community
-          style: Provider.of<AmityUIConfiguration>(context)
-              .titleTextStyle
-              .copyWith(
-                  color: Provider.of<AmityUIConfiguration>(context)
-                      .appColors
-                      .base),
-        ),
+        leading: Provider.of<AmityVM>(context).currentamityUser == null
+            ? null
+            : IconButton(
+                onPressed: () {
+                  final user = Provider.of<AmityVM>(context, listen: false)
+                      .currentamityUser;
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ChangeNotifierProvider(
+                        create: (context) => UserFeedVM(),
+                        child: UserProfileScreen(
+                          amityUser: user!,
+                          amityUserId: user.userId!,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                icon: getAvatarImage(
+                    Provider.of<AmityVM>(context).currentamityUser?.avatarUrl),
+              ),
         actions: [
+          IconButton(
+            icon: Icon(
+              Icons.notifications_active_outlined,
+              color: Provider.of<AmityUIConfiguration>(context).appColors.base,
+            ),
+            onPressed: () {
+              // Implement search functionality
+              // Navigator.of(context).push(MaterialPageRoute(
+              //     builder: (context) => const SearchCommunitiesScreen()));
+            },
+          ),
           IconButton(
             icon: Icon(
               Icons.search,
@@ -131,51 +159,33 @@ class _CommunityPageState extends State<CommunityPage>
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const SearchCommunitiesScreen()));
             },
-          )
-        ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(
-              48.0), // Provide a height for the AppBar's bottom
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  TabBar(
-                    controller: tabController,
-                    tabAlignment: TabAlignment.start,
-                    isScrollable: true,
-                    // Ensure that the TabBar is scrollable
-                    dividerColor: Provider.of<AmityUIConfiguration>(context)
-                        .appColors
-                        .baseBackground,
-                    labelColor: Provider.of<AmityUIConfiguration>(context)
-                        .appColors
-                        .primary,
-                    unselectedLabelColor: Colors.grey,
-                    indicatorColor: Provider.of<AmityUIConfiguration>(context)
-                        .appColors
-                        .primary,
-                    // labelStyle: const TextStyle(
-                    //   fontSize: 17,
-                    //   fontWeight: FontWeight.w600,
-                    //   fontFamily: 'SF Pro Text',
-                    // ),
-                    tabs: const [
-                      Tab(
-                        text: "آخر الأخبار", // Newsfeed
-                      ),
-                      Tab(text: "استكشف"), //Explore
-                      Tab(text: "المجموعات"), //Explore
-                    ],
-                  ),
-                ],
-              ),
-              // Divider(
-              //   color: Colors.grey,
-              //   height: 0,
-              // )
-            ],
           ),
+        ],
+        bottom: TabBar(
+          controller: tabController,
+          // tabAlignment: TabAlignment.start,
+          // isScrollable: true,
+          // Ensure that the TabBar is scrollable
+          dividerColor: Provider.of<AmityUIConfiguration>(context)
+              .appColors
+              .baseBackground,
+          labelColor:
+              Provider.of<AmityUIConfiguration>(context).appColors.primary,
+          unselectedLabelColor: Colors.grey,
+          indicatorColor:
+              Provider.of<AmityUIConfiguration>(context).appColors.primary,
+          // labelStyle: const TextStyle(
+          //   fontSize: 17,
+          //   fontWeight: FontWeight.w600,
+          //   fontFamily: 'SF Pro Text',
+          // ),
+          tabs: const [
+            Tab(
+              text: "آخر الأخبار", // Newsfeed
+            ),
+            Tab(text: "استكشف"), //Explore
+            Tab(text: "المجموعات"), //Explore
+          ],
         ),
       ),
       body: TabBarView(
@@ -317,7 +327,8 @@ class RecommendationSection extends StatelessWidget {
                           if (community.avatarImage?.fileUrl != null)
                             Positioned.fill(
                               child: Image.network(
-                                community.avatarImage!.fileUrl!,
+                                community.avatarImage!
+                                    .getUrl(AmityImageSize.MEDIUM),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -501,16 +512,14 @@ class TrendingSection extends StatelessWidget {
                                               community.communityId!)
                                           .then((value) {
                                         // setState(() {
-                                          community.isJoined =
-                                              !(community.isJoined!);
-                                          var explorePageVM =
-                                              Provider.of<ExplorePageVM>(
-                                                  context,
-                                                  listen: false);
-                                          explorePageVM
-                                              .getRecommendedCommunities();
-                                          explorePageVM
-                                              .getTrendingCommunities();
+                                        community.isJoined =
+                                            !(community.isJoined!);
+                                        var explorePageVM =
+                                            Provider.of<ExplorePageVM>(context,
+                                                listen: false);
+                                        explorePageVM
+                                            .getRecommendedCommunities();
+                                        explorePageVM.getTrendingCommunities();
                                         // });
                                       }).onError((error, stackTrace) {
                                         //handle error
@@ -521,31 +530,27 @@ class TrendingSection extends StatelessWidget {
                                           .joinCommunity(community.communityId!)
                                           .then((value) {
                                         // setState(() {
-                                          community.isJoined =
-                                              !(community.isJoined!);
-                                          var explorePageVM =
-                                              Provider.of<ExplorePageVM>(
-                                                  context,
-                                                  listen: false);
-                                          explorePageVM
-                                              .getRecommendedCommunities();
-                                          explorePageVM
-                                              .getTrendingCommunities();
-                                          print(">>>>>>>>>>>>>>>callback");
+                                        community.isJoined =
+                                            !(community.isJoined!);
+                                        var explorePageVM =
+                                            Provider.of<ExplorePageVM>(context,
+                                                listen: false);
+                                        explorePageVM
+                                            .getRecommendedCommunities();
+                                        explorePageVM.getTrendingCommunities();
+                                        print(">>>>>>>>>>>>>>>callback");
 
-                                          var myCommunityList =
-                                              Provider.of<MyCommunityVM>(
-                                                  context,
-                                                  listen: false);
-                                          myCommunityList.initMyCommunity();
+                                        var myCommunityList =
+                                            Provider.of<MyCommunityVM>(context,
+                                                listen: false);
+                                        myCommunityList.initMyCommunity();
 
-                                          for (var i in myCommunityList
-                                              .amityCommunities) {
-                                            print(
-                                                ">>>>>>>>>>>>>>>${i.displayName}");
-                                          }
+                                        for (var i in myCommunityList
+                                            .amityCommunities) {
                                           print(
-                                              myCommunityList.amityCommunities);
+                                              ">>>>>>>>>>>>>>>${i.displayName}");
+                                        }
+                                        print(myCommunityList.amityCommunities);
                                         // });
                                       }).onError((error, stackTrace) {
                                         log(error.toString());
@@ -819,7 +824,7 @@ class _CategoryListPageState extends State<CategoryListPage> {
         backgroundColor: Colors.transparent,
         elevation: 0.0, // Remove shadow
         title: Text(
-          "تصنيف", //Category
+          "التصنيفات", //Category
           style: Provider.of<AmityUIConfiguration>(context).titleTextStyle,
         ),
         iconTheme: const IconThemeData(color: Colors.black),
@@ -885,6 +890,7 @@ class CommunityListPage extends StatefulWidget {
 
 class _CommunityListPageState extends State<CommunityListPage> {
   late final ExplorePageVM _viewModel;
+  String searchQuery = "";
 
   @override
   void initState() {
@@ -913,40 +919,192 @@ class _CommunityListPageState extends State<CommunityListPage> {
       ),
       body: Consumer<ExplorePageVM>(
         builder: (context, vm, _) {
-          return ListView.builder(
-            padding: EdgeInsetsDirectional.zero,
-            itemCount: vm.amityCommunities.length,
-            controller: vm.communityScrollcontroller,
-            itemBuilder: (context, index) {
-              final community = vm.amityCommunities[index];
-              return ListTile(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) =>
-                          CommunityScreen(community: community)));
+          final communities = vm.amityCommunities
+              .where(
+                (element) =>
+                    element.displayName?.contains(searchQuery) ?? false,
+              )
+              .toList();
+          return Column(
+            children: [
+              SearchField(
+                onChanged: (query) {
+                  setState(() {
+                    searchQuery = query;
+                  });
                 },
-                leading: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    color: Provider.of<AmityUIConfiguration>(context)
-                        .appColors
-                        .primaryShade3,
-                    shape: BoxShape.circle,
-                  ),
-                  child: community.avatarImage != null
-                      ? CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              community.avatarImage?.fileUrl ?? ''),
-                        )
-                      : const Icon(
-                          Icons.people,
-                          color: Colors.white,
+              ),
+              Expanded(
+                child: ListView.builder(
+                  padding: EdgeInsetsDirectional.zero,
+                  itemCount: communities.length,
+                  controller: vm.communityScrollcontroller,
+                  itemBuilder: (context, index) {
+                    final community = communities[index];
+
+                    return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => ChangeNotifierProvider(
+                                    create: (context) => CommuFeedVM(),
+                                    child: CommunityScreen(
+                                      isFromFeed: true,
+                                      community: community,
+                                    ),
+                                  )));
+                        },
+                        child: Row(
+                          children: [
+                            SizedBox(
+                              width: 75,
+                              height: 75,
+                              child: Image.network(
+                                community.avatarImage!.fileUrl!,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            SizedBox(width: 12),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    community.displayName ?? "",
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  Text.rich(TextSpan(
+                                    children: [
+                                      TextSpan(
+                                          text:
+                                              community.postsCount?.toString()),
+                                      TextSpan(text: " منشور - "),
+                                      TextSpan(
+                                          text: community.membersCount
+                                              ?.toString()),
+                                      TextSpan(text: " عضو"),
+                                    ],
+                                    style: TextStyle(
+                                      fontSize: 10,
+                                    ),
+                                  )),
+                                ],
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: community.isJoined ?? false
+                                  ? null
+                                  : () {
+                                      if (community.isJoined != null) {
+                                        if (community.isJoined!) {
+                                          AmitySocialClient
+                                                  .newCommunityRepository()
+                                              .leaveCommunity(
+                                                  community.communityId!)
+                                              .then((value) {
+                                            // setState(() {
+                                            community.isJoined =
+                                                !(community.isJoined!);
+                                            var explorePageVM =
+                                                Provider.of<ExplorePageVM>(
+                                                    context,
+                                                    listen: false);
+                                            explorePageVM
+                                                .getRecommendedCommunities();
+                                            explorePageVM
+                                                .getTrendingCommunities();
+                                            // });
+                                          }).onError((error, stackTrace) {
+                                            //handle error
+                                            log(error.toString());
+                                          });
+                                        } else {
+                                          AmitySocialClient.newCommunityRepository()
+                                              .joinCommunity(
+                                                  community.communityId!)
+                                              .then((value) {
+                                            // setState(() {
+                                            community.isJoined =
+                                                !(community.isJoined!);
+                                            var explorePageVM =
+                                                Provider.of<ExplorePageVM>(
+                                                    context,
+                                                    listen: false);
+                                            explorePageVM
+                                                .getRecommendedCommunities();
+                                            explorePageVM
+                                                .getTrendingCommunities();
+                                            print(">>>>>>>>>>>>>>>callback");
+
+                                            var myCommunityList =
+                                                Provider.of<MyCommunityVM>(
+                                                    context,
+                                                    listen: false);
+                                            myCommunityList.initMyCommunity();
+
+                                            for (var i in myCommunityList
+                                                .amityCommunities) {
+                                              print(
+                                                  ">>>>>>>>>>>>>>>${i.displayName}");
+                                            }
+                                            print(myCommunityList
+                                                .amityCommunities);
+                                            // });
+                                          }).onError((error, stackTrace) {
+                                            log(error.toString());
+                                          });
+                                        }
+                                      }
+                                    },
+                              child: Text(community.isJoined ?? false
+                                  ? "منضم"
+                                  : "انضم"),
+                            ),
+                          ],
                         ),
+                      ),
+                    );
+
+                    // return ListTile(
+                    //   onTap: () {
+                    //     Navigator.of(context).push(MaterialPageRoute(
+                    //         builder: (context) =>
+                    //             CommunityScreen(community: community)));
+                    //   },
+                    //   leading: Container(
+                    //     height: 40,
+                    //     width: 40,
+                    //     decoration: BoxDecoration(
+                    //       color: Provider.of<AmityUIConfiguration>(context)
+                    //           .appColors
+                    //           .primaryShade3,
+                    //       shape: BoxShape.circle,
+                    //     ),
+                    //     child: community.avatarImage != null
+                    //         ? CircleAvatar(
+                    //             backgroundImage: NetworkImage(
+                    //                 community.avatarImage?.fileUrl ?? ''),
+                    //           )
+                    //         : const Icon(
+                    //             Icons.people,
+                    //             color: Colors.white,
+                    //           ),
+                    //   ),
+                    //   title: Text(community.displayName ?? ''),
+                    // );
+                  },
                 ),
-                title: Text(community.displayName ?? ''),
-              );
-            },
+              ),
+            ],
           );
         },
       ),

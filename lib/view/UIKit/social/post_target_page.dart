@@ -58,48 +58,48 @@ class _PostToPageState extends State<PostToPage> {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                ListTile(
-                  leading: (AmityCoreClient.getCurrentUser().avatarUrl != null)
-                      ? CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          backgroundImage: NetworkImage(
-                              AmityCoreClient.getCurrentUser().avatarUrl!),
-                        )
-                      : Container(
-                          height: 40,
-                          width: 40,
-                          decoration: BoxDecoration(
-                              color: Provider.of<AmityUIConfiguration>(context)
-                                  .appColors
-                                  .primaryShade3,
-                              shape: BoxShape.circle),
-                          child: Icon(
-                            Icons.person,
-                            color: Provider.of<AmityUIConfiguration>(context)
-                                .appColors
-                                .userProfileTextColor,
-                          ),
-                        ),
-                  title: Text(
-                    "صفحتي الشخصية", //My Timeline
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: Provider.of<AmityUIConfiguration>(context)
-                            .appColors
-                            .base),
-                    // Adjust as needed),
-                  ),
-                  onTap: () {
-                    // Navigate or perform action based on 'Newsfeed' tap
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //   builder: (context) => const AmityCreatePostV2Screen(
-                    //     isFromPostToPage: true,
-                    //   ),
-                    // ));
-                    Navigator.pop(context);
-                  },
-                ),
+                // ListTile(
+                //   leading: (AmityCoreClient.getCurrentUser().avatarUrl != null)
+                //       ? CircleAvatar(
+                //           backgroundColor: Colors.transparent,
+                //           backgroundImage: NetworkImage(
+                //               AmityCoreClient.getCurrentUser().avatarUrl!),
+                //         )
+                //       : Container(
+                //           height: 40,
+                //           width: 40,
+                //           decoration: BoxDecoration(
+                //               color: Provider.of<AmityUIConfiguration>(context)
+                //                   .appColors
+                //                   .primaryShade3,
+                //               shape: BoxShape.circle),
+                //           child: Icon(
+                //             Icons.person,
+                //             color: Provider.of<AmityUIConfiguration>(context)
+                //                 .appColors
+                //                 .userProfileTextColor,
+                //           ),
+                //         ),
+                //   title: Text(
+                //     "صفحتي الشخصية", //My Timeline
+                //     style: TextStyle(
+                //         fontSize: 15,
+                //         fontWeight: FontWeight.w600,
+                //         color: Provider.of<AmityUIConfiguration>(context)
+                //             .appColors
+                //             .base),
+                //     // Adjust as needed),
+                //   ),
+                //   onTap: () {
+                //     // Navigate or perform action based on 'Newsfeed' tap
+                //     // Navigator.of(context).push(MaterialPageRoute(
+                //     //   builder: (context) => const AmityCreatePostV2Screen(
+                //     //     isFromPostToPage: true,
+                //     //   ),
+                //     // ));
+                //     Navigator.pop(context);
+                //   },
+                // ),
                 Padding(
                   padding: const EdgeInsetsDirectional.all(16.0),
                   child: Text(

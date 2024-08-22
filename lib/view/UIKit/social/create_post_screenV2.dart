@@ -232,7 +232,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     children: [
                       Expanded(
                         child: Text(
-                          "النشر إلى: ${community?.displayName ?? "صفحتي الشخصية"}",
+                          community?.displayName ?? "اختر المجتمع",
                         ),
                       ),
                       Icon(Icons.keyboard_arrow_down),
@@ -295,7 +295,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     // ),
                     Spacer(),
                     ElevatedButton(
-                      onPressed: vm.isPostValid
+                      onPressed: vm.isPostValid && community != null
                           ? () async {
                               if (vm.isUploadComplete) {
                                 if (community == null) {
