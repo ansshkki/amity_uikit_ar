@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:amity_sdk/amity_sdk.dart';
 import 'package:amity_uikit_beta_service/components/custom_user_avatar.dart';
-import 'package:amity_uikit_beta_service/view/UIKit/social/post_target_page.dart';
 import 'package:amity_uikit_beta_service/view/UIKit/social/search_communities.dart'
     hide CommunityIconList;
 import 'package:amity_uikit_beta_service/view/social/community_feedV2.dart';
@@ -12,6 +11,7 @@ import 'package:amity_uikit_beta_service/viewmodel/explore_page_viewmodel.dart';
 import 'package:amity_uikit_beta_service/viewmodel/feed_viewmodel.dart';
 import 'package:amity_uikit_beta_service/viewmodel/my_community_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../../components/search_field.dart';
@@ -66,10 +66,10 @@ class _CommunityPageState extends State<CommunityPage>
           Provider.of<AmityUIConfiguration>(context).appColors.baseShade4,
       floatingActionButton: Padding(
         padding: EdgeInsets.only(bottom: MediaQuery.paddingOf(context).bottom),
-        child: FloatingActionButton.extended(
-          heroTag: "Explore-Post-FAB",
-          onPressed: () {
-            showModalBottomSheet(
+        child: FloatingActionButton(
+          shape: const CircleBorder(),
+          onPressed: () async {
+            final posted = await showModalBottomSheet(
               context: context,
               isScrollControlled: true,
               shape: RoundedRectangleBorder(
@@ -83,24 +83,17 @@ class _CommunityPageState extends State<CommunityPage>
                 child: AmityCreatePostV2Screen(),
               ),
             );
-            // Navigator.of(context).push(MaterialPageRoute(
-            //   builder: (context) => PostToPage(),
-            // ));
+            if ((posted ?? false) && context.mounted) {
+              Provider.of<FeedVM>(context, listen: false).initAmityGlobalfeed();
+            }
           },
-          label: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40.0),
-            child: Text(
-              "انشر",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
           backgroundColor:
               Provider.of<AmityUIConfiguration>(context).primaryColor,
+          child: Provider.of<AmityUIConfiguration>(context)
+              .iconConfig
+              .postIcon(iconSize: 28, color: Colors.white),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(
         elevation: 0.05,
         // Add this line to remove the shadow
@@ -139,9 +132,9 @@ class _CommunityPageState extends State<CommunityPage>
               ),
         actions: [
           IconButton(
-            icon: Icon(
-              Icons.notifications_active_outlined,
-              color: Provider.of<AmityUIConfiguration>(context).appColors.base,
+            icon: SvgPicture.asset(
+              "assets/Icons/notifications.svg",
+              package: "amity_uikit_beta_service",
             ),
             onPressed: () {
               // Implement search functionality
@@ -150,9 +143,9 @@ class _CommunityPageState extends State<CommunityPage>
             },
           ),
           IconButton(
-            icon: Icon(
-              Icons.search,
-              color: Provider.of<AmityUIConfiguration>(context).appColors.base,
+            icon: SvgPicture.asset(
+              "assets/Icons/search.svg",
+              package: "amity_uikit_beta_service",
             ),
             onPressed: () {
               // Implement search functionality
@@ -180,11 +173,9 @@ class _CommunityPageState extends State<CommunityPage>
           //   fontFamily: 'SF Pro Text',
           // ),
           tabs: const [
-            Tab(
-              text: "آخر الأخبار", // Newsfeed
-            ),
+            Tab(text: "My feed"), //Newsfeed
             Tab(text: "استكشف"), //Explore
-            Tab(text: "المجموعات"), //Explore
+            Tab(text: "المجموعات"),
           ],
         ),
       ),
@@ -192,20 +183,20 @@ class _CommunityPageState extends State<CommunityPage>
         controller: tabController,
         children: [
           Scaffold(
-            floatingActionButton: FloatingActionButton(
-              shape: const CircleBorder(),
-              onPressed: () {
-                // Navigate or perform action based on 'Newsfeed' tap
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => const Scaffold(body: PostToPage()),
-                ));
-              },
-              backgroundColor:
-                  Provider.of<AmityUIConfiguration>(context).appColors.primary,
-              child: Provider.of<AmityUIConfiguration>(context)
-                  .iconConfig
-                  .postIcon(iconSize: 28, color: Colors.white),
-            ),
+            // floatingActionButton: FloatingActionButton(
+            //   shape: const CircleBorder(),
+            //   onPressed: () {
+            //     // Navigate or perform action based on 'Newsfeed' tap
+            //     Navigator.of(context).push(MaterialPageRoute(
+            //       builder: (context) => const Scaffold(body: PostToPage()),
+            //     ));
+            //   },
+            //   backgroundColor:
+            //       Provider.of<AmityUIConfiguration>(context).appColors.primary,
+            //   child: Provider.of<AmityUIConfiguration>(context)
+            //       .iconConfig
+            //       .postIcon(iconSize: 28, color: Colors.white),
+            // ),
             body: GlobalFeedScreen(
               isShowMyCommunity: widget.isShowMyCommunity,
               canCreateCommunity: false,
@@ -266,7 +257,7 @@ class ExplorePage extends StatelessWidget {
                       isPostDetail: false,
                       feedType: FeedType.global,
                       showCommunity: true,
-                      showlatestComment: true,
+                      showlatestComment: false,
                       post: snapshot.data!,
                       theme: theme,
                       postIndex: index,

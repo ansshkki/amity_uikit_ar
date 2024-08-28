@@ -474,7 +474,7 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
                   Text("الأعضاء",
                       //member //members
                       style: const TextStyle(
-                          fontSize: 16, color: Color(0xff898E9E)))
+                          fontSize: 13, color: Color(0xff898E9E)))
                 ],
               ),
             ),
@@ -496,7 +496,7 @@ class _CommunityDetailComponentState extends State<CommunityDetailComponent> {
                           .base,
                     )),
                 const Text('منشور', //posts
-                    style: TextStyle(fontSize: 16, color: Color(0xff898E9E)))
+                    style: TextStyle(fontSize: 13, color: Color(0xff898E9E)))
               ],
             ),
           ],
@@ -760,7 +760,7 @@ class _StickyHeaderList extends StatelessWidget {
                             return PostWidget(
                               isPostDetail: false,
                               showCommunity: false,
-                              showlatestComment: true,
+                              showlatestComment: false,
                               isFromFeed: true,
                               post: snapshot.data!,
                               theme: theme,

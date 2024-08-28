@@ -18,7 +18,7 @@ class PostContentText extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Text(
         textContent,
-        style: TextStyle(
+        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
           color: theme.baseColor,
           fontSize: 15,
           fontWeight: FontWeight.w400,

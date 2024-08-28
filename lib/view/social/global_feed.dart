@@ -13,7 +13,9 @@ import 'package:amity_uikit_beta_service/viewmodel/amity_viewmodel.dart';
 import 'package:amity_uikit_beta_service/viewmodel/my_community_viewmodel.dart';
 import 'package:amity_uikit_beta_service/viewmodel/user_viewmodel.dart';
 import 'package:animation_wrappers/animation_wrappers.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../components/custom_user_avatar.dart';
@@ -24,6 +26,7 @@ import '../../viewmodel/feed_viewmodel.dart';
 import '../../viewmodel/post_viewmodel.dart';
 import '../../viewmodel/user_feed_viewmodel.dart';
 import 'comments.dart';
+import 'community_feedV2.dart';
 import 'post_content_widget.dart';
 
 class GlobalFeedScreen extends StatefulWidget {
@@ -77,74 +80,101 @@ class GlobalFeedScreenState extends State<GlobalFeedScreen> {
         child: Container(
           color:
               Provider.of<AmityUIConfiguration>(context).appColors.baseShade4,
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  Expanded(
-                    child: Container(
-                      child: FadedSlideAnimation(
-                        beginOffset: const Offset(0, 0.3),
-                        endOffset: const Offset(0, 0),
-                        slideCurve: Curves.linearToEaseOut,
-                        child: ListView.builder(
-                          // shrinkWrap: true,
-                          controller: vm.scrollcontroller,
-                          padding: EdgeInsets.only(
-                            top: 24,
-                            bottom: MediaQuery.paddingOf(context).bottom + 24,
+          child: vm.isLoading
+              ? LoadingSkeleton(
+                  context: context,
+                )
+              : vm.getAmityPosts.isEmpty
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(
+                            "assets/empty_feed.svg",
+                            package: 'amity_uikit_beta_service',
                           ),
-                          physics: const AlwaysScrollableScrollPhysics(),
-                          itemCount: vm.getAmityPosts.length,
-                          itemBuilder: (context, index) {
-                            return StreamBuilder<AmityPost>(
-                              key: Key(vm.getAmityPosts[index].postId!),
-                              stream: vm.getAmityPosts[index].listen.stream,
-                              initialData: vm.getAmityPosts[index],
-                              builder: (context, snapshot) {
-                                return Column(
-                                  children: [
-                                    index != 1
-                                        ? const SizedBox()
-                                        : widget.isShowMyCommunity
-                                            ? const RecommendationSection()
-                                            : const SizedBox(),
-                                    PostWidget(
-                                      isPostDetail: false,
-                                      // customPostRanking:
-                                      //     widget.isCustomPostRanking,
-                                      feedType: FeedType.global,
-                                      showCommunity: true,
-                                      showlatestComment: true,
-                                      post: snapshot.data!,
-                                      theme: theme,
-                                      postIndex: index,
-                                      isFromFeed: true,
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          },
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text(
+                              "Your feed is empty",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.onSurface,
+                                  ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text(
+                              "قم باستكشاف المجتمعات",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium
+                                  ?.copyWith(
+                                    color:
+                                        Theme.of(context).colorScheme.onSurface,
+                                  ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: ElevatedButton.icon(
+                              onPressed: () {},
+                              icon: Icon(Icons.search),
+                              label: Text("استكشف المجتمعات"),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : FadedSlideAnimation(
+                      beginOffset: const Offset(0, 0.3),
+                      endOffset: const Offset(0, 0),
+                      slideCurve: Curves.linearToEaseOut,
+                      child: ListView.builder(
+                        // shrinkWrap: true,
+                        controller: vm.scrollcontroller,
+                        padding: EdgeInsets.only(
+                          top: 24,
+                          bottom: MediaQuery.paddingOf(context).bottom + 24,
                         ),
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        itemCount: vm.getAmityPosts.length,
+                        itemBuilder: (context, index) {
+                          return StreamBuilder<AmityPost>(
+                            key: Key(vm.getAmityPosts[index].postId!),
+                            stream: vm.getAmityPosts[index].listen.stream,
+                            initialData: vm.getAmityPosts[index],
+                            builder: (context, snapshot) {
+                              return Column(
+                                children: [
+                                  index != 1
+                                      ? const SizedBox()
+                                      : widget.isShowMyCommunity
+                                          ? const RecommendationSection()
+                                          : const SizedBox(),
+                                  PostWidget(
+                                    isPostDetail: false,
+                                    // customPostRanking:
+                                    //     widget.isCustomPostRanking,
+                                    feedType: FeedType.global,
+                                    showCommunity: true,
+                                    showlatestComment: false,
+                                    post: snapshot.data!,
+                                    theme: theme,
+                                    postIndex: index,
+                                    isFromFeed: true,
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
                       ),
                     ),
-                  ),
-                ],
-              ),
-              vm.getAmityPosts.isEmpty
-                  ? LoadingSkeleton(
-                      context: context,
-                    )
-                  : vm.isLoading
-                      ? vm.getAmityPosts.isEmpty
-                          ? LoadingSkeleton(
-                              context: context,
-                            )
-                          : const Text("")
-                      : const Text("")
-            ],
-          ),
         ),
       );
     });
@@ -183,8 +213,8 @@ class PostWidget extends StatefulWidget {
 class _PostWidgetState
     extends State<PostWidget> // with AutomaticKeepAliveClientMixin
 {
-  double iconSize = 16;
-  double feedReactionCountSize = 16;
+  double iconSize = 13;
+  double feedReactionCountSize = 13;
 
   Widget postWidgets() {
     List<Widget> widgets = [];
@@ -206,11 +236,11 @@ class _PostWidgetState
   Widget postOptions(BuildContext context) {
     bool isPostOwner =
         widget.post.postedUserId == AmityCoreClient.getCurrentUser().userId;
-    List<String> postOwnerMenu = ['Edit Post', 'Delete Post'];
+    List<String> postOwnerMenu = ['تعديل', 'حذف'];
     final isFlaggedByMe = widget.post.isFlaggedByMe;
     List<String> otherPostMenu = [
-      widget.post.isFlaggedByMe ? 'Unreport Post' : 'Report Post',
-      'Block User'
+      widget.post.isFlaggedByMe ? 'إلغاء التبليغ' : 'التبليغ',
+      'حظر المستخدم'
     ];
 
     return PopupMenuButton(
@@ -219,8 +249,8 @@ class _PostWidgetState
       surfaceTintColor: Colors.white,
       onSelected: (value) {
         switch (value) {
-          case 'Report Post':
-          case 'Unreport Post':
+          case 'التبليغ':
+          case 'إلغاء التبليغ':
             log("isflag by me $isFlaggedByMe");
             if (isFlaggedByMe) {
               Provider.of<PostVM>(context, listen: false)
@@ -230,7 +260,7 @@ class _PostWidgetState
             }
 
             break;
-          case 'Edit Post':
+          case 'تعديل':
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => ChangeNotifierProvider<EditPostVM>(
                     create: (context) => EditPostVM(),
@@ -238,7 +268,7 @@ class _PostWidgetState
                       amityPost: widget.post,
                     ))));
             break;
-          case 'Delete Post':
+          case 'حذف':
             if (widget.feedType == FeedType.global) {
               ConfirmationDialog().show(
                 context: context,
@@ -324,7 +354,7 @@ class _PostWidgetState
               print("unhandle postType");
             }
             break;
-          case 'Block User':
+          case 'حظر المستخدم':
             Provider.of<UserVM>(context, listen: false)
                 .blockUser(widget.post.postedUserId!, () {
               if (widget.feedType == FeedType.global) {
@@ -483,6 +513,23 @@ class _PostWidgetState
                                               context)
                                           .appColors
                                           .baseShade1),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              ChangeNotifierProvider(
+                                            create: (context) => UserFeedVM(),
+                                            child: UserProfileScreen(
+                                              amityUser:
+                                                  widget.post.postedUser!,
+                                              amityUserId: widget
+                                                  .post.postedUser!.userId!,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
                                 ),
                                 if (widget.showCommunity &&
                                     widget.post.targetType ==
@@ -507,6 +554,23 @@ class _PostWidgetState
                                             Provider.of<AmityUIConfiguration>(
                                                     context)
                                                 .primaryColor),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ChangeNotifierProvider(
+                                                      create: (context) =>
+                                                          CommuFeedVM(),
+                                                      child: CommunityScreen(
+                                                        isFromFeed: true,
+                                                        community: (widget
+                                                                    .post.target
+                                                                as CommunityTarget)
+                                                            .targetCommunity!,
+                                                      ),
+                                                    )));
+                                      },
                                   ),
                                 ],
                               ],
@@ -684,21 +748,21 @@ class _PostWidgetState
                                         return widget.post.reactionCount! > 0
                                             ? Row(
                                                 children: [
-                                                  CircleAvatar(
-                                                    radius: 10,
-                                                    backgroundColor: Provider
-                                                            .of<AmityUIConfiguration>(
-                                                                context)
-                                                        .primaryColor,
-                                                    child: const Icon(
-                                                      Icons.thumb_up,
-                                                      color: Colors.white,
-                                                      size: 13,
-                                                    ),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 5,
-                                                  ),
+                                                  // CircleAvatar(
+                                                  //   radius: 10,
+                                                  //   backgroundColor: Provider
+                                                  //           .of<AmityUIConfiguration>(
+                                                  //               context)
+                                                  //       .primaryColor,
+                                                  //   child: const Icon(
+                                                  //     Icons.thumb_up,
+                                                  //     color: Colors.white,
+                                                  //     size: 13,
+                                                  //   ),
+                                                  // ),
+                                                  // const SizedBox(
+                                                  //   width: 5,
+                                                  // ),
                                                   Text(
                                                       widget.post.reactionCount
                                                           .toString(),
@@ -1081,41 +1145,41 @@ class _LatestCommentComponentState extends State<LatestCommentComponent> {
               return index > 1
                   ? const SizedBox()
                   : comments.isDeleted!
-                      ? Container(
-                          child: const Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.all(9.0),
-                                child: Row(
-                                  children: [
-                                    SizedBox(
-                                      width: 14,
-                                    ),
-                                    Icon(
-                                      Icons.remove_circle_outline,
-                                      size: 15,
-                                      color: Color(0xff636878),
-                                    ),
-                                    SizedBox(
-                                      width: 14,
-                                    ),
-                                    Text(
-                                      "هذا التعليق تم حذفه",
-                                      //This comment  has been deleted
-                                      style: TextStyle(
-                                          color: Color(0xff636878),
-                                          fontSize: 13),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Divider(
-                                height: 0,
-                              )
-                            ],
-                          ),
-                        )
+                      ? SizedBox()
+                      //     child: const Column(
+                      //       crossAxisAlignment: CrossAxisAlignment.start,
+                      //       children: [
+                      //         Padding(
+                      //           padding: EdgeInsetsDirectional.all(9.0),
+                      //           child: Row(
+                      //             children: [
+                      //               SizedBox(
+                      //                 width: 14,
+                      //               ),
+                      //               Icon(
+                      //                 Icons.remove_circle_outline,
+                      //                 size: 15,
+                      //                 color: Color(0xff636878),
+                      //               ),
+                      //               SizedBox(
+                      //                 width: 14,
+                      //               ),
+                      //               Text(
+                      //                 "هذا التعليق تم حذفه",
+                      //                 //This comment  has been deleted
+                      //                 style: TextStyle(
+                      //                     color: Color(0xff636878),
+                      //                     fontSize: 13),
+                      //               ),
+                      //             ],
+                      //           ),
+                      //         ),
+                      //         Divider(
+                      //           height: 0,
+                      //         )
+                      //       ],
+                      //     ),
+                      //   )
                       : Column(
                           children: [
                             Container(

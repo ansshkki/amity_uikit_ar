@@ -683,7 +683,7 @@ class _StickyHeaderList extends StatelessWidget {
                                   isPostDetail: false,
                                   feedType: FeedType.user,
                                   showCommunity: false,
-                                  showlatestComment: true,
+                                  showlatestComment: false,
                                   isFromFeed: true,
                                   post: snapshot.data!,
                                   theme: theme,
@@ -759,7 +759,8 @@ class AppScaffold extends StatelessWidget {
                       Provider.of<UserFeedVM>(context, listen: false)
                           .initUserFeed(userId: amityUserId);
                     },
-                    backgroundColor: AmityUIConfiguration().primaryColor,
+                    backgroundColor:
+                        Provider.of<AmityUIConfiguration>(context).primaryColor,
                     child: Provider.of<AmityUIConfiguration>(context)
                         .iconConfig
                         .postIcon(iconSize: 28, color: Colors.white),

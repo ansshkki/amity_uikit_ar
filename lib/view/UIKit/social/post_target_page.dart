@@ -1,11 +1,11 @@
 import 'package:amity_sdk/amity_sdk.dart';
-import 'package:amity_uikit_beta_service/view/UIKit/social/create_post_screenV2.dart';
+import 'package:amity_uikit_beta_service/v4/utils/skeleton.dart';
 import 'package:amity_uikit_beta_service/viewmodel/configuration_viewmodel.dart';
 import 'package:amity_uikit_beta_service/viewmodel/my_community_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../social/global_feed.dart';
+import '../../../v4/utils/Shimmer.dart';
 
 class PostToPage extends StatefulWidget {
   const PostToPage({super.key});
@@ -111,6 +111,17 @@ class _PostToPageState extends State<PostToPage> {
                             .userProfileTextColor),
                   ),
                 ),
+                if (viewModel.amityCommunities.isEmpty) ...[
+                  for (int i = 0; i < 10; i++) buildLoader(context),
+                ],
+                // if (viewModel.isEmpty)
+                //   const SizedBox(
+                //     height: 300,
+                //     width: double.infinity,
+                //     child: Center(
+                //       child: Text("لست منضماً إلى أي مجتمع"),
+                //     ),
+                //   ),
                 ...viewModel.amityCommunities.map((community) {
                   return StreamBuilder<AmityCommunity>(
                       stream: community.listen.stream,
@@ -199,6 +210,60 @@ class _PostToPageState extends State<PostToPage> {
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget buildLoader(BuildContext context) {
+    return Shimmer(
+      linearGradient: LinearGradient(
+        colors: [
+          Color(0xFFEBEBF4),
+          Color(0xFFF4F4F4),
+          Color(0xFFEBEBF4),
+        ],
+        stops: [
+          0.1,
+          0.3,
+          0.4,
+        ],
+        begin: Alignment(-1.0, -0.3),
+        end: Alignment(1.0, 0.3),
+        tileMode: TileMode.clamp,
+      ),
+      child: ShimmerLoading(
+        isLoading: true,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 19),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    width: 48,
+                    height: 60,
+                    padding: const EdgeInsetsDirectional.only(
+                        top: 12, start: 0, end: 8, bottom: 8),
+                    child: const SkeletonImage(
+                      height: 40,
+                      width: 40,
+                      borderRadius: 40,
+                    ),
+                  ),
+                  const Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 6.0),
+                        SkeletonText(width: 120),
+                        SizedBox(height: 12.0),
+                        SkeletonText(width: 88),
+                      ]),
+                ],
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

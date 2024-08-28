@@ -351,7 +351,7 @@ class CreatePostVM extends ChangeNotifier {
   }
 
   Future<void> createPost(BuildContext context,
-      {String? communityId, required Function(bool, String?) callback}) async {
+      {String? communityId, required Function(bool, String?, AmityPost?) callback}) async {
     log("createPost");
     log(amityUploadFile.length.toString());
 
@@ -373,22 +373,22 @@ class CreatePostVM extends ChangeNotifier {
         log("No media selected - creating text post");
         // Create text post
         await createTextpost(context, communityId: communityId);
-        callback(true, null);
+        callback(true, null, null);
       } else if (isNotSelectedImageYet() && isNotSelectedFileYet()) {
         log("Video selected - creating video post");
         // Create video post
         await creatVideoPost(context, communityId: communityId);
-        callback(true, null);
+        callback(true, null, null);
       } else if (isNotSelectVideoYet() && isNotSelectedFileYet()) {
         log("Image selected - creating image post");
         // Create image post
         await creatImagePost(context, communityId: communityId);
-        callback(true, null);
+        callback(true, null, null);
       } else if (isNotSelectVideoYet() && isNotSelectedImageYet()) {
         log("File selected - creating file post");
         // Assuming createFilePost handles file selection internally
         await createFilePost(context, communityId: communityId);
-        callback(true, null);
+        callback(true, null, null);
       }
     } else {
       if (isNotSelectVideoYet() &&
@@ -397,22 +397,22 @@ class CreatePostVM extends ChangeNotifier {
         log("No media selected - creating text post");
         // Create text post
         await createTextpost(context);
-        callback(true, null);
+        callback(true, null, null);
       } else if (isNotSelectedImageYet() && isNotSelectedFileYet()) {
         log("Video selected - creating video post");
         // Create video post
         await creatVideoPost(context);
-        callback(true, null);
+        callback(true, null, null);
       } else if (isNotSelectVideoYet() && isNotSelectedFileYet()) {
         log("Image selected - creating image post");
         // Create image post
         await creatImagePost(context);
-        callback(true, null);
+        callback(true, null, null);
       } else if (isNotSelectVideoYet() && isNotSelectedImageYet()) {
         log("File selected - creating file post");
         // Assuming createFilePost handles file selection internally
         await createFilePost(context);
-        callback(true, null);
+        callback(true, null, null);
       }
     }
   }

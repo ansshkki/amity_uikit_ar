@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 
 import '../../../viewmodel/community_feed_viewmodel.dart';
 import '../../../viewmodel/community_member_viewmodel.dart';
+import '../../social/comments.dart';
 import '../../social/global_feed.dart';
 
 class AmityCreatePostV2Screen extends StatefulWidget {
@@ -35,6 +36,7 @@ class AmityCreatePostV2Screen extends StatefulWidget {
 
 class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
   AmityCommunity? community;
+  final textFocusNode = FocusNode();
 
   @override
   void initState() {
@@ -42,6 +44,12 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
     Provider.of<CreatePostVMV2>(context, listen: false).inits();
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    textFocusNode.dispose();
+    super.dispose();
   }
 
   @override
@@ -167,37 +175,44 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
           child: Column(
             children: [
               Expanded(
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.all(16.0),
-                    child: Column(
-                      children: [
-                        TextField(
-                          style: TextStyle(
-                              color: Provider.of<AmityUIConfiguration>(context)
-                                  .appColors
-                                  .base),
-                          onChanged: (value) => vm.updatePostValidity(),
-                          controller: vm.textEditingController,
-                          scrollPhysics: const NeverScrollableScrollPhysics(),
-                          maxLines: null,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "اكتب شيئاً لنشره",
-                            //Write something to post
-                            hintStyle: TextStyle(
-                                color:
-                                    Provider.of<AmityUIConfiguration>(context)
-                                        .appColors
-                                        .userProfileTextColor),
+                child: GestureDetector(
+                  onTap: () {
+                    textFocusNode.requestFocus();
+                  },
+                  child: SingleChildScrollView(
+                    keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                    child: Padding(
+                      padding: const EdgeInsetsDirectional.all(16.0),
+                      child: Column(
+                        children: [
+                          TextField(
+                            style: TextStyle(
+                                color: Provider.of<AmityUIConfiguration>(context)
+                                    .appColors
+                                    .base),
+                            focusNode: textFocusNode,
+                            onChanged: (value) => vm.updatePostValidity(),
+                            controller: vm.textEditingController,
+                            scrollPhysics: const NeverScrollableScrollPhysics(),
+                            maxLines: null,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "اكتب شيئاً لنشره",
+                              //Write something to post
+                              hintStyle: TextStyle(
+                                  color:
+                                      Provider.of<AmityUIConfiguration>(context)
+                                          .appColors
+                                          .userProfileTextColor),
+                            ),
+                            // style: t/1heme.textTheme.bodyText1.copyWith(color: Colors.grey),
                           ),
-                          // style: t/1heme.textTheme.bodyText1.copyWith(color: Colors.grey),
-                        ),
-                        Consumer<CreatePostVMV2>(
-                          builder: (context, vm, _) =>
-                              PostMedia(files: vm.files),
-                        )
-                      ],
+                          Consumer<CreatePostVMV2>(
+                            builder: (context, vm, _) =>
+                                PostMedia(files: vm.files),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -233,6 +248,9 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                       Expanded(
                         child: Text(
                           community?.displayName ?? "اختر المجتمع",
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       Icon(Icons.keyboard_arrow_down),
@@ -301,11 +319,11 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                                 if (community == null) {
                                   //creat post in user Timeline
                                   await vm.createPost(context,
-                                      callback: (isSuccess, error) {
+                                      callback: (isSuccess, error, post) {
                                     if (isSuccess) {
-                                      Navigator.of(context).pop();
+                                      Navigator.of(context).pop(true);
                                       if (widget.isFromPostToPage) {
-                                        Navigator.of(context).pop();
+                                        Navigator.of(context).pop(true);
                                       }
                                     } else {}
                                   });
@@ -313,7 +331,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                                   //create post in Community
                                   await vm.createPost(context,
                                       communityId: community?.communityId!,
-                                      callback: (isSuccess, error) async {
+                                      callback: (isSuccess, error, post) async {
                                     if (isSuccess) {
                                       var roleVM =
                                           Provider.of<MemberManagementVM>(
@@ -334,9 +352,9 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                                                       "لقد تم إرسال منشورك إلى قائمة الانتظار. سيتم مراجعتها بواسطة مشرف المجتمع"); //Your post has been submitted to the pending list. It will be reviewed by community moderator
                                         }
                                       }
-                                      Navigator.of(context).pop();
+                                      Navigator.of(context).pop(true);
                                       if (widget.isFromPostToPage) {
-                                        Navigator.of(context).pop();
+                                        Navigator.of(context).pop(true);
                                       }
                                       if (community!.isPostReviewEnabled!) {
                                         Provider.of<CommuFeedVM>(context,
@@ -344,6 +362,16 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                                             .initAmityPendingCommunityFeed(
                                                 community!.communityId!,
                                                 AmityFeedType.REVIEWING);
+                                      }
+
+                                      if (post != null) {
+                                        Navigator.of(context).push(MaterialPageRoute(
+                                            builder: (context) => CommentScreen(
+                                              amityPost: post,
+                                              theme: Theme.of(context),
+                                              isFromFeed: false,
+                                              feedType: FeedType.community,
+                                            )));
                                       }
 
                                       // Navigator.of(context).push(MaterialPageRoute(

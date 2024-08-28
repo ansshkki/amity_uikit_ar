@@ -1096,7 +1096,7 @@ class _TextPostState extends State<TextPost> {
   }
 
   List<TextSpan> _buildTextSpans(
-      String text, TextStyle textStyle, TextStyle linkStyle) {
+      String text, TextStyle? textStyle, TextStyle? linkStyle) {
     final elements = linkify(text);
 
     return elements.map((element) {
@@ -1122,15 +1122,15 @@ class _TextPostState extends State<TextPost> {
     final String text = textData.text ?? "";
     final bool shouldShorten = text.length > 180 && !isExpanded;
 
-    TextStyle textStyle = TextStyle(
+    TextStyle? textStyle = Theme.of(context).textTheme.bodyMedium?.copyWith(
       color: Provider.of<AmityUIConfiguration>(context).appColors.base,
-      fontSize: 15,
+      fontSize: 12,
     );
-    TextStyle linkStyle = TextStyle(
+    TextStyle? linkStyle = Theme.of(context).textTheme.bodyMedium?.copyWith(
       color: Provider.of<AmityUIConfiguration>(context, listen: false)
           .appColors
           .primary,
-      fontSize: 15,
+      fontSize: 12,
     );
 
     return Column(

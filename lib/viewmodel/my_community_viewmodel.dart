@@ -8,6 +8,7 @@ class MyCommunityVM with ChangeNotifier {
 
   final scrollcontroller = ScrollController();
   bool loadingNextPage = false;
+  bool isEmpty = false;
   // The list of communities.
   final List<AmityCommunity> _amityCommunities = [];
   final List<AmityCommunity> _amityCommunitiesForFeed = [];
@@ -33,6 +34,8 @@ class MyCommunityVM with ChangeNotifier {
     communityLiveCollection.getStreamController().stream.listen((event) {
       _amityCommunities.clear();
       _amityCommunities.addAll(event);
+
+      isEmpty = _amityCommunities.isEmpty;
 
       notifyListeners();
     }).onError((error, stackTrace) {

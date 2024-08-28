@@ -222,12 +222,12 @@ class CreatePostScreen2State extends State<CreatePostScreen2> {
                             if (widget.communityID == null) {
                               //creat post in user Timeline
                               await vm.createPost(context,
-                                  callback: (isSuccess, error) {});
+                                  callback: (isSuccess, error, post) {});
                             } else {
                               //create post in Community
                               await vm.createPost(widget.context!,
                                   communityId: widget.communityID,
-                                  callback: (isSuccess, error) {});
+                                  callback: (isSuccess, error, post) {});
                             }
 
                             // ignore: use_build_context_synchronously

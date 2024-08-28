@@ -342,7 +342,8 @@ class CreatePostVMV2 with ChangeNotifier {
 
   Future<void> createPost(BuildContext context,
       {String? communityId,
-      required Function(bool success, String? error) callback}) async {
+    required Function(bool success, String? error, AmityPost? post) callback,
+  }) async {
     if (isUploadComplete) {
       log("creating Post...");
       bool isCommunity = communityId != null;
@@ -385,7 +386,7 @@ class CreatePostVMV2 with ChangeNotifier {
               context: context,
               callback: callback);
         }).onError((error, stackTrace) async {
-          callback(false, error.toString());
+          callback(false, error.toString(), null);
         });
       } else if (videos.isNotEmpty) {
         log("video was selected");
@@ -409,7 +410,7 @@ class CreatePostVMV2 with ChangeNotifier {
               callback: callback);
           notifyListeners();
         }).onError((error, stackTrace) async {
-          callback(false, error.toString());
+          callback(false, error.toString(), null);
         });
       } else if (otherFiles.isNotEmpty) {
         log("file was selected");
@@ -428,7 +429,7 @@ class CreatePostVMV2 with ChangeNotifier {
               context: context,
               callback: callback);
         }).onError((error, stackTrace) {
-          callback(false, error.toString());
+          callback(false, error.toString(), null);
         });
       } else {
         print("creating.. text post");
@@ -469,7 +470,7 @@ class CreatePostVMV2 with ChangeNotifier {
       //   viewModel.scrollcontroller.jumpTo(0);
       // }
     }
-    callback(true, null);
+    callback(true, null, post);
     notifyListeners();
   }
 

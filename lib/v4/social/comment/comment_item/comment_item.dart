@@ -367,7 +367,7 @@ class CommentItem extends BaseElement {
               ),
             )
           : Text(
-              'Liked',
+              'إعجاب',
               style: TextStyle(
                 color: theme.primaryColor,
                 fontSize: 13,
@@ -396,7 +396,7 @@ class CommentItem extends BaseElement {
         },
         child: (hasMyReaction)
             ? Text(
-                'Liked',
+                'إعجاب',
                 style: TextStyle(
                   color: theme.primaryColor,
                   fontSize: 13,

@@ -160,7 +160,7 @@ class PendingFeddScreenState extends State<PendingFeddScreen> {
                               return PostWidget(
                                   isPostDetail: false,
                                   showCommunity: false,
-                                  showlatestComment: true,
+                                  showlatestComment: false,
                                   isFromFeed: false,
                                   post: snapshot.data!,
                                   theme: theme,

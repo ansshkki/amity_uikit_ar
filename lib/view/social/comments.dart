@@ -447,13 +447,15 @@ class CommentTextField extends StatelessWidget {
                         ),
                         onPressed: navigateToFullCommentPage,
                       ),
-                      hintText: 'قل شياً ...', //Say something nice...
-                      fillColor:
-                          Colors.grey[300], // Set the background color to grey
+                      hintText: 'اترك تعليقاً...',
+                      //Say something nice...
+                      hintStyle: Theme.of(context).textTheme.labelMedium,
+                      fillColor: Theme.of(context).colorScheme.surfaceVariant,
+                      // Set the background color to grey
                       filled: true, // Enable the fill color
                       border: OutlineInputBorder(
                         borderRadius:
-                            BorderRadius.circular(20.0), // Rounded border
+                            BorderRadius.circular(50.0), // Rounded border
                         borderSide: BorderSide.none, // No border side
                       ),
                       contentPadding: const EdgeInsetsDirectional.symmetric(
@@ -499,6 +501,7 @@ class CommentTextField extends StatelessWidget {
                 "نشر", //Post
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
+                    fontSize: 14,
                     color: Provider.of<AmityUIConfiguration>(context)
                         .primaryColor),
               ))
@@ -553,6 +556,7 @@ class FullCommentPage extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
+    final focusNode = FocusNode();
     return Scaffold(
       backgroundColor:
           Provider.of<AmityUIConfiguration>(context).appColors.baseBackground,
@@ -598,14 +602,22 @@ class FullCommentPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsetsDirectional.all(8.0),
-        child: TextField(
-          controller: commentTextEditController,
-          keyboardType: TextInputType.multiline,
-          maxLines: null, // Allows for any number of lines
-          decoration: const InputDecoration(
-              hintText: 'إكتب الرسالة', border: InputBorder.none), //Type message
+      body: SizedBox.expand(
+        child: GestureDetector(
+          onTap: () {
+            focusNode.requestFocus();
+          },
+          child: Padding(
+            padding: const EdgeInsetsDirectional.all(8.0),
+            child: TextField(
+              controller: commentTextEditController,
+              focusNode: focusNode,
+              keyboardType: TextInputType.multiline,
+              maxLines: null, // Allows for any number of lines
+              decoration: const InputDecoration(
+                  hintText: 'اكتب الرسالة', border: InputBorder.none), //Type message
+            ),
+          ),
         ),
       ),
     );
@@ -751,40 +763,41 @@ class _CommentComponentState extends State<CommentComponent> {
                         var commentData = comments.data as CommentTextData;
 
                         return comments.isDeleted!
-                            ? Container(
-                                child: const Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.all(16.0),
-                                      child: Row(
-                                        children: [
-                                          SizedBox(
-                                            width: 14,
-                                          ),
-                                          Icon(
-                                            Icons.remove_circle_outline,
-                                            size: 15,
-                                            color: Color(0xff636878),
-                                          ),
-                                          SizedBox(
-                                            width: 14,
-                                          ),
-                                          Text(
-                                            "هذا التعليق تم حذفه", //This comment  has been deleted
-                                            style: TextStyle(
-                                                color: Color(0xff636878),
-                                                fontSize: 13),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Divider(
-                                      height: 0,
-                                    )
-                                  ],
-                                ),
-                              )
+                            ? SizedBox()
+                            // ? Container(
+                            //     child: const Column(
+                            //       crossAxisAlignment: CrossAxisAlignment.start,
+                            //       children: [
+                            //         Padding(
+                            //           padding: EdgeInsetsDirectional.all(16.0),
+                            //           child: Row(
+                            //             children: [
+                            //               SizedBox(
+                            //                 width: 14,
+                            //               ),
+                            //               Icon(
+                            //                 Icons.remove_circle_outline,
+                            //                 size: 15,
+                            //                 color: Color(0xff636878),
+                            //               ),
+                            //               SizedBox(
+                            //                 width: 14,
+                            //               ),
+                            //               Text(
+                            //                 "هذا التعليق تم حذفه", //This comment  has been deleted
+                            //                 style: TextStyle(
+                            //                     color: Color(0xff636878),
+                            //                     fontSize: 13),
+                            //               ),
+                            //             ],
+                            //           ),
+                            //         ),
+                            //         Divider(
+                            //           height: 0,
+                            //         )
+                            //       ],
+                            //     ),
+                            //   )
                             : Column(
                                 children: [
                                   Column(
@@ -968,8 +981,9 @@ class _CommentComponentState extends State<CommentComponent> {
                                                           : ListTile(
                                                               title: Text(
                                                                 comments.isFlaggedByMe
-                                                                    ? 'التراجع عن التقرير' //Undo Report
-                                                                    : 'تقرير', //Report
+                                                                    ? 'إلغاء التبليغ' //Undo Report
+                                                                    : 'التبليغ',
+                                                                //Report
                                                                 style: const TextStyle(
                                                                     fontWeight:
                                                                         FontWeight
@@ -1323,48 +1337,49 @@ class ReplyCommentComponent extends StatelessWidget {
             var comments = snapshot.data!;
             var commentData = comments.data as CommentTextData;
             return comments.isDeleted!
-                ? Container(
-                    padding: const EdgeInsetsDirectional.only(start: 0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsetsDirectional.only(bottom: 12),
-                          decoration: BoxDecoration(
-                              color: Provider.of<AmityUIConfiguration>(context)
-                                  .appColors
-                                  .baseShade4,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(4))),
-                          padding: const EdgeInsetsDirectional.all(5.0),
-                          child: const Wrap(
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 14,
-                              ),
-                              Icon(
-                                Icons.remove_circle_outline,
-                                size: 15,
-                                color: Color(0xff636878),
-                              ),
-                              SizedBox(
-                                width: 14,
-                              ),
-                              Text(
-                                "هذا الرد تم حذفه", //This reply has been deleted
-                                style: TextStyle(
-                                    color: Color(0xff636878), fontSize: 13),
-                              ),
-                              SizedBox(
-                                width: 14,
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+                ? SizedBox()
+                // ? Container(
+                //     padding: const EdgeInsetsDirectional.only(start: 0),
+                //     child: Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: [
+                //         Container(
+                //           margin: const EdgeInsetsDirectional.only(bottom: 12),
+                //           decoration: BoxDecoration(
+                //               color: Provider.of<AmityUIConfiguration>(context)
+                //                   .appColors
+                //                   .baseShade4,
+                //               borderRadius:
+                //                   const BorderRadius.all(Radius.circular(4))),
+                //           padding: const EdgeInsetsDirectional.all(5.0),
+                //           child: const Wrap(
+                //             crossAxisAlignment: WrapCrossAlignment.center,
+                //             children: [
+                //               SizedBox(
+                //                 width: 14,
+                //               ),
+                //               Icon(
+                //                 Icons.remove_circle_outline,
+                //                 size: 15,
+                //                 color: Color(0xff636878),
+                //               ),
+                //               SizedBox(
+                //                 width: 14,
+                //               ),
+                //               Text(
+                //                 "هذا الرد تم حذفه", //This reply has been deleted
+                //                 style: TextStyle(
+                //                     color: Color(0xff636878), fontSize: 13),
+                //               ),
+                //               SizedBox(
+                //                 width: 14,
+                //               )
+                //             ],
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   )
                 : Container(
                     padding:
                         const EdgeInsetsDirectional.symmetric(vertical: 0, horizontal: 0),

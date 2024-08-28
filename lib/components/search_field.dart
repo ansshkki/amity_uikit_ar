@@ -52,7 +52,7 @@ class _SearchFieldState extends State<SearchField> {
           prefixIcon: Container(
             padding: const EdgeInsets.all(12.0),
             child: SvgPicture.asset(
-              "assets/icons/search.svg",
+              "assets/Icons/search.svg",
               color: Theme.of(context).colorScheme.onSurface,
             ),
           ),

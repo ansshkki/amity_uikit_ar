@@ -67,7 +67,7 @@ class ReactionWidget extends StatelessWidget {
                                           .primaryColor,
                                 ),
                             Text(
-                              ' Liked',
+                              ' إعجاب',
                               style: TextStyle(
                                 color:
                                     Provider.of<AmityUIConfiguration>(context)
@@ -102,7 +102,7 @@ class ReactionWidget extends StatelessWidget {
                                         : Colors.grey,
                                   ),
                               Text(
-                                ' Like',
+                                ' إعجاب',
                                 style: TextStyle(
                                   color: feedType == FeedType.user
                                       ? Provider.of<AmityUIConfiguration>(
