@@ -472,6 +472,9 @@ class CommentTextField extends StatelessWidget {
           trailing: TextButton(
               isSemanticButton: true,
               onPressed: () async {
+                if (commentTextEditController.text.isEmpty) {
+                  return;
+                }
                 if (Provider.of<ReplyVM>(context, listen: false)
                         .replyToObject ==
                     null) {
