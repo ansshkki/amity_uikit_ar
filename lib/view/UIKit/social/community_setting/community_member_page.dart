@@ -364,7 +364,7 @@ void _showOptionsBottomSheet(BuildContext context, AmityCommunityMember member,
                           ),
                     ListTile(
                       title: Text(
-                        member.user!.isFlaggedByMe ? "التراجع عن التقرير" : "تقرير", //Undo Report //Report
+                        member.user!.isFlaggedByMe ? "التراجع عن التبليغ" : "تبليغ", //Undo Report //Report
                         style: const TextStyle(fontWeight: FontWeight.w500),
                       ),
                       onTap: () async {
@@ -381,16 +381,16 @@ void _showOptionsBottomSheet(BuildContext context, AmityCommunityMember member,
                         Navigator.pop(context);
                       },
                     ),
-                    ListTile(
-                      title: const Text(
-                        'حظر المستخدم', //Block User
-                        style: TextStyle(fontWeight: FontWeight.w500),
-                      ),
-                      onTap: () {
-                        viewModel.blockUser(member.user!);
-                        Navigator.pop(context);
-                      },
-                    ),
+                    // ListTile(
+                    //   title: const Text(
+                    //     'حظر المستخدم', //Block User
+                    //     style: TextStyle(fontWeight: FontWeight.w500),
+                    //   ),
+                    //   onTap: () {
+                    //     viewModel.blockUser(member.user!);
+                    //     Navigator.pop(context);
+                    //   },
+                    // ),
                     ListTile(
                       title: const Text(
                         'إخراج من المجتمع', //Remove from community
@@ -418,19 +418,19 @@ void _showOptionsBottomSheet(BuildContext context, AmityCommunityMember member,
                     ),
                   ]
                 : [
+                    // ListTile(
+                    //   title: const Text(
+                    //     'حظر المستخدم', //Block User
+                    //     style: TextStyle(fontWeight: FontWeight.w500),
+                    //   ),
+                    //   onTap: () {
+                    //     viewModel.blockUser(member.user!);
+                    //     Navigator.pop(context);
+                    //   },
+                    // ),
                     ListTile(
                       title: const Text(
-                        'حظر المستخدم', //Block User
-                        style: TextStyle(fontWeight: FontWeight.w500),
-                      ),
-                      onTap: () {
-                        viewModel.blockUser(member.user!);
-                        Navigator.pop(context);
-                      },
-                    ),
-                    ListTile(
-                      title: const Text(
-                        'تقرير', //Report
+                        'تبليغ', //Report
                         style: TextStyle(fontWeight: FontWeight.w500),
                       ),
                       onTap: () {

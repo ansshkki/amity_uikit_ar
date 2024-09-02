@@ -220,50 +220,50 @@ class UserSettingPage extends StatelessWidget {
                                 amityUser,
                               );
                             }),
-                amityUser.userId == AmityCoreClient.getCurrentUser().userId
-                    ? const SizedBox()
-                    : ListTile(
-                        leading: Container(
-                            padding: const EdgeInsetsDirectional.all(5),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                  4), // Adjust radius to your need
-                              color: const Color(
-                                  0xfff1f1f1), // Choose the color to fit your design
-                            ),
-                            child: Icon(Icons.person_off,
-                                color:
-                                    Provider.of<AmityUIConfiguration>(context)
-                                        .appColors
-                                        .base)),
-                        title: Text(
-                          snapshot.data!.status == AmityFollowStatus.BLOCKED
-                              ? "إلغاء الحظر" //Unblock
-                              : "حظر المستخدم", //Block User
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            color: Provider.of<AmityUIConfiguration>(context)
-                                .appColors
-                                .base,
-                          ),
-                        ),
-                        onTap: () {
-                          // Navigate to Members Page or perform an action
-                          if (snapshot.data!.status !=
-                              AmityFollowStatus.BLOCKED) {
-                            Provider.of<UserFeedVM>(context, listen: false)
-                                .blockUser(amityUser.userId!, () {
-                              Navigator.of(context).pop();
-                              Navigator.of(context).pop();
-                            });
-                          } else {
-                            Provider.of<UserFeedVM>(context, listen: false)
-                                .unBlockUser(
-                              amityUser.userId!,
-                            );
-                          }
-                        }),
+                // amityUser.userId == AmityCoreClient.getCurrentUser().userId
+                //     ? const SizedBox()
+                //     : ListTile(
+                //         leading: Container(
+                //             padding: const EdgeInsetsDirectional.all(5),
+                //             decoration: BoxDecoration(
+                //               borderRadius: BorderRadius.circular(
+                //                   4), // Adjust radius to your need
+                //               color: const Color(
+                //                   0xfff1f1f1), // Choose the color to fit your design
+                //             ),
+                //             child: Icon(Icons.person_off,
+                //                 color:
+                //                     Provider.of<AmityUIConfiguration>(context)
+                //                         .appColors
+                //                         .base)),
+                //         title: Text(
+                //           snapshot.data!.status == AmityFollowStatus.BLOCKED
+                //               ? "إلغاء الحظر" //Unblock
+                //               : "حظر المستخدم", //Block User
+                //           style: TextStyle(
+                //             fontSize: 15,
+                //             fontWeight: FontWeight.w600,
+                //             color: Provider.of<AmityUIConfiguration>(context)
+                //                 .appColors
+                //                 .base,
+                //           ),
+                //         ),
+                //         onTap: () {
+                //           // Navigate to Members Page or perform an action
+                //           if (snapshot.data!.status !=
+                //               AmityFollowStatus.BLOCKED) {
+                //             Provider.of<UserFeedVM>(context, listen: false)
+                //                 .blockUser(amityUser.userId!, () {
+                //               Navigator.of(context).pop();
+                //               Navigator.of(context).pop();
+                //             });
+                //           } else {
+                //             Provider.of<UserFeedVM>(context, listen: false)
+                //                 .unBlockUser(
+                //               amityUser.userId!,
+                //             );
+                //           }
+                //         }),
                 const Divider()
               ],
             ),

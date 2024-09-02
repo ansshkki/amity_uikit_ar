@@ -51,6 +51,7 @@ class FeedVM extends ChangeNotifier {
 
   Future<void> initAmityGlobalfeed({bool isCustomPostRanking = false}) async {
     isLoading = true;
+    notifyListeners();
     print("isloading1: $isLoading");
     print("isCustomPostRanking:$isCustomPostRanking");
 
@@ -67,17 +68,21 @@ class FeedVM extends ChangeNotifier {
               _amityGlobalFeedPosts.clear();
               _amityGlobalFeedPosts.addAll(_controllerGlobal!.loadedItems);
 
-              isLoading = false;
-              notifyListeners();
+              // isLoading = false;
+              // notifyListeners();
             } else {
               //Error on pagination controller
-              isLoading = false;
+              // isLoading = false;
 
-              notifyListeners();
+              // notifyListeners();
               log("error: ${_controllerGlobal!.error.toString()}");
               // await AmityDialog().showAlertErrorDialog(
               //     title: "Error!",
               //     message: _controllerGlobal!.error.toString());
+            }
+            if (_controllerGlobal?.isFetching == false) {
+              isLoading = false;
+              notifyListeners();
             }
           },
         );
@@ -93,27 +98,19 @@ class FeedVM extends ChangeNotifier {
             if (_controllerGlobal?.error == null) {
               _amityGlobalFeedPosts.clear();
               _amityGlobalFeedPosts.addAll(_controllerGlobal!.loadedItems);
-
-              isLoading = false;
-              notifyListeners();
             } else {
-              // Handle pagination controller error
               log("error: ${_controllerGlobal!.error.toString()}");
-              notifyListeners();
-              // Optionally show an error dialog
-              // await AmityDialog().showAlertErrorDialog(
-              //   title: "Error!",
-              //   message: _controllerGlobal!.error.toString());
             }
             if (_controllerGlobal?.isFetching == false) {
               isLoading = false;
+              notifyListeners();
             }
           },
         );
     }
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _controllerGlobal?.fetchNextPage();
+    await Future.delayed(Duration.zero, () async {
+      await _controllerGlobal?.fetchNextPage();
     });
 
     scrollcontroller.addListener(loadnextpage);

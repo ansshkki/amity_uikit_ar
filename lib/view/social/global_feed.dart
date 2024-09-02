@@ -53,6 +53,16 @@ class GlobalFeedScreenState extends State<GlobalFeedScreen> {
   @override
   void initState() {
     super.initState();
+
+    var globalFeedProvider = Provider.of<FeedVM>(context, listen: false);
+    var myCommunityList =
+    Provider.of<MyCommunityVM>(context, listen: false);
+
+    myCommunityList.initMyCommunityFeed();
+
+    globalFeedProvider.initAmityGlobalfeed(
+      // isCustomPostRanking: widget.isCustomPostRanking
+        isCustomPostRanking: false);
   }
 
   @override
@@ -61,6 +71,7 @@ class GlobalFeedScreenState extends State<GlobalFeedScreen> {
     final bHeight = mediaQuery.size.height -
         mediaQuery.padding.top -
         AppBar().preferredSize.height;
+
 
     final theme = Theme.of(context);
     return Consumer<FeedVM>(builder: (context, vm, _) {
@@ -90,7 +101,7 @@ class GlobalFeedScreenState extends State<GlobalFeedScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SvgPicture.asset(
-                            "assets/empty_feed.svg",
+                            "assets/Icons/empty_feed.svg",
                             package: 'amity_uikit_beta_service',
                           ),
                           Padding(
@@ -122,7 +133,9 @@ class GlobalFeedScreenState extends State<GlobalFeedScreen> {
                           Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: ElevatedButton.icon(
-                              onPressed: () {},
+                              onPressed: () {
+                                DefaultTabController.of(context).animateTo(2);
+                              },
                               icon: Icon(Icons.search),
                               label: Text("استكشف المجتمعات"),
                             ),
@@ -240,7 +253,7 @@ class _PostWidgetState
     final isFlaggedByMe = widget.post.isFlaggedByMe;
     List<String> otherPostMenu = [
       widget.post.isFlaggedByMe ? 'إلغاء التبليغ' : 'التبليغ',
-      'حظر المستخدم'
+      // 'حظر المستخدم'
     ];
 
     return PopupMenuButton(
@@ -851,11 +864,11 @@ class _PostWidgetState
                                   )),
                             ),
                       Divider(
-                        color: widget.feedType == FeedType.user
-                            ? Provider.of<AmityUIConfiguration>(context)
-                                .appColors
-                                .userProfileTextColor
-                            : Colors.grey,
+                        // color: widget.feedType == FeedType.user
+                        //     ? Provider.of<AmityUIConfiguration>(context)
+                        //         .appColors
+                        //         .userProfileTextColor
+                        //     : Colors.grey,
                         height: 1,
                       ),
                       // const SizedBox(
@@ -962,11 +975,11 @@ class _PostWidgetState
                           .appColors
                           .baseBackground,
                       child: Divider(
-                        color: widget.feedType == FeedType.user
-                            ? Provider.of<AmityUIConfiguration>(context)
-                                .appColors
-                                .userProfileTextColor
-                            : Colors.grey,
+                        // color: widget.feedType == FeedType.user
+                        //     ? Provider.of<AmityUIConfiguration>(context)
+                        //         .appColors
+                        //         .userProfileTextColor
+                        //     : Colors.grey,
                         height: 0,
                       )),
           // widget.isFromFeed
@@ -1392,7 +1405,7 @@ class CommentActionComponent extends StatelessWidget {
                           ? const SizedBox()
                           : ListTile(
                               title: const Text(
-                                'تقرير', //Report
+                                'تبليغ', //Report
                                 style: TextStyle(fontWeight: FontWeight.w500),
                               ),
                               onTap: () async {

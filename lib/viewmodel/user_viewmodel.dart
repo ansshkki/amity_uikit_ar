@@ -265,14 +265,14 @@ class UserVM extends ChangeNotifier {
   void reportOrUnReportUser(AmityUser user) {
     if (user.isFlaggedByMe) {
       user.report().unflag().then((value) {
-        AmitySuccessDialog.showTimedDialog("إلغاء إرسال التقرير"); //Unreport sent
+        AmitySuccessDialog.showTimedDialog("إلغاء إرسال التبليغ"); //Unreport sent
       }).onError((error, stackTrace) {
         AmityDialog()
             .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
       });
     } else {
       user.report().flag().then((value) {
-        AmitySuccessDialog.showTimedDialog("إرسال تقرير"); //Report sent
+        AmitySuccessDialog.showTimedDialog("تم إرسال التبليغ"); //Report sent
       }).onError((error, stackTrace) {
         AmityDialog()
             .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
