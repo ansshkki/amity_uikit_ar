@@ -146,122 +146,105 @@ class UserProfileScreenState extends State<UserProfileScreen>
                     color: Provider.of<AmityUIConfiguration>(context)
                         .appColors
                         .baseBackground,
-                    padding: const EdgeInsetsDirectional.only(start: 16, end: 16),
+                    padding:
+                        const EdgeInsetsDirectional.only(start: 16, end: 16),
                     child: Column(
                       children: [
-                        SizedBox(
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              FadedScaleAnimation(
-                                  child: getAvatarImage(
-                                      isCurrentUser
-                                          ? Provider.of<AmityVM>(
-                                              context,
-                                            ).currentamityUser?.avatarUrl
-                                          : Provider.of<UserFeedVM>(context)
-                                              .amityUser!
-                                              .avatarUrl,
-                                      radius: 32)),
-                              const SizedBox(width: 10),
-                              Expanded(
-                                child: Container(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      // Text(vm.amityMyFollowInfo.status
-                                      //     .toString()),
-                                      Text(
-                                        getAmityUser().displayName ?? "",
-                                        style: TextStyle(
-                                          color:
-                                              Provider.of<AmityUIConfiguration>(
-                                                      context)
-                                                  .appColors
-                                                  .base,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w700,
-                                          letterSpacing: -0.4,
-                                        ),
-                                      ),
-                                      vm.amityMyFollowInfo.id == null
-                                          ? const SizedBox()
-                                          : StreamBuilder<AmityUserFollowInfo>(
-                                              stream: vm.amityMyFollowInfo
-                                                  .listen.stream,
-                                              initialData: vm.amityMyFollowInfo,
-                                              builder: (context, snapshot) {
-                                                return Row(
-                                                  children: [
-                                                    // Text('${  vm.amityMyFollowInfo.followerCount
-                                                    //     .toString()} Posts  '),
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        Navigator.of(context).push(MaterialPageRoute(
-                                                            builder: (context) => ChangeNotifierProvider(
-                                                                create: (context) =>
-                                                                    FollowerVM(),
-                                                                child: FollowScreen(
-                                                                    followScreenType:
-                                                                        FollowScreenType
-                                                                            .following,
-                                                                    key:
-                                                                        UniqueKey(),
-                                                                    userId: widget
-                                                                        .amityUserId,
-                                                                    displayName:
-                                                                        getAmityUser()
-                                                                            .displayName))));
-                                                      },
-                                                      child: Text(
-                                                          '${snapshot.data!.followingCount} متابع', //following
-                                                          style: TextStyle(
-                                                              color: Provider.of<
-                                                                          AmityUIConfiguration>(
-                                                                      context)
-                                                                  .appColors
-                                                                  .base)),
-                                                    ),
-                                                    GestureDetector(
-                                                      onTap: () {
-                                                        Navigator.of(context).push(MaterialPageRoute(
-                                                            builder: (context) => ChangeNotifierProvider(
-                                                                create: (context) =>
-                                                                    FollowerVM(),
-                                                                child: FollowScreen(
-                                                                    followScreenType:
-                                                                        FollowScreenType
-                                                                            .follower,
-                                                                    key:
-                                                                        UniqueKey(),
-                                                                    userId: widget
-                                                                        .amityUserId,
-                                                                    displayName:
-                                                                        getAmityUser()
-                                                                            .displayName))));
-                                                      },
-                                                      child: Text(
-                                                        '${snapshot.data!.followerCount} متابعين', //followers
-                                                        style: TextStyle(
-                                                            color: Provider.of<
-                                                                        AmityUIConfiguration>(
-                                                                    context)
-                                                                .appColors
-                                                                .base),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                );
-                                              })
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
+                        FadedScaleAnimation(
+                          child: getAvatarImage(
+                              isCurrentUser
+                                  ? Provider.of<AmityVM>(
+                                      context,
+                                    ).currentamityUser?.avatarUrl
+                                  : Provider.of<UserFeedVM>(context)
+                                      .amityUser!
+                                      .avatarUrl,
+                              radius: 64),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          getAmityUser().displayName ?? "",
+                          style: const TextStyle(
+                            color: Color(0xff4B5563),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: -0.4,
                           ),
                         ),
+
+                        // Text(vm.amityMyFollowInfo.status
+                        //     .toString()),
+                        vm.amityMyFollowInfo.id == null
+                            ? const SizedBox()
+                            : StreamBuilder<AmityUserFollowInfo>(
+                                stream: vm.amityMyFollowInfo.listen.stream,
+                                initialData: vm.amityMyFollowInfo,
+                                builder: (context, snapshot) {
+                                  return Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      // Text('${  vm.amityMyFollowInfo.followerCount
+                                      //     .toString()} Posts  '),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ChangeNotifierProvider(
+                                                create: (context) =>
+                                                    FollowerVM(),
+                                                child: FollowScreen(
+                                                    followScreenType:
+                                                        FollowScreenType
+                                                            .following,
+                                                    key: UniqueKey(),
+                                                    userId: widget.amityUserId,
+                                                    displayName: getAmityUser()
+                                                        .displayName),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: Text(
+                                            '${snapshot.data!.followingCount} متابع', //following
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 13,
+                                                color: Color(0xff4B5563))),
+                                      ),
+                                      const SizedBox(width: 12),
+                                      GestureDetector(
+                                        onTap: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ChangeNotifierProvider(
+                                                create: (context) =>
+                                                    FollowerVM(),
+                                                child: FollowScreen(
+                                                    followScreenType:
+                                                        FollowScreenType
+                                                            .follower,
+                                                    key: UniqueKey(),
+                                                    userId: widget.amityUserId,
+                                                    displayName: getAmityUser()
+                                                        .displayName),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: Text(
+                                          '${snapshot.data!.followerCount} متابعين', //followers
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 13,
+                                              color: Color(0xff4B5563)),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                }),
+
                         const SizedBox(height: 12),
                         Align(
                           alignment: AlignmentDirectional.centerStart,
@@ -290,52 +273,46 @@ class UserProfileScreenState extends State<UserProfileScreen>
                                   Expanded(
                                     child: GestureDetector(
                                       onTap: () async {
-                                        await Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ProfileScreen(
-                                                        user: vm.amityUser!)));
+                                        await Navigator.of(context)
+                                            .pushNamed("/my-account/profile");
+                                        // await Navigator.of(context).push(
+                                        //     MaterialPageRoute(
+                                        //         builder: (context) =>
+                                        //             ProfileScreen(
+                                        //                 user: vm.amityUser!)));
                                       },
                                       child: Container(
                                         decoration: BoxDecoration(
                                           border: Border.all(
-                                              color: const Color(0xffA5A9B5),
+                                              color: const Color(0xffDDDDDD),
                                               style: BorderStyle.solid,
                                               width: 1),
                                           borderRadius:
-                                              BorderRadius.circular(4),
+                                              BorderRadius.circular(50),
                                           color:
                                               Provider.of<AmityUIConfiguration>(
                                                       context)
                                                   .appColors
                                                   .baseBackground,
                                         ),
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            10, 10, 10, 10),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(10, 10, 10, 10),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Icon(
-                                              Icons.edit_outlined,
-                                              color: Provider.of<
-                                                          AmityUIConfiguration>(
-                                                      context)
-                                                  .appColors
-                                                  .base,
-                                            ),
                                             Text(
-                                              "تعديل الملف الشخصي", //Edit Profile
+                                              "تعديل ", //Edit Profile
                                               style: theme.textTheme.titleSmall!
                                                   .copyWith(
-                                                color: Provider.of<
-                                                            AmityUIConfiguration>(
-                                                        context)
-                                                    .appColors
-                                                    .base,
+                                                color: const Color(0xff4B5563),
                                                 fontSize: 15,
                                               ),
                                               textAlign: TextAlign.center,
+                                            ),
+                                            const Icon(
+                                              Icons.edit_outlined,
+                                              color: Color(0xff4B5563),
                                             ),
                                           ],
                                         ),
@@ -381,7 +358,8 @@ class UserProfileScreenState extends State<UserProfileScreen>
 
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.only(),
+                                      padding:
+                                          const EdgeInsetsDirectional.only(),
                                       child: vm.amityMyFollowInfo.id == null
                                           ? Container(
                                               decoration: BoxDecoration(
@@ -396,8 +374,8 @@ class UserProfileScreenState extends State<UserProfileScreen>
                                                     BorderRadius.circular(10),
                                               ),
                                               padding:
-                                                  const EdgeInsetsDirectional.fromSTEB(
-                                                      10, 10, 10, 10),
+                                                  const EdgeInsetsDirectional
+                                                      .fromSTEB(10, 10, 10, 10),
                                               child: Text(
                                                 "",
                                                 textAlign: TextAlign.center,
@@ -573,6 +551,7 @@ class _StickyHeaderList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverStickyHeader(
       header: Header(
+        // index: 0,
         index: index,
       ),
       sliver: SliverList(
@@ -660,7 +639,11 @@ class _StickyHeaderList extends StatelessWidget {
                             AmityFollowStatus.ACCEPTED &&
                         vm.amityUser!.userId != AmityCoreClient.getUserId()) {
                       return buildPrivateAccountWidget(bheight);
-                    } else if (vm.amityPosts.isEmpty) {
+                    }
+                    // else {
+                    //   return SizedBox.shrink();
+                    // }
+                    else if (vm.amityPosts.isEmpty) {
                       return buildNoPostsWidget(bheight, context);
                     } else {
                       return Container(
@@ -779,33 +762,33 @@ class AppScaffold extends StatelessWidget {
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          actions: [
-            Provider.of<UserFeedVM>(context).amityMyFollowInfo.id == null
-                ? const SizedBox()
-                : StreamBuilder<AmityUserFollowInfo>(
-                    stream: Provider.of<UserFeedVM>(context)
-                        .amityMyFollowInfo
-                        .listen
-                        .stream,
-                    initialData:
-                        Provider.of<UserFeedVM>(context).amityMyFollowInfo,
-                    builder: (context, snapshot) {
-                      return IconButton(
-                        icon: Icon(Icons.more_horiz,
-                            color: Provider.of<AmityUIConfiguration>(context)
-                                .appColors
-                                .base),
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (_) => UserSettingPage(
-                                    amityMyFollowInfo: snapshot.data!,
-                                    amityUser: Provider.of<UserFeedVM>(context)
-                                        .amityUser!,
-                                  )));
-                        },
-                      );
-                    }),
-          ],
+          // actions: [
+          //   Provider.of<UserFeedVM>(context).amityMyFollowInfo.id == null
+          //       ? const SizedBox()
+          //       : StreamBuilder<AmityUserFollowInfo>(
+          //           stream: Provider.of<UserFeedVM>(context)
+          //               .amityMyFollowInfo
+          //               .listen
+          //               .stream,
+          //           initialData:
+          //               Provider.of<UserFeedVM>(context).amityMyFollowInfo,
+          //           builder: (context, snapshot) {
+          //             return IconButton(
+          //               icon: Icon(Icons.more_horiz,
+          //                   color: Provider.of<AmityUIConfiguration>(context)
+          //                       .appColors
+          //                       .base),
+          //               onPressed: () {
+          //                 Navigator.of(context).push(MaterialPageRoute(
+          //                     builder: (_) => UserSettingPage(
+          //                           amityMyFollowInfo: snapshot.data!,
+          //                           amityUser: Provider.of<UserFeedVM>(context)
+          //                               .amityUser!,
+          //                         )));
+          //               },
+          //             );
+          //           }),
+          // ],
         ),
         body: RefreshIndicator(
           color: Provider.of<AmityUIConfiguration>(context).primaryColor,

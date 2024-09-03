@@ -51,9 +51,9 @@ class _FollowScreenState extends State<FollowScreen> {
               dividerColor: Provider.of<AmityUIConfiguration>(context)
                   .appColors
                   .baseBackground,
-              labelColor: const Color(0xFF1054DE),
-              unselectedLabelColor: Colors.black,
-              indicatorColor: const Color(0xFF1054DE),
+              labelColor: const Color(0xFFFC2C86),
+              unselectedLabelColor: const Color(0xff8F9BB3),
+              indicatorColor: const Color(0xFFFC2C86),
               // labelStyle: const TextStyle(
               //   fontSize: 17,
               //   fontWeight: FontWeight.w600,
@@ -62,12 +62,12 @@ class _FollowScreenState extends State<FollowScreen> {
               tabs: const [
                 Tab(
                   child: Text(
-                    "متابعة", //Following
+                    "المتابعون", //Following
                   ),
                 ),
                 Tab(
                   child: Text(
-                    "متابعين", //Followers
+                    "المتابعين", //Followers
                   ),
                 ),
               ],

@@ -8,37 +8,45 @@ void showOptionsBottomSheet(
   AmityUser user,
 ) {
   showModalBottomSheet(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Colors.white,
       context: context,
       builder: (BuildContext bc) {
         return Container(
-          padding: const EdgeInsetsDirectional.only(top: 20, bottom: 20),
+          padding: EdgeInsetsDirectional.only(
+              top: 20, bottom: 20 + MediaQuery.paddingOf(bc).bottom),
           decoration: const BoxDecoration(
-            color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20.0),
               topRight: Radius.circular(20.0),
             ),
           ),
-          child: Wrap(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              user.isFlaggedByMe
-                  ? ListTile(
-                      title: const Text('إلغاء الإبلاغ عن المستخدم'), //Unreport User
-                      onTap: () {
-                        Provider.of<UserVM>(context, listen: false)
-                            .reportOrUnReportUser(user);
-                        Navigator.pop(context);
-                      },
-                    )
-                  : ListTile(
-                      title: const Text('الإبلاغ عن المستخدم'), //Report user
-                      onTap: () {
-                        Provider.of<UserVM>(context, listen: false)
-                            .reportOrUnReportUser(user);
-                        Navigator.pop(context);
-                      },
-                    ),
+              Wrap(
+                children: [
+                  user.isFlaggedByMe
+                      ? ListTile(
+                          title: const Text(
+                              'إلغاء الإبلاغ عن المستخدم'), //Unreport User
+                          onTap: () {
+                            Provider.of<UserVM>(context, listen: false)
+                                .reportOrUnReportUser(user);
+                            Navigator.pop(context);
+                          },
+                        )
+                      : ListTile(
+                          title:
+                              const Text('الإبلاغ عن المستخدم'), //Report user
+                          onTap: () {
+                            Provider.of<UserVM>(context, listen: false)
+                                .reportOrUnReportUser(user);
+                            Navigator.pop(context);
+                          },
+                        ),
+                ],
+              ),
             ],
           ),
         );

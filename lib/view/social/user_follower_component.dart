@@ -111,7 +111,9 @@ class _AmityFollowerScreenState extends State<AmityFollowerScreen> {
                                             .avatarUrl),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.all(8.0),
+                                        padding:
+                                            const EdgeInsetsDirectional.all(
+                                                8.0),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -123,7 +125,9 @@ class _AmityFollowerScreenState extends State<AmityFollowerScreen> {
                                                       .displayName ??
                                                   "لا يمكن ايجاد اسم للعرض", //display name not found
                                               style: const TextStyle(
-                                                  fontWeight: FontWeight.w600),
+                                                fontWeight: FontWeight.w600,
+                                                fontSize: 15,
+                                              ),
                                             ),
                                           ],
                                         ),

@@ -67,14 +67,14 @@ class _AmityFollowingScreenScreenState extends State<AmityFollowingScreen> {
                                   amityUserId: snapshot.data!.targetUserId!,
                                 ))));
                       },
-                      trailing: GestureDetector(
-                          onTap: () {
+                      trailing: IconButton(
+                          onPressed: () {
                             showOptionsBottomSheet(
                                 context, snapshot.data!.targetUser!);
                             Provider.of<FollowerVM>(context, listen: false)
                                 .getFollowingListof(userId: widget.userId);
                           },
-                          child: const Icon(Icons.more_horiz)),
+                          icon: const Icon(Icons.more_horiz)),
                       title: Row(
                         children: [
                           GestureDetector(
@@ -91,7 +91,7 @@ class _AmityFollowingScreenScreenState extends State<AmityFollowingScreen> {
                                           .displayName ??
                                       "لا يمكن ايجاد اسم للعرض", //display name not found
                                   style: const TextStyle(
-                                      fontWeight: FontWeight.w600),
+                                      fontWeight: FontWeight.w600,fontSize: 15),
                                 ),
                               ],
                             ),
