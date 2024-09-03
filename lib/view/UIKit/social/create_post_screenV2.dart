@@ -247,7 +247,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     children: [
                       Expanded(
                         child: Text(
-                          community?.displayName ?? "اختر المجتمع",
+                          "النشر إلى: ${community?.displayName ?? "صفحتي الشخصية"}",
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),

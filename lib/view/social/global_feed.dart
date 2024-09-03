@@ -54,15 +54,17 @@ class GlobalFeedScreenState extends State<GlobalFeedScreen> {
   void initState() {
     super.initState();
 
-    var globalFeedProvider = Provider.of<FeedVM>(context, listen: false);
-    var myCommunityList =
-    Provider.of<MyCommunityVM>(context, listen: false);
+    Future.delayed(Duration.zero, () {
+      var globalFeedProvider = Provider.of<FeedVM>(context, listen: false);
+      var myCommunityList =
+      Provider.of<MyCommunityVM>(context, listen: false);
 
-    myCommunityList.initMyCommunityFeed();
+      myCommunityList.initMyCommunityFeed();
 
-    globalFeedProvider.initAmityGlobalfeed(
-      // isCustomPostRanking: widget.isCustomPostRanking
-        isCustomPostRanking: false);
+      globalFeedProvider.initAmityGlobalfeed(
+        // isCustomPostRanking: widget.isCustomPostRanking
+          isCustomPostRanking: false);
+    });
   }
 
   @override
