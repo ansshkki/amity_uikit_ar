@@ -273,8 +273,10 @@ class UserProfileScreenState extends State<UserProfileScreen>
                                   Expanded(
                                     child: GestureDetector(
                                       onTap: () async {
-                                        await Navigator.of(context)
-                                            .pushNamed("/my-account/profile");
+                                        await Navigator.of(context).pushNamed(
+                                          "/my-account/profile",
+                                          arguments: {"fromSettings": false},
+                                        );
                                         // await Navigator.of(context).push(
                                         //     MaterialPageRoute(
                                         //         builder: (context) =>
