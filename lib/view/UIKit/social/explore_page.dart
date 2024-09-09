@@ -168,7 +168,7 @@ class _CommunityPageState extends State<CommunityPage> {
             //   fontFamily: 'SF Pro Text',
             // ),
             tabs: const [
-              Tab(text: "My feed"), //Newsfeed
+              Tab(text: "صفحتي"), //Newsfeed
               Tab(text: "استكشفي"), //Explore
               Tab(text: "المجموعات"),
             ],

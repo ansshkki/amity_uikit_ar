@@ -42,7 +42,7 @@ class LoadingSkeleton extends StatelessWidget {
                 tileMode: TileMode.clamp,
               ),
               child: ListView.separated(
-                // physics: const NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 separatorBuilder: (context, index) {
                   return Divider(
                     color: Provider.of<AmityUIConfiguration>(context)

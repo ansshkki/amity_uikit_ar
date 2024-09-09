@@ -56,13 +56,12 @@ class GlobalFeedScreenState extends State<GlobalFeedScreen> {
 
     Future.delayed(Duration.zero, () {
       var globalFeedProvider = Provider.of<FeedVM>(context, listen: false);
-      var myCommunityList =
-      Provider.of<MyCommunityVM>(context, listen: false);
+      var myCommunityList = Provider.of<MyCommunityVM>(context, listen: false);
 
       myCommunityList.initMyCommunityFeed();
 
       globalFeedProvider.initAmityGlobalfeed(
-        // isCustomPostRanking: widget.isCustomPostRanking
+          // isCustomPostRanking: widget.isCustomPostRanking
           isCustomPostRanking: false);
     });
   }
@@ -73,7 +72,6 @@ class GlobalFeedScreenState extends State<GlobalFeedScreen> {
     final bHeight = mediaQuery.size.height -
         mediaQuery.padding.top -
         AppBar().preferredSize.height;
-
 
     final theme = Theme.of(context);
     return Consumer<FeedVM>(builder: (context, vm, _) {
@@ -93,58 +91,10 @@ class GlobalFeedScreenState extends State<GlobalFeedScreen> {
         child: Container(
           color:
               Provider.of<AmityUIConfiguration>(context).appColors.baseShade4,
-          child: vm.isLoading
-              ? LoadingSkeleton(
-                  context: context,
-                )
-              : vm.getAmityPosts.isEmpty
-                  ? Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SvgPicture.asset(
-                            "assets/Icons/empty_feed.svg",
-                            package: 'amity_uikit_beta_service',
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Text(
-                              "Your feed is empty",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleMedium
-                                  ?.copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.onSurface,
-                                  ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Text(
-                              "قم باستكشاف المجتمعات",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium
-                                  ?.copyWith(
-                                    color:
-                                        Theme.of(context).colorScheme.onSurface,
-                                  ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: ElevatedButton.icon(
-                              onPressed: () {
-                                DefaultTabController.of(context).animateTo(2);
-                              },
-                              icon: Icon(Icons.search),
-                              label: Text("استكشف المجتمعات"),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
+          child: !vm.isLoading && vm.getAmityPosts.isEmpty
+              ? buildEmptyFeed(context)
+              : vm.isLoading && vm.getAmityPosts.isEmpty
+                  ? LoadingSkeleton(context: context)
                   : FadedSlideAnimation(
                       beginOffset: const Offset(0, 0.3),
                       endOffset: const Offset(0, 0),
@@ -183,6 +133,12 @@ class GlobalFeedScreenState extends State<GlobalFeedScreen> {
                                     postIndex: index,
                                     isFromFeed: true,
                                   ),
+                                  if (vm.loadingNexPage &&
+                                      index == vm.getAmityPosts.length - 1)
+                                    SizedBox(
+                                      height: 400,
+                                      child: LoadingSkeleton(context: context),
+                                    ),
                                 ],
                               );
                             },
@@ -193,6 +149,49 @@ class GlobalFeedScreenState extends State<GlobalFeedScreen> {
         ),
       );
     });
+  }
+
+  Widget buildEmptyFeed(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            "assets/Icons/empty_feed.svg",
+            package: 'amity_uikit_beta_service',
+          ),
+          SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Text(
+              "صفحتك فارغة!",
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Text(
+              "قم باستكشاف المجتمعات",
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton.icon(
+              onPressed: () {
+                DefaultTabController.of(context).animateTo(2);
+              },
+              icon: Icon(Icons.search),
+              label: Text("استكشف المجتمعات"),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -454,7 +453,8 @@ class _PostWidgetState
             Provider.of<AmityUIConfiguration>(context).appColors.baseBackground,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
-          color: Provider.of<AmityUIConfiguration>(context).appColors.baseShade3,
+          color:
+              Provider.of<AmityUIConfiguration>(context).appColors.baseShade3,
           strokeAlign: BorderSide.strokeAlignOutside,
         ),
       ),
