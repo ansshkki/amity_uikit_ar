@@ -313,7 +313,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     // ),
                     Spacer(),
                     ElevatedButton(
-                      onPressed: vm.isPostValid && community != null
+                      onPressed: vm.isPostValid
                           ? () async {
                               if (vm.isUploadComplete) {
                                 if (community == null) {
