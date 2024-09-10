@@ -53,6 +53,7 @@ class _SearchFieldState extends State<SearchField> {
             padding: const EdgeInsets.all(12.0),
             child: SvgPicture.asset(
               "assets/Icons/search.svg",
+              package: "amity_uikit_beta_service",
               color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
