@@ -3,7 +3,6 @@
 import 'dart:developer';
 
 import 'package:amity_sdk/amity_sdk.dart';
-import 'package:amity_uikit_beta_service/utils/navigation_key.dart';
 import 'package:amity_uikit_beta_service/v4/core/toast/bloc/amity_uikit_toast_bloc.dart';
 import 'package:amity_uikit_beta_service/v4/social/globalfeed/bloc/global_feed_bloc.dart';
 import 'package:amity_uikit_beta_service/v4/social/social_home_page/bloc/social_home_bloc.dart';
@@ -110,10 +109,15 @@ class AmityUIKit {
       required String userId,
       String? displayName,
       String? authToken,
+      String? accessToken,
       Function(bool isSuccess, String? error)? callback}) async {
     Stopwatch stopwatch = Stopwatch()..start();
     await Provider.of<AmityVM>(context, listen: false)
-        .login(userID: userId, displayName: displayName, authToken: authToken)
+        .login(
+            userID: userId,
+            displayName: displayName,
+            authToken: authToken,
+            accessToken: accessToken)
         .then((value) async {
       log("login success");
 

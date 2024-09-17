@@ -7,9 +7,15 @@ import '../components/alert_dialog.dart';
 
 class AmityVM extends ChangeNotifier {
   AmityUser? currentamityUser;
+  String? accessToken;
 
-  Future<void> login(
-      {required String userID, String? displayName, String? authToken}) async {
+  Future<void> login({
+    required String userID,
+    String? displayName,
+    String? authToken,
+    String? accessToken,
+  }) async {
+    this.accessToken = accessToken;
     log("login with $userID");
     if (authToken == null) {
       log("authToken == null");

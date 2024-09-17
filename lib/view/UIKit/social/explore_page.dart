@@ -18,6 +18,7 @@ import '../../../components/search_field.dart';
 import '../../../viewmodel/amity_viewmodel.dart';
 import '../../../viewmodel/community_feed_viewmodel.dart';
 import '../../../viewmodel/user_feed_viewmodel.dart';
+import '../../notification/notification_page.dart';
 import '../../user/user_profile_v2.dart';
 import 'create_post_screenV2.dart';
 import 'my_community_feed.dart';
@@ -126,17 +127,16 @@ class _CommunityPageState extends State<CommunityPage> {
                       Provider.of<AmityVM>(context).currentamityUser?.avatarUrl),
                 ),
           actions: [
-            // IconButton(
-            //   icon: SvgPicture.asset(
-            //     "assets/Icons/notifications.svg",
-            //     package: "amity_uikit_beta_service",
-            //   ),
-            //   onPressed: () {
-            //     // Implement search functionality
-            //     // Navigator.of(context).push(MaterialPageRoute(
-            //     //     builder: (context) => const SearchCommunitiesScreen()));
-            //   },
-            // ),
+            IconButton(
+              icon: SvgPicture.asset(
+                "assets/Icons/notifications.svg",
+                package: "amity_uikit_beta_service",
+              ),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const NotificationPage()));
+              },
+            ),
             IconButton(
               icon: SvgPicture.asset(
                 "assets/Icons/search.svg",
@@ -287,6 +287,10 @@ class RecommendationSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ExplorePageVM>(
       builder: (context, vm, _) {
+        if (vm.recommendedCommunities.isEmpty) {
+          return SizedBox();
+        }
+
         return Container(
           padding: const EdgeInsetsDirectional.only(bottom: 16),
           child: Column(

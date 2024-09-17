@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/navigation_key.dart';
+import 'amity_viewmodel.dart';
 
 class NotificationVM extends ChangeNotifier {
   AmityNotificationRepoImp channelRepoImp = AmityNotificationRepoImp();
@@ -18,7 +19,7 @@ class NotificationVM extends ChangeNotifier {
 
   void initVM() async {
     log("NotificationVM: initVM");
-    var accessToken = Provider.of<UserVM>(
+    var accessToken = Provider.of<AmityVM>(
             NavigationService.navigatorKey.currentContext!,
             listen: false)
         .accessToken;
