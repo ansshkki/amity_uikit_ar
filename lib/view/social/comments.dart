@@ -748,7 +748,7 @@ class _CommentComponentState extends State<CommentComponent> {
     return Consumer<PostVM>(builder: (context, vm, _) {
       return vm.amityComments.isEmpty
           ? const SizedBox(
-              height: 500,
+              height: 50,
             )
           : vm.controller.isFetching
               ? SizedBox(height: 500, child: LoadingSkeleton(context: context))
