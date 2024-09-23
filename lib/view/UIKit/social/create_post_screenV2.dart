@@ -4,6 +4,7 @@ import 'package:amity_uikit_beta_service/view/UIKit/social/community_setting/pos
 import 'package:amity_uikit_beta_service/view/UIKit/social/post_target_page.dart';
 import 'package:amity_uikit_beta_service/viewmodel/configuration_viewmodel.dart';
 import 'package:amity_uikit_beta_service/viewmodel/create_postV2_viewmodel.dart';
+
 // import 'package:amity_uikit_beta_service/viewmodel/create_post_viewmodel.dart';
 // import 'package:amity_uikit_beta_service/viewmodel/media_viewmodel.dart';
 
@@ -22,12 +23,13 @@ class AmityCreatePostV2Screen extends StatefulWidget {
   final bool isFromPostToPage;
   final FeedType? feedType;
 
-  const AmityCreatePostV2Screen(
-      {super.key,
-      this.community,
-      // this.amityUser,
-      this.isFromPostToPage = false,
-      this.feedType});
+  AmityCreatePostV2Screen({
+    super.key,
+    this.community,
+    // this.amityUser,
+    this.isFromPostToPage = false,
+    this.feedType,
+  });
 
   @override
   State<AmityCreatePostV2Screen> createState() =>
@@ -37,6 +39,7 @@ class AmityCreatePostV2Screen extends StatefulWidget {
 class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
   AmityCommunity? community;
   final textFocusNode = FocusNode();
+  bool loading = false;
 
   @override
   void initState() {
@@ -59,19 +62,24 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
     return Consumer<CreatePostVMV2>(builder: (consumerContext, vm, _) {
       return Scaffold(
         backgroundColor:
-            Provider.of<AmityUIConfiguration>(context).appColors.baseBackground,
+        Provider
+            .of<AmityUIConfiguration>(context)
+            .appColors
+            .baseBackground,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: false,
           title: Text(
             "منشور جديد", //My Feed
-            style: Provider.of<AmityUIConfiguration>(context)
+            style: Provider
+                .of<AmityUIConfiguration>(context)
                 .titleTextStyle
                 .copyWith(
-                    color: Provider.of<AmityUIConfiguration>(context)
-                        .appColors
-                        .base),
+                color: Provider
+                    .of<AmityUIConfiguration>(context)
+                    .appColors
+                    .base),
           ),
           automaticallyImplyLeading: false,
           actions: [
@@ -145,7 +153,8 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
             // ),
             IconButton(
               icon: Icon(Icons.close,
-                  color: Provider.of<AmityUIConfiguration>(context)
+                  color: Provider
+                      .of<AmityUIConfiguration>(context)
                       .appColors
                       .base),
               onPressed: () {
@@ -180,14 +189,17 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     textFocusNode.requestFocus();
                   },
                   child: SingleChildScrollView(
-                    keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                    keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
                     child: Padding(
                       padding: const EdgeInsetsDirectional.all(16.0),
                       child: Column(
                         children: [
                           TextField(
                             style: TextStyle(
-                                color: Provider.of<AmityUIConfiguration>(context)
+                                color:
+                                Provider
+                                    .of<AmityUIConfiguration>(context)
                                     .appColors
                                     .base),
                             focusNode: textFocusNode,
@@ -201,9 +213,10 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                               //Write something to post
                               hintStyle: TextStyle(
                                   color:
-                                      Provider.of<AmityUIConfiguration>(context)
-                                          .appColors
-                                          .userProfileTextColor),
+                                  Provider
+                                      .of<AmityUIConfiguration>(context)
+                                      .appColors
+                                      .userProfileTextColor),
                             ),
                             // style: t/1heme.textTheme.bodyText1.copyWith(color: Colors.grey),
                           ),
@@ -223,16 +236,17 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                   final community = await showModalBottomSheet(
                     context: context,
                     isScrollControlled: true,
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
                         top: Radius.circular(12),
                       ),
                     ),
                     clipBehavior: Clip.hardEdge,
-                    builder: (context) => FractionallySizedBox(
-                      heightFactor: 0.8,
-                      child: PostToPage(),
-                    ),
+                    builder: (context) =>
+                        FractionallySizedBox(
+                          heightFactor: 0.8,
+                          child: PostToPage(),
+                        ),
                   );
                   if (community is AmityCommunity?) {
                     setState(() {
@@ -242,31 +256,38 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                 },
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                   child: Row(
                     children: [
                       Expanded(
                         child: Text(
-                          "النشر إلى: ${community?.displayName ?? "صفحتي الشخصية"}",
-                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          "النشر إلى: ${community?.displayName ??
+                              "صفحتي الشخصية"}",
+                          style:
+                          Theme
+                              .of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                      Icon(Icons.keyboard_arrow_down),
+                      const Icon(Icons.keyboard_arrow_down),
                     ],
                   ),
                 ),
               ),
               const Divider(),
               Padding(
-                padding: const EdgeInsetsDirectional.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsetsDirectional.symmetric(
+                    horizontal: 16, vertical: 8),
                 child: Row(
                   children: [
                     _iconButton(
                       Icons.camera_alt_outlined,
                       isEnable:
-                          vm.availableFileSelectionOptions()[MyFileType.image]!,
+                      vm.availableFileSelectionOptions()[MyFileType.image]!,
                       label: "كاميرا",
                       //Photo
                       // debugingText:
@@ -279,7 +300,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                       Icons.image_outlined,
                       label: "صورة", //Image
                       isEnable:
-                          vm.availableFileSelectionOptions()[MyFileType.image]!,
+                      vm.availableFileSelectionOptions()[MyFileType.image]!,
                       onTap: () async {
                         _handleImageTap(context);
                       },
@@ -288,7 +309,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                       Icons.play_circle_outline,
                       label: "فيديو", //Video
                       isEnable:
-                          vm.availableFileSelectionOptions()[MyFileType.video]!,
+                      vm.availableFileSelectionOptions()[MyFileType.video]!,
                       onTap: () async {
                         _handleVideoTap(context);
                       },
@@ -297,7 +318,7 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                       Icons.attach_file_outlined,
                       label: "ملف", //File
                       isEnable:
-                          vm.availableFileSelectionOptions()[MyFileType.file]!,
+                      vm.availableFileSelectionOptions()[MyFileType.file]!,
                       onTap: () async {
                         _handleFileTap(context);
                       },
@@ -311,87 +332,102 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     //     _showMoreOptions(context);
                     //   },
                     // ),
-                    Spacer(),
-                    ElevatedButton(
+                    const Spacer(),
+                    loading
+                        ? const CircularProgressIndicator()
+                        : ElevatedButton(
                       onPressed: vm.isPostValid
                           ? () async {
-                              if (vm.isUploadComplete) {
-                                if (community == null) {
-                                  //creat post in user Timeline
-                                  await vm.createPost(context,
-                                      callback: (isSuccess, error, post) {
-                                    if (isSuccess) {
+                        setState(() => loading = true);
+                        if (vm.isUploadComplete) {
+                          if (community == null) {
+                            //creat post in user Timeline
+                            await vm.createPost(context,
+                                callback: (isSuccess, error, post) {
+                                  setState(() => loading = false);
+                                  if (isSuccess) {
+                                    Navigator.of(context).pop(true);
+                                    if (widget.isFromPostToPage) {
                                       Navigator.of(context).pop(true);
-                                      if (widget.isFromPostToPage) {
-                                        Navigator.of(context).pop(true);
-                                      }
-                                    } else {}
-                                  });
-                                } else {
-                                  //create post in Community
-                                  await vm.createPost(context,
-                                      communityId: community?.communityId!,
-                                      callback: (isSuccess, error, post) async {
-                                    if (isSuccess) {
-                                      var roleVM =
-                                          Provider.of<MemberManagementVM>(
-                                              context,
-                                              listen: false);
-                                      roleVM.checkCurrentUserRole(
-                                          community!.communityId!);
-
-                                      if (community!.isPostReviewEnabled!) {
-                                        if (!community!.hasPermission(
-                                            AmityPermission
-                                                .REVIEW_COMMUNITY_POST)) {
-                                          await AmityDialog()
-                                              .showAlertErrorDialog(
-                                                  title: "تم تسجيل المنشور",
-                                                  //Post submitted
-                                                  message:
-                                                      "لقد تم إرسال منشورك إلى قائمة الانتظار. سيتم مراجعتها بواسطة مشرف المجتمع"); //Your post has been submitted to the pending list. It will be reviewed by community moderator
-                                        }
-                                      }
-                                      Navigator.of(context).pop(true);
-                                      if (widget.isFromPostToPage) {
-                                        Navigator.of(context).pop(true);
-                                      }
-                                      if (community!.isPostReviewEnabled!) {
-                                        Provider.of<CommuFeedVM>(context,
-                                                listen: false)
-                                            .initAmityPendingCommunityFeed(
-                                                community!.communityId!,
-                                                AmityFeedType.REVIEWING);
-                                      }
-
-                                      if (post != null) {
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                            builder: (context) => CommentScreen(
-                                              amityPost: post,
-                                              theme: Theme.of(context),
-                                              isFromFeed: false,
-                                              feedType: FeedType.community,
-                                            )));
-                                      }
-
-                                      // Navigator.of(context).push(MaterialPageRoute(
-                                      //     builder: (context) => ChangeNotifierProvider(
-                                      //           create: (context) => CommuFeedVM(),
-                                      //           child: CommunityScreen(
-                                      //             isFromFeed: true,
-                                      //             community: community!,
-                                      //           ),
-                                      //         )));
                                     }
-                                  });
-                                }
-                              }
-                            }
+                                  } else {}
+                                });
+                          } else {
+                            //create post in Community
+                            await vm.createPost(context,
+                                communityId:
+                                community?.communityId!,
+                                callback:
+                                    (isSuccess, error, post) async {
+                                  setState(() => loading = false);
+                                  if (isSuccess) {
+                                    var roleVM =
+                                    Provider.of<MemberManagementVM>(
+                                        context,
+                                        listen: false);
+                                    roleVM.checkCurrentUserRole(
+                                        community!.communityId!);
+
+                                    if (community!
+                                        .isPostReviewEnabled!) {
+                                      if (!community!.hasPermission(
+                                          AmityPermission
+                                              .REVIEW_COMMUNITY_POST)) {
+                                        await AmityDialog()
+                                            .showAlertErrorDialog(
+                                            title:
+                                            "تم تسجيل المنشور",
+                                            //Post submitted
+                                            message:
+                                            "لقد تم إرسال منشورك إلى قائمة الانتظار. سيتم مراجعتها بواسطة مشرف المجتمع"); //Your post has been submitted to the pending list. It will be reviewed by community moderator
+                                      }
+                                    }
+                                    Navigator.of(context).pop(true);
+                                    if (widget.isFromPostToPage) {
+                                      Navigator.of(context).pop(true);
+                                    }
+                                    if (community!
+                                        .isPostReviewEnabled!) {
+                                      Provider.of<CommuFeedVM>(context,
+                                          listen: false)
+                                          .initAmityPendingCommunityFeed(
+                                          community!.communityId!,
+                                          AmityFeedType.REVIEWING);
+                                    }
+
+                                    if (post != null) {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CommentScreen(
+                                                    amityPost: post,
+                                                    theme: Theme.of(
+                                                        context),
+                                                    isFromFeed: false,
+                                                    feedType: FeedType
+                                                        .community,
+                                                  )));
+                                    }
+
+                                    // Navigator.of(context).push(MaterialPageRoute(
+                                    //     builder: (context) => ChangeNotifierProvider(
+                                    //           create: (context) => CommuFeedVM(),
+                                    //           child: CommunityScreen(
+                                    //             isFromFeed: true,
+                                    //             community: community!,
+                                    //           ),
+                                    //         )));
+                                  }
+                                });
+                          }
+                        }
+                      }
                           : null,
                       style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(horizontal: 40),
+                        padding:
+                        const EdgeInsets.symmetric(horizontal: 40),
                       ),
-                      child: Text("نشر"),
+                      child: const Text("نشر"),
                     ),
                   ],
                 ),
@@ -405,9 +441,9 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
 
   Widget _iconButton(IconData icon,
       {required String label,
-      required VoidCallback onTap,
-      required bool isEnable,
-      String? debugingText}) {
+        required VoidCallback onTap,
+        required bool isEnable,
+        String? debugingText}) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -416,7 +452,10 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
           icon: Icon(
             icon,
             color:
-                Provider.of<AmityUIConfiguration>(context).appColors.baseShade1,
+            Provider
+                .of<AmityUIConfiguration>(context)
+                .appColors
+                .baseShade1,
           ),
           onPressed: isEnable ? onTap : null,
         ),
@@ -447,20 +486,20 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     ListTile(
                       leading: _iconButton(Icons.camera_alt_outlined,
                           isEnable: vm.availableFileSelectionOptions()[
-                              MyFileType.image]!,
+                          MyFileType.image]!,
                           label: "كاميرا", //Camera
                           onTap: () {}),
                       title: Text(
                         'كاميرا', //Camera
                         style: TextStyle(
                             color: vm.availableFileSelectionOptions()[
-                                    MyFileType.image]!
+                            MyFileType.image]!
                                 ? Colors.black
                                 : Colors.grey),
                       ),
                       onTap: () {
                         if (vm.availableFileSelectionOptions()[
-                            MyFileType.image]!) {
+                        MyFileType.image]!) {
                           _handleImageTap(context);
                           Navigator.pop(context);
                         }
@@ -469,20 +508,20 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     ListTile(
                       leading: _iconButton(Icons.image_outlined,
                           isEnable: vm.availableFileSelectionOptions()[
-                              MyFileType.image]!,
+                          MyFileType.image]!,
                           label: "صورة", //Photo
                           onTap: () {}),
                       title: Text(
                         'صورة', //Photo
                         style: TextStyle(
                             color: vm.availableFileSelectionOptions()[
-                                    MyFileType.image]!
+                            MyFileType.image]!
                                 ? Colors.black
                                 : Colors.grey),
                       ),
                       onTap: () {
                         if (vm.availableFileSelectionOptions()[
-                            MyFileType.image]!) {
+                        MyFileType.image]!) {
                           _handleImageTap(context);
                           Navigator.pop(context);
                         }
@@ -491,20 +530,20 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                     ListTile(
                       leading: _iconButton(Icons.attach_file_rounded,
                           isEnable: vm.availableFileSelectionOptions()[
-                              MyFileType.file]!,
+                          MyFileType.file]!,
                           label: "ملحق", //Attachment
                           onTap: () {}),
                       title: Text(
                         'ملحق', //Attachment
                         style: TextStyle(
                             color: vm.availableFileSelectionOptions()[
-                                    MyFileType.file]!
+                            MyFileType.file]!
                                 ? Colors.black
                                 : Colors.grey),
                       ),
                       onTap: () {
                         if (vm.availableFileSelectionOptions()[
-                            MyFileType.file]!) {
+                        MyFileType.file]!) {
                           _handleFileTap(context);
                           Navigator.pop(context);
                         }
@@ -522,13 +561,13 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
                         'فيديو', //Video
                         style: TextStyle(
                             color: vm.availableFileSelectionOptions()[
-                                    MyFileType.video]!
+                            MyFileType.video]!
                                 ? Colors.black
                                 : Colors.grey),
                       ),
                       onTap: () {
                         if (vm.availableFileSelectionOptions()[
-                            MyFileType.video]!) {
+                        MyFileType.video]!) {
                           _handleVideoTap(context);
                           Navigator.pop(context);
                         }
@@ -547,25 +586,26 @@ class _AmityCreatePostV2ScreenState extends State<AmityCreatePostV2Screen> {
   void _showDiscardDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('تجاهل المنشور؟'),
-        //Discard Post?
-        content: const Text('هل تود تجاهل منشورك؟'),
-        //Do you want to discard your post?
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: const Text('إلغاء'), //Cancel
+      builder: (context) =>
+          AlertDialog(
+            title: const Text('تجاهل المنشور؟'),
+            //Discard Post?
+            content: const Text('هل تود تجاهل منشورك؟'),
+            //Do you want to discard your post?
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: const Text('إلغاء'), //Cancel
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop(true);
+                  Navigator.of(context).pop();
+                },
+                child: const Text('تجاهل'), //Discard
+              ),
+            ],
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop(true);
-              Navigator.of(context).pop();
-            },
-            child: const Text('تجاهل'), //Discard
-          ),
-        ],
-      ),
     );
   }
 

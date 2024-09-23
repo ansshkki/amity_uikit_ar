@@ -1,16 +1,23 @@
 import 'package:amity_sdk/amity_sdk.dart';
 import 'package:flutter/material.dart';
 
+enum CategoryListState { loading, success, error }
+
 class ExplorePageVM with ChangeNotifier {
+  List<AmityCommunityCategory> amityCategories = [];
   List<AmityCommunity> _recommendedCommunities = [];
   List<AmityCommunity> _trendingCommunities = [];
 
   List<AmityCommunity> get recommendedCommunities => _recommendedCommunities;
+
   List<AmityCommunity> get trendingCommunities => _trendingCommunities;
 
-  final amityCategories = <AmityCommunityCategory>[];
+  // final amityCategories = <AmityCommunityCategory>[];
   late PagingController<AmityCommunityCategory> _communityCategoryController;
   final categoryScrollcontroller = ScrollController();
+
+  CategoryListState _categoryState = CategoryListState.loading; // Default state
+  CategoryListState get categoryState => _categoryState; // Getter for the state
 
   void getRecommendedCommunities() async {
     print("getRecommendedCommunities...");
@@ -41,6 +48,7 @@ class ExplorePageVM with ChangeNotifier {
   final amityCommunities = <AmityCommunity>[];
   late PagingController<AmityCommunity> _communityController;
   final communityScrollcontroller = ScrollController();
+
   void getCommunitiesInCategory(
       {required String categoryId, bool enableNotifyListener = false}) {
     _communityController = PagingController(
@@ -91,40 +99,53 @@ class ExplorePageVM with ChangeNotifier {
   void queryCommunityCategories(
       {required AmityCommunityCategorySortOption sortOption,
       bool enablenotifylistener = false}) async {
-    print("queryCommunityCategories");
-    _communityCategoryController = PagingController(
-      pageFuture: (token) => AmitySocialClient.newCommunityRepository()
-          .getCategories()
-          .sortBy(sortOption)
-          .includeDeleted(false)
-          .getPagingData(token: token, limit: 20),
-      pageSize: 20,
-    )..addListener(
-        () {
-          if (_communityCategoryController.error == null) {
-            //handle results, we suggest to clear the previous items
-            //and add with the latest _controller.loadedItems
-            amityCategories.clear();
-            amityCategories.addAll(_communityCategoryController.loadedItems);
-            if (enablenotifylistener) {
+    try {
+      print("queryCommunityCategories");
+      _categoryState = CategoryListState.loading; // Set loading state
+      notifyListeners();
+
+      _communityCategoryController = PagingController(
+        pageFuture: (token) => AmitySocialClient.newCommunityRepository()
+            .getCategories()
+            .sortBy(sortOption)
+            .includeDeleted(false)
+            .getPagingData(token: token, limit: 20),
+        pageSize: 20,
+      )..addListener(
+          () {
+            if (_communityCategoryController.error == null) {
+              //handle results, we suggest to clear the previous items
+              //and add with the latest _controller.
+              amityCategories.clear();
+              amityCategories.addAll(_communityCategoryController.loadedItems);
+              if (amityCategories.isNotEmpty) {
+                _categoryState = CategoryListState.success; // Success state
+              }
+              if (enablenotifylistener) {
+                notifyListeners();
+              }
+              isLoadingFinish = true;
+              //update widgets
+            } else {
+              _categoryState = CategoryListState.error; // Error state
               notifyListeners();
+              //error on pagination controller
+              //update widgets
             }
-            isLoadingFinish = true;
-            //update widgets
-          } else {
-            //error on pagination controller
-            //update widgets
-          }
-        },
-      );
+          },
+        );
 
-    // fetch the data for the first page
-    _communityCategoryController.fetchNextPage();
+      // fetch the data for the first page
+      _communityCategoryController.fetchNextPage();
 
-    categoryScrollcontroller.addListener(categoryPagination);
+      categoryScrollcontroller.addListener(categoryPagination);
+    } catch (e) {
+      _categoryState = CategoryListState.error; // Error state
+    }
   }
 
   var isLoadingFinish = true;
+
   void categoryPagination() {
     if ((categoryScrollcontroller.position.pixels >=
         (categoryScrollcontroller.position.maxScrollExtent - 100))) {

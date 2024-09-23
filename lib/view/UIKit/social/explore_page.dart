@@ -23,6 +23,8 @@ import '../../user/user_profile_v2.dart';
 import 'create_post_screenV2.dart';
 import 'my_community_feed.dart';
 
+// enum CategoryListState { loading, success, empty, error }
+
 class CommunityPage extends StatefulWidget {
   final bool isShowMyCommunity;
 
@@ -33,7 +35,6 @@ class CommunityPage extends StatefulWidget {
 }
 
 class _CommunityPageState extends State<CommunityPage> {
-
   @override
   void initState() {
     super.initState();
@@ -61,14 +62,15 @@ class _CommunityPageState extends State<CommunityPage> {
         backgroundColor:
             Provider.of<AmityUIConfiguration>(context).appColors.baseShade4,
         floatingActionButton: Padding(
-          padding: EdgeInsets.only(bottom: MediaQuery.paddingOf(context).bottom),
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.paddingOf(context).bottom),
           child: FloatingActionButton(
             shape: const CircleBorder(),
             onPressed: () async {
               final posted = await showModalBottomSheet(
                 context: context,
                 isScrollControlled: true,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(12),
                   ),
@@ -80,7 +82,8 @@ class _CommunityPageState extends State<CommunityPage> {
                 ),
               );
               if ((posted ?? false) && context.mounted) {
-                Provider.of<FeedVM>(context, listen: false).initAmityGlobalfeed();
+                Provider.of<FeedVM>(context, listen: false)
+                    .initAmityGlobalfeed();
               }
             },
             backgroundColor:
@@ -93,8 +96,9 @@ class _CommunityPageState extends State<CommunityPage> {
         appBar: AppBar(
           elevation: 0.05,
           // Add this line to remove the shadow
-          backgroundColor:
-              Provider.of<AmityUIConfiguration>(context).appColors.baseBackground,
+          backgroundColor: Provider.of<AmityUIConfiguration>(context)
+              .appColors
+              .baseBackground,
 
           // leading: IconButton(
           //   icon: Icon(
@@ -123,8 +127,9 @@ class _CommunityPageState extends State<CommunityPage> {
                       ),
                     );
                   },
-                  icon: getAvatarImage(
-                      Provider.of<AmityVM>(context).currentamityUser?.avatarUrl),
+                  icon: getAvatarImage(Provider.of<AmityVM>(context)
+                      .currentamityUser
+                      ?.avatarUrl),
                 ),
           actions: [
             IconButton(
@@ -205,10 +210,11 @@ class _CommunityPageState extends State<CommunityPage> {
                   explorePageVM.getRecommendedCommunities();
                   explorePageVM.getTrendingCommunities();
                   explorePageVM.queryCommunityCategories(
-                      sortOption: AmityCommunityCategorySortOption.FIRST_CREATED);
+                      sortOption:
+                          AmityCommunityCategorySortOption.FIRST_CREATED);
                 },
                 child: const ExplorePage()),
-            GroupsSectionsPage(),
+            const GroupsSectionsPage(),
           ],
         ),
       ),
@@ -750,7 +756,7 @@ class CategorySection extends StatelessWidget {
                             Container(
                               height: 40,
                               width: 40,
-                              margin: EdgeInsets.symmetric(
+                              margin: const EdgeInsets.symmetric(
                                   horizontal: 16, vertical: 8),
                               decoration: BoxDecoration(
                                   color:
@@ -809,7 +815,10 @@ class _CategoryListPageState extends State<CategoryListPage> {
   @override
   void initState() {
     Future.delayed(Duration.zero, () {
-      var explorePageVM = Provider.of<ExplorePageVM>(context, listen: false);
+      var explorePageVM = Provider.of<ExplorePageVM>(
+        context,
+        listen: false,
+      );
 
       explorePageVM.queryCommunityCategories(
           sortOption: AmityCommunityCategorySortOption.NAME,
@@ -833,49 +842,84 @@ class _CategoryListPageState extends State<CategoryListPage> {
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: Consumer<ExplorePageVM>(
-        builder: (context, vm, _) {
-          return ListView.builder(
-            itemCount: vm.amityCategories.length,
-            controller: vm.categoryScrollcontroller,
-            physics: const AlwaysScrollableScrollPhysics(),
-            itemBuilder: (context, index) {
-              final category = vm.amityCategories[index];
-              return ListTile(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => CommunityListPage(
-                              category: category,
-                            )),
-                  );
-                },
-                leading: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    color: Provider.of<AmityUIConfiguration>(context)
-                        .appColors
-                        .primaryShade3,
-                    shape: BoxShape.circle,
-                  ),
-                  child: category.avatar != null
-                      ? CircleAvatar(
-                        backgroundColor: Provider.of<AmityUIConfiguration>(context)
-                        .appColors
-                        .primaryShade3,
-                          backgroundImage: NetworkImage(
-                              category.avatar?.fileUrl ?? ''),
-                        )
-                      : const Icon(
-                          Icons.people,
-                          color: Colors.white,
-                        ),
+        builder: (context, vm, widget) {
+          switch (vm.categoryState) {
+            case CategoryListState.loading:
+              return const Center(child: CircularProgressIndicator());
+            case CategoryListState.error:
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.error, color: Colors.red, size: 48),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Failed to load categories. Please try again.',
+                      style: Theme.of(context).textTheme.titleSmall,
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        var explorePageVM = Provider.of<ExplorePageVM>(
+                          context,
+                          listen: false,
+                        );
+                        explorePageVM.queryCommunityCategories(
+                          sortOption: AmityCommunityCategorySortOption.NAME,
+                          enablenotifylistener: true,
+                        );
+                      },
+                      child: const Text('Retry'),
+                    ),
+                  ],
                 ),
-                title: Text(category.name ?? ''),
               );
-            },
-          );
+            default:
+              return ListView.builder(
+                      itemCount: vm.amityCategories.length,
+                      controller: vm.categoryScrollcontroller,
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        final category = vm.amityCategories[index];
+                        return ListTile(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CommunityListPage(
+                                        category: category,
+                                      )),
+                            );
+                          },
+                          leading: Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              color: Provider.of<AmityUIConfiguration>(context)
+                                  .appColors
+                                  .primaryShade3,
+                              shape: BoxShape.circle,
+                            ),
+                            child: category.avatar != null
+                                ? CircleAvatar(
+                                    backgroundColor:
+                                        Provider.of<AmityUIConfiguration>(
+                                                context)
+                                            .appColors
+                                            .primaryShade3,
+                                    backgroundImage: NetworkImage(
+                                        category.avatar?.fileUrl ?? ''),
+                                  )
+                                : const Icon(
+                                    Icons.people,
+                                    color: Colors.white,
+                                  ),
+                          ),
+                          title: Text(category.name ?? ''),
+                        );
+                      },
+                    );
+          }
         },
       ),
     );
@@ -1129,10 +1173,9 @@ class GroupsSectionsPage extends StatelessWidget {
             amityCommunites: myCommunities,
             canCreateCommunity: false,
           ),
-        if (myCommunities.isEmpty)
-          SizedBox(height: 16),
-        RecommendationSection(),
-        TrendingSection(),
+        if (myCommunities.isEmpty) const SizedBox(height: 16),
+        const RecommendationSection(),
+        const TrendingSection(),
       ],
     );
   }

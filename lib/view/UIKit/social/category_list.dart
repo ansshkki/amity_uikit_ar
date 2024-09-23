@@ -13,6 +13,7 @@ class CategoryList extends StatefulWidget {
 
   CategoryList(
       {super.key, this.community, required this.categoryTextController});
+
   @override
   CategoryListState createState() => CategoryListState();
 }
@@ -54,7 +55,8 @@ class CategoryListState extends State<CategoryList> {
         Provider.of<CategoryVM>(context, listen: false)
             .setCommunity(widget.community!);
         Provider.of<CategoryVM>(context, listen: false).initCategoryList(
-            ids: Provider.of<CategoryVM>(context, listen: false)
+            ids: Provider
+                .of<CategoryVM>(context, listen: false)
                 .getCommunity()
                 ?.categoryIds!);
       } else {
@@ -65,7 +67,10 @@ class CategoryListState extends State<CategoryList> {
 
   int getLength() {
     int length =
-        Provider.of<CategoryVM>(context, listen: false).getCategories().length;
+        Provider
+            .of<CategoryVM>(context, listen: false)
+            .getCategories()
+            .length;
     return length;
   }
 
@@ -80,7 +85,10 @@ class CategoryListState extends State<CategoryList> {
     return Consumer<CategoryVM>(builder: (context, vm, _) {
       return Scaffold(
         backgroundColor:
-            Provider.of<AmityUIConfiguration>(context).appColors.baseBackground,
+        Provider
+            .of<AmityUIConfiguration>(context)
+            .appColors
+            .baseBackground,
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.transparent,
@@ -95,7 +103,8 @@ class CategoryListState extends State<CategoryList> {
           ),
           title: Text(
             'اختر التصنيف', //Select category
-            style: Provider.of<AmityUIConfiguration>(context)
+            style: Provider
+                .of<AmityUIConfiguration>(context)
                 .titleTextStyle
                 .copyWith(fontWeight: FontWeight.bold),
           ),
@@ -124,35 +133,38 @@ class CategoryListState extends State<CategoryList> {
                         // ),
                         getLength() < 1
                             ? Center(
-                                child: CircularProgressIndicator(
-                                  color:
-                                      Provider.of<AmityUIConfiguration>(context)
-                                          .primaryColor,
-                                ),
-                              )
+                          child: CircularProgressIndicator(
+                            color:
+                            Provider
+                                .of<AmityUIConfiguration>(context)
+                                .primaryColor,
+                          ),
+                        )
                             : Expanded(
-                                child: ListView.builder(
-                                  physics:
-                                      const AlwaysScrollableScrollPhysics(),
-                                  itemCount: vm.getCategories().length,
-                                  controller: vm.scrollcontroller,
-                                  itemBuilder: (context, index) {
-                                    return CategoryWidget(
-                                      category: Provider.of<CategoryVM>(context,
-                                              listen: false)
-                                          .getCategories()[index],
-                                      theme: theme,
-                                      textController:
-                                          widget.categoryTextController,
-                                      community: Provider.of<CategoryVM>(
-                                              context,
-                                              listen: false)
-                                          .getCommunity(),
-                                      index: index,
-                                    );
-                                  },
-                                ),
-                              ),
+                          child: ListView.builder(
+                            physics:
+                            const AlwaysScrollableScrollPhysics(),
+                            itemCount: vm
+                                .getCategories()
+                                .length,
+                            controller: vm.scrollcontroller,
+                            itemBuilder: (context, index) {
+                              return CategoryWidget(
+                                category: Provider.of<CategoryVM>(context,
+                                    listen: false)
+                                    .getCategories()[index],
+                                theme: theme,
+                                textController:
+                                widget.categoryTextController,
+                                community: Provider.of<CategoryVM>(
+                                    context,
+                                    listen: false)
+                                    .getCommunity(),
+                                index: index,
+                              );
+                            },
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -167,13 +179,12 @@ class CategoryListState extends State<CategoryList> {
 }
 
 class CategoryWidget extends StatelessWidget {
-  const CategoryWidget(
-      {Key? key,
-      required this.textController,
-      required this.category,
-      required this.theme,
-      required this.community,
-      required this.index})
+  const CategoryWidget({Key? key,
+    required this.textController,
+    required this.category,
+    required this.theme,
+    required this.community,
+    required this.index})
       : super(key: key);
 
   final AmityCommunityCategory category;
@@ -200,35 +211,40 @@ class CategoryWidget extends StatelessWidget {
           leading: FadeAnimation(
             child: (category.avatar?.fileUrl != null)
                 ? CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    backgroundImage: NetworkImage(category.avatar!.fileUrl!),
-                  )
+              backgroundColor: Colors.transparent,
+              backgroundImage: NetworkImage(category.avatar!.fileUrl!),
+            )
                 : Container(
-                    height: 40,
-                    width: 40,
-                    decoration: BoxDecoration(
-                        color: Provider.of<AmityUIConfiguration>(context)
-                            .appColors
-                            .primaryShade3,
-                        shape: BoxShape.circle),
-                    child: const Icon(
-                      Icons.category,
-                      color: Colors.white,
-                    ),
-                  ),
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                  color: Provider
+                      .of<AmityUIConfiguration>(context)
+                      .appColors
+                      .primaryShade3,
+                  shape: BoxShape.circle),
+              child: const Icon(
+                Icons.category,
+                color: Colors.white,
+              ),
+            ),
           ),
           title: Text(category.name ?? "تصنيف", //Category
-              style: Provider.of<AmityUIConfiguration>(context).hintTextStyle),
+              style: Provider
+                  .of<AmityUIConfiguration>(context)
+                  .hintTextStyle),
           trailing: Provider.of<CategoryVM>(context, listen: true)
-                  .checkIfSelected(
-                      Provider.of<CategoryVM>(context, listen: false)
-                          .getCategories()[index]
-                          .categoryId!)
+              .checkIfSelected(
+              Provider.of<CategoryVM>(context, listen: false)
+                  .getCategories()[index]
+                  .categoryId!)
               ? Icon(
-                  Icons.check_rounded,
-                  color:
-                      Provider.of<AmityUIConfiguration>(context).primaryColor,
-                )
+            Icons.check_rounded,
+            color:
+            Provider
+                .of<AmityUIConfiguration>(context)
+                .primaryColor,
+          )
               : null,
         ),
       ),
