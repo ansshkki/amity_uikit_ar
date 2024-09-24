@@ -20,6 +20,7 @@ import '../../../viewmodel/community_feed_viewmodel.dart';
 import '../../../viewmodel/user_feed_viewmodel.dart';
 import '../../notification/notification_page.dart';
 import '../../user/user_profile_v2.dart';
+import 'create_group_button_sheet.dart';
 import 'create_post_screenV2.dart';
 import 'my_community_feed.dart';
 
@@ -711,7 +712,7 @@ class CategorySection extends StatelessWidget {
                                 .appColors
                                 .primary,
                       ),
-                      icon: Icon(Icons.chevron_right),
+                      icon: const Icon(Icons.chevron_right),
                     ),
                   ],
                 ),
@@ -788,7 +789,7 @@ class CategorySection extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 2),
+                            const SizedBox(width: 2),
                           ],
                         ),
                       ),
@@ -796,6 +797,73 @@ class CategorySection extends StatelessWidget {
                   );
                 },
               ),
+              const SizedBox(height: 14),
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 16,
+                ),
+                decoration: BoxDecoration(
+                  color: Provider.of<AmityUIConfiguration>(context)
+                      .appColors
+                      .primaryShade1,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      radius: 56 / 2,
+                      backgroundColor:
+                          Provider.of<AmityUIConfiguration>(context)
+                              .appColors
+                              .baseBackground,
+                      child: SvgPicture.asset(
+                        "assets/icons/community.svg",
+                        color: Provider.of<AmityUIConfiguration>(context)
+                            .appColors
+                            .primary,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                              "ألا ترى ما تريد؟ أطلب مجموعة و سنضعها في الاعتبار, و سنخبرك بمجرد إنشائها"),
+                          const SizedBox(height: 8),
+                          TextButton(
+                            style: ButtonStyle(
+                                backgroundColor: WidgetStatePropertyAll(
+                              Provider.of<AmityUIConfiguration>(context)
+                                  .appColors
+                                  .primary,
+                            )),
+                            onPressed: () {
+                              showModalBottomSheet(
+                                enableDrag: false,
+                                isScrollControlled: true,
+                                context: context,
+                                builder: (context) => CreateGroupButtonSheet(),
+                              );
+                            },
+                            child: Text(
+                              "اطلب مجموعة",
+                              style: TextStyle(
+                                color:
+                                    Provider.of<AmityUIConfiguration>(context)
+                                        .appColors
+                                        .baseBackground,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         );
@@ -876,49 +944,48 @@ class _CategoryListPageState extends State<CategoryListPage> {
               );
             default:
               return ListView.builder(
-                      itemCount: vm.amityCategories.length,
-                      controller: vm.categoryScrollcontroller,
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        final category = vm.amityCategories[index];
-                        return ListTile(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CommunityListPage(
-                                        category: category,
-                                      )),
-                            );
-                          },
-                          leading: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              color: Provider.of<AmityUIConfiguration>(context)
-                                  .appColors
-                                  .primaryShade3,
-                              shape: BoxShape.circle,
+                itemCount: vm.amityCategories.length,
+                controller: vm.categoryScrollcontroller,
+                physics: const AlwaysScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  final category = vm.amityCategories[index];
+                  return ListTile(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => CommunityListPage(
+                                  category: category,
+                                )),
+                      );
+                    },
+                    leading: Container(
+                      height: 40,
+                      width: 40,
+                      decoration: BoxDecoration(
+                        color: Provider.of<AmityUIConfiguration>(context)
+                            .appColors
+                            .primaryShade3,
+                        shape: BoxShape.circle,
+                      ),
+                      child: category.avatar != null
+                          ? CircleAvatar(
+                              backgroundColor:
+                                  Provider.of<AmityUIConfiguration>(context)
+                                      .appColors
+                                      .primaryShade3,
+                              backgroundImage:
+                                  NetworkImage(category.avatar?.fileUrl ?? ''),
+                            )
+                          : const Icon(
+                              Icons.people,
+                              color: Colors.white,
                             ),
-                            child: category.avatar != null
-                                ? CircleAvatar(
-                                    backgroundColor:
-                                        Provider.of<AmityUIConfiguration>(
-                                                context)
-                                            .appColors
-                                            .primaryShade3,
-                                    backgroundImage: NetworkImage(
-                                        category.avatar?.fileUrl ?? ''),
-                                  )
-                                : const Icon(
-                                    Icons.people,
-                                    color: Colors.white,
-                                  ),
-                          ),
-                          title: Text(category.name ?? ''),
-                        );
-                      },
-                    );
+                    ),
+                    title: Text(category.name ?? ''),
+                  );
+                },
+              );
           }
         },
       ),

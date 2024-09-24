@@ -32,7 +32,7 @@ class AmityUIConfiguration extends ChangeNotifier {
 
 class AppColors {
   final Color primary;
-  // final Color primaryShade1;
+  final Color primaryShade1;
   // final Color primaryShade2;
   final Color primaryShade3;
   // final Color primaryShade4;
@@ -52,7 +52,7 @@ class AppColors {
   // final Color secondaryShade3;
   // final Color secondaryShade4;
 
-  // final Color alert;
+  final Color alert;
 
   // final Color actionButton;
   // final Color hyperlink;
@@ -65,7 +65,7 @@ class AppColors {
 
   AppColors({
     this.primary = const Color(0xFF1054de),
-    // this.primaryShade1 = const Color(0xFF4a82f2),
+    this.primaryShade1 = const Color(0xFFFFF7F7),
     // this.primaryShade2 = const Color(0xFFa0bd8f),
     this.primaryShade3 = const Color(0xFFd9e5fc),
     // this.primaryShade4 = const Color(0xFFFFFFFF),
@@ -85,7 +85,7 @@ class AppColors {
     // this.secondaryShade2 = const Color(0xFF8989e9),
     // this.secondaryShade3 = const Color(0xFFa5a9b5),
     // this.secondaryShade4 = const Color(0xFFebecef),
-    // this.alert = const Color(0xFFfa4d30),
+    this.alert = const Color(0xFFfa4d30),
     // this.actionButton = const Color(0x80000000), // 50% opacity
     // this.hyperlink = const Color(0xCCFFFFFF), // 80% opacity
     // this.highlight = const Color(0xFF1054de),
