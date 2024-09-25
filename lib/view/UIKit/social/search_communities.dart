@@ -19,6 +19,8 @@ class SearchCommunitiesScreen extends StatefulWidget {
 }
 
 class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
+  bool isSearching = false;
+
   @override
   void initState() {
     super.initState();
@@ -28,6 +30,7 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
   }
 
   var textcontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Consumer2<SearchCommunityVM, UserVM>(
@@ -46,9 +49,11 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
                     Icons.search,
                     color: Colors.grey,
                   ),
-                  hintText: 'البحث', //Search
+                  hintText: 'البحث',
+                  //Search
                   filled: true,
-                  contentPadding: const EdgeInsetsDirectional.symmetric(vertical: 0),
+                  contentPadding:
+                      const EdgeInsetsDirectional.symmetric(vertical: 0),
                   fillColor: Colors.grey[3],
                   focusColor: Colors.white,
                   enabledBorder: OutlineInputBorder(
@@ -61,10 +66,15 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
                   ),
                 ),
                 onChanged: (value) {
-                  Provider.of<SearchCommunityVM>(context, listen: false)
-                      .initSearchCommunity(value.trim());
-                  Provider.of<UserVM>(context, listen: false)
-                      .initUserList(value.trim());
+                  if (value.length > 2) {
+                    setState(() => isSearching = true);
+                    Provider.of<SearchCommunityVM>(context, listen: false)
+                        .initSearchCommunity(value.trim());
+                    Provider.of<UserVM>(context, listen: false)
+                        .initUserList(value.trim());
+                  } else {
+                    setState(() => isSearching = false);
+                  }
                 },
               ),
             ),
@@ -97,11 +107,14 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
           body: SafeArea(
             child: Stack(
               children: [
-                textcontroller.text.isEmpty
-                    ? const SizedBox()
+                !isSearching
+                    ? const Center(
+                        child:
+                            Text("قم بالبحث على اكثر من 3 أحرف حتى تصلك نتائج"),
+                      )
                     : TabBarView(
                         children: [
-                          vm.amityCommunities.isEmpty
+                          !vm.isDone
                               ? Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -113,20 +126,25 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
                                     ),
                                   ],
                                 )
-                              : ListView.builder(
-                                  controller: vm.scrollcontroller,
-                                  itemCount: vm.amityCommunities.length + 1,
-                                  itemBuilder: (context, index) {
-                                    // If it's the first item in the list, return the search bar
-                                    if (index == 0) {
-                                      return const SizedBox(height: 120);
-                                    }
-                                    // Otherwise, return the community widget
-                                    return CommunityWidget(
-                                      community: vm.amityCommunities[index - 1],
-                                    );
-                                  },
-                                ),
+                              : vm.amityCommunities.isEmpty
+                                  ? const Center(
+                                      child: Text("ما من نتائج"),
+                                    )
+                                  : ListView.builder(
+                                      controller: vm.scrollcontroller,
+                                      itemCount: vm.amityCommunities.length + 1,
+                                      itemBuilder: (context, index) {
+                                        // If it's the first item in the list, return the search bar
+                                        if (index == 0) {
+                                          return const SizedBox(height: 120);
+                                        }
+                                        // Otherwise, return the community widget
+                                        return CommunityWidget(
+                                          community:
+                                              vm.amityCommunities[index - 1],
+                                        );
+                                      },
+                                    ),
                           userVM.getUserList().isEmpty
                               ? Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -168,8 +186,8 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
                                       .appColors
                                       .baseBackground,
                               tabAlignment: TabAlignment.start,
-                              isScrollable:
-                                  true, // Ensure that the TabBar is scrollable
+                              isScrollable: true,
+                              // Ensure that the TabBar is scrollable
 
                               labelColor:
                                   Provider.of<AmityUIConfiguration>(context)
@@ -185,12 +203,14 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
                               //   fontWeight: FontWeight.w600,
                               //   fontFamily: 'SF Pro Text',
                               // ),
-                              tabs: const [
+                              tabs: [
                                 Tab(
-                                  text: "المجتمع", //Community
+                                  text:
+                                      "المجتمع (${vm.amityCommunities.length})", //Community
                                 ),
                                 Tab(
-                                  text: "المستخدم", //User
+                                  text:
+                                      "المستخدم (${userVM.getUserList().length})", //User
                                 ),
                               ],
                             ),
@@ -209,7 +229,10 @@ class _SearchCommunitiesScreenState extends State<SearchCommunitiesScreen> {
 class CommunityWidget extends StatelessWidget {
   final AmityCommunity community;
 
-  const CommunityWidget({super.key, required this.community});
+  const CommunityWidget({
+    super.key,
+    required this.community,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -247,7 +270,8 @@ class CommunityWidget extends StatelessWidget {
                   if (!community.isPublic!) const Icon(Icons.lock, size: 16.0),
                   const SizedBox(width: 4.0),
                   Text(
-                    communityStream.displayName ?? "المجتمع", //Community
+                    communityStream.displayName ?? "المجتمع",
+                    //Community
                     style: TextStyle(
                         overflow: TextOverflow.ellipsis,
                         color: Provider.of<AmityUIConfiguration>(context)
@@ -297,7 +321,10 @@ class CommunityWidget extends StatelessWidget {
 class UserWidget extends StatelessWidget {
   final AmityUser amityUser;
 
-  const UserWidget({super.key, required this.amityUser});
+  const UserWidget({
+    super.key,
+    required this.amityUser,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -335,7 +362,8 @@ class UserWidget extends StatelessWidget {
                   const SizedBox(width: 4.0),
                   Expanded(
                     child: Text(
-                      userStream.displayName ?? "المجتمع", //Community
+                      userStream.displayName ?? "المجتمع",
+                      //Community
                       style: TextStyle(
                           color: Provider.of<AmityUIConfiguration>(context)
                               .appColors
@@ -376,7 +404,8 @@ class CommunityIconList extends StatelessWidget {
           Container(
             height: 40,
             color: Colors.white,
-            padding: const EdgeInsetsDirectional.symmetric(horizontal: 16.0, vertical: 0),
+            padding: const EdgeInsetsDirectional.symmetric(
+                horizontal: 16.0, vertical: 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -406,7 +435,8 @@ class CommunityIconList extends StatelessWidget {
               itemCount: amityCommunites.length,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
-                  padding: EdgeInsetsDirectional.only(start: index != 0 ? 0 : 16),
+                  padding:
+                      EdgeInsetsDirectional.only(start: index != 0 ? 0 : 16),
                   child: CommunityIconWidget(
                       amityCommunity: amityCommunites[index]),
                 );

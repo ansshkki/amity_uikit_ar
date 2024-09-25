@@ -9,15 +9,19 @@ class MyCommunityVM with ChangeNotifier {
   final scrollcontroller = ScrollController();
   bool loadingNextPage = false;
   bool isEmpty = false;
+
   // The list of communities.
   final List<AmityCommunity> _amityCommunities = [];
   final List<AmityCommunity> _amityCommunitiesForFeed = [];
+
   // The controller for handling pagination.
   // late PagingController<AmityCommunity> _communityController;
   late CommunityLiveCollection communityLiveCollection;
   late CommunityLiveCollection communityFeedLiveCollection;
+
   // Getter for _amityCommunities for external classes to use.
   List<AmityCommunity> get amityCommunities => _amityCommunities;
+
   List<AmityCommunity> get amityCommunitiesForFeed => _amityCommunitiesForFeed;
   final textEditingController = TextEditingController();
 
@@ -93,21 +97,28 @@ class MyCommunityVM with ChangeNotifier {
 
 class SearchCommunityVM with ChangeNotifier {
   // Existing members...
+  bool isDone = true;
 
   final scrollcontroller = ScrollController();
   bool loadingNextPage = false;
+
   // The list of communities.
   final List<AmityCommunity> _amityCommunities = [];
+
   // Getter for _amityCommunities for external classes to use.
   List<AmityCommunity> get amityCommunities => _amityCommunities;
   final textEditingController = TextEditingController();
+
   // The controller for handling pagination.
   late PagingController<AmityCommunity> communityController;
+
   void clearSearch() {
     amityCommunities.clear();
   }
 
   Future<void> initSearchCommunity([String? keyword]) async {
+    isDone = false;
+    notifyListeners();
     communityController = PagingController(
       pageFuture: (token) {
         final repository = AmitySocialClient.newCommunityRepository()
@@ -128,12 +139,13 @@ class SearchCommunityVM with ChangeNotifier {
             amityCommunities.clear();
             amityCommunities.addAll(communityController.loadedItems);
             // Call any additional methods like sortedUserListWithHeaders here if needed.
-            notifyListeners();
           } else {
             log("error: ${communityController.error.toString()}");
             // await AmityDialog().showAlertErrorDialog(
             //     title: "Error!", message: communityController.error.toString());
           }
+          isDone = true;
+          notifyListeners();
         },
       );
 
