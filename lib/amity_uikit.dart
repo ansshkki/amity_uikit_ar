@@ -107,6 +107,7 @@ class AmityUIKit {
   Future<void> registerDevice(
       {required BuildContext context,
       required String userId,
+      required String generalAccessToken,
       String? displayName,
       String? authToken,
       String? accessToken,
@@ -117,7 +118,8 @@ class AmityUIKit {
             userID: userId,
             displayName: displayName,
             authToken: authToken,
-            accessToken: accessToken)
+            accessToken: accessToken,
+            generalAccessToken:generalAccessToken)
         .then((value) async {
       log("login success");
 

@@ -8,14 +8,17 @@ import '../components/alert_dialog.dart';
 class AmityVM extends ChangeNotifier {
   AmityUser? currentamityUser;
   String? accessToken;
+  String? generalAccessToken;
 
   Future<void> login({
     required String userID,
+    required String generalAccessToken,
     String? displayName,
     String? authToken,
     String? accessToken,
   }) async {
     this.accessToken = accessToken;
+    this.generalAccessToken = generalAccessToken;
     log("login with $userID");
     if (authToken == null) {
       log("authToken == null");
@@ -100,8 +103,8 @@ class AmityVM extends ChangeNotifier {
         notifyListeners();
       }).onError((error, stackTrace) async {
         log(error.toString());
-        await AmityDialog()
-            .showAlertErrorDialog(title: "خطأ!", message: error.toString()); //Error!
+        await AmityDialog().showAlertErrorDialog(
+            title: "خطأ!", message: error.toString()); //Error!
       });
     }
   }

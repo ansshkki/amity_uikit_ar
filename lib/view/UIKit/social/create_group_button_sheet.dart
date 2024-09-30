@@ -103,14 +103,26 @@ class _CreateGroupButtonSheetState extends State<CreateGroupButtonSheet> {
                                     .primary,
                               ),
                             ),
-                            onPressed: () {
+                            onPressed: () async {
                               if (globalKey.currentState?.validate() ?? false) {
-                                Provider.of<CreateGroupRequestVM>(context,
-                                        listen: false)
+                                await Provider.of<CreateGroupRequestVM>(
+                                  context,
+                                  listen: false,
+                                )
                                     .createGroupRequest(
                                   groupName.text,
                                   description.text,
-                                );
+                                )
+                                    .then((val) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        "تم الطلب بنجاح",
+                                      ),
+                                    ),
+                                  );
+                                });
+                                Navigator.pop(context);
                               }
                             },
                             child: Text(
@@ -124,6 +136,7 @@ class _CreateGroupButtonSheetState extends State<CreateGroupButtonSheet> {
                             ),
                           ),
                         ),
+                  SizedBox(height: MediaQuery.paddingOf(context).bottom),
                   const SizedBox(height: 12),
                   vm.status == Statevm.error
                       ? Center(
