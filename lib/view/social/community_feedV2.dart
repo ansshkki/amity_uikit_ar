@@ -220,7 +220,7 @@ class _EditProfileButtonState extends State<EditProfileButton> {
                       AmitySocialClient.newCommunityRepository()
                           .leaveCommunity(widget.community.communityId!)
                           .then((value) {
-                        setState(() {
+                        // setState(() {
                           widget.community.isJoined =
                               !(widget.community.isJoined!);
                           var explorePageVM = Provider.of<ExplorePageVM>(
@@ -228,7 +228,7 @@ class _EditProfileButtonState extends State<EditProfileButton> {
                               listen: false);
                           explorePageVM.getRecommendedCommunities();
                           explorePageVM.getTrendingCommunities();
-                        });
+                        // });
                       }).onError((error, stackTrace) {
                         //handle error
                         log(error.toString());

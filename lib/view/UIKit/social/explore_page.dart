@@ -418,9 +418,14 @@ class RecommendationSection extends StatelessWidget {
   }
 }
 
-class TrendingSection extends StatelessWidget {
+class TrendingSection extends StatefulWidget {
   const TrendingSection({Key? key}) : super(key: key);
 
+  @override
+  State<TrendingSection> createState() => _TrendingSectionState();
+}
+
+class _TrendingSectionState extends State<TrendingSection> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ExplorePageVM>(
@@ -460,14 +465,19 @@ class TrendingSection extends StatelessWidget {
                   margin: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
                   child: InkWell(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => ChangeNotifierProvider(
+                      Navigator.of(context)
+                          .push(
+                            MaterialPageRoute(
+                              builder: (context) => ChangeNotifierProvider(
                                 create: (context) => CommuFeedVM(),
                                 child: CommunityScreen(
                                   isFromFeed: true,
                                   community: community,
                                 ),
-                              )));
+                              ),
+                            ),
+                          )
+                          .then((_) => refreshData());
                     },
                     child: Row(
                       children: [
@@ -665,6 +675,12 @@ class TrendingSection extends StatelessWidget {
       },
     );
   }
+
+  void refreshData() {
+    final vm = Provider.of<ExplorePageVM>(context, listen: false);
+    vm.getRecommendedCommunities();
+    vm.getTrendingCommunities();
+  }
 }
 
 class CategorySection extends StatelessWidget {
@@ -842,7 +858,7 @@ class CategorySection extends StatelessWidget {
                             )),
                             onPressed: () {
                               showModalBottomSheet(
-                                enableDrag: false,
+                                // enableDrag: false,
                                 isScrollControlled: true,
                                 context: context,
                                 builder: (context) => CreateGroupButtonSheet(),
@@ -1157,7 +1173,6 @@ class _CommunityListPageState extends State<CommunityListPage> {
                                                 .getRecommendedCommunities();
                                             explorePageVM
                                                 .getTrendingCommunities();
-                                            print(">>>>>>>>>>>>>>>callback");
 
                                             var myCommunityList =
                                                 Provider.of<MyCommunityVM>(
